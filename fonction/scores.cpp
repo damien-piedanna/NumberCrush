@@ -72,13 +72,56 @@ void WriteData(CVString & VString)
     }
 }//FonctionGet
 
+unsigned GetScore (CVString & VScores,const unsigned & Ligne)
+{
+    unsigned M=(VScores[Ligne][18])-48;
+    unsigned C=(VScores[Ligne][19])-48;
+    unsigned D=(VScores[Ligne][20])-48;
+    unsigned U=(VScores[Ligne][21])-48;
+    unsigned Score=(M*1000)+(C*100)+(D*10)+U;
+    return Score;
+}//GetScore
+
+string GetName(CVString & VScores, const unsigned & Ligne)
+{
+    string Name="";
+    for(unsigned i(4);i<15;++i)
+    {
+        Name+=VScores[Ligne][i];
+    }
+    return Name;
+}//GetName
+
+void DescendreLignes (CVString & VScores, unsigned & Ligne)
+{
+    for(unsigned i(VScores.size()-1);i>Ligne;--i)
+    {
+
+    }
+}//DescendreLignes
+
+unsigned FindRow (CVString & VScores,unsigned & Score)
+{
+    unsigned CptLigne=2;
+    if(Score>GetScore(VScores,CptLigne))
+        cout << 'l';
+
+}//FindRow
+
 int main()
 {
-    vector <string> VecInput;
+    /*
+    CVString VecInput;
     RetrieveData(VecInput);
     //for(unsigned i(0); i<FileInput.size();++i)
     //    cout << FileInput[i];
     WriteData(VecInput);
+    */
 
+    CVString Vec;
+    RetrieveData(Vec);
+    cout << GetScore(Vec, 2) << endl;
+
+    cout << GetName(Vec,2) << endl;
     return 0;
 }
