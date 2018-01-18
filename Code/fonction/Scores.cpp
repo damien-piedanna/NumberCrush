@@ -92,20 +92,46 @@ string GetName(CVString & VScores, const unsigned & Ligne)
     return Name;
 }//GetName
 
-void DescendreLignes (CVString & VScores, unsigned & Ligne)
-{
-    for(unsigned i(VScores.size()-1);i>Ligne;--i)
-    {
 
-    }
+
+void DescendreLignes(CVString & VScores,const unsigned & Ligne)
+{
+    for(unsigned i(10) ; i > Ligne ; --i )
+        VScores[i] = VScores[i-1];
 }//DescendreLignes
 
-unsigned FindRow (CVString & VScores,unsigned & Score)
+void AjustementLignes(CVString & VScores)
 {
-    unsigned CptLigne=2;
-    if(Score>GetScore(VScores,CptLigne))
-        cout << 'l';
+    for(unsigned i(2); i < 10; ++i)
+        VScores[i][1]=char((i-1)+48);
+}//AjustementLignes
 
+void ModifScores (CVString & VScores, unsigned & Score,const string & Name)
+{
+    unsigned CptLigne(2);
+    for(;CptLigne<12;++CptLigne)
+        if(Score>GetScore(VScores,CptLigne))
+        {
+            DescendreLignes(VScores,CptLigne);
+            break;
+        }
+
+    //Change le nom
+    for(unsigned i(0) ; i < Name.size() ; ++i)
+        VScores[CptLigne][i+4]=Name[i];
+    for(unsigned i(Name.size()+4) ; i < 11 ; ++i)
+       VScores[CptLigne][i]=' ';
+
+    //Change le score
+    string Score=to_string(Score);
+    for(unsigned i(0) ; i < Score.size() ; ++i)
+        VScores[CptLigne][i+18]=[i];
+    for(unsigned i(Score.size()+4) ; i < 11 ; ++i)
+       VScores[CptLigne][i]=' ';
+
+
+
+    AjustementLignes(VScores);
 }//FindRow
 
 int main()
@@ -120,8 +146,16 @@ int main()
 
     CVString Vec;
     RetrieveData(Vec);
-    cout << GetScore(Vec, 2) << endl;
 
-    cout << GetName(Vec,2) << endl;
+    for(unsigned i(0);i<Vec.size();++i)
+        cout << Vec[i] << endl;
+
+    cout << endl;
+
+    ModifScores(Vec,500,"Leo");
+
+    for(unsigned i(0);i<Vec.size();++i)
+        cout << Vec[i] << endl;
+
     return 0;
 }
