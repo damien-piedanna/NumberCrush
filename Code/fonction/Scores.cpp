@@ -106,7 +106,7 @@ void AjustementLignes(CVString & VScores)
         VScores[i][1]=char((i-1)+48);
 }//AjustementLignes
 
-void ModifScores (CVString & VScores, unsigned & Score,const string & Name)
+void ModifScores (CVString & VScores,const unsigned & Score,const string & Name)
 {
     unsigned CptLigne(2);
     for(;CptLigne<12;++CptLigne)
@@ -123,11 +123,11 @@ void ModifScores (CVString & VScores, unsigned & Score,const string & Name)
        VScores[CptLigne][i]=' ';
 
     //Change le score
-    string Score=to_string(Score);
-    for(unsigned i(0) ; i < Score.size() ; ++i)
-        VScores[CptLigne][i+18]=[i];
-    for(unsigned i(Score.size()+4) ; i < 11 ; ++i)
-       VScores[CptLigne][i]=' ';
+    string SScore=to_string(int(Score));
+    for(unsigned i(0) ; i < SScore.size() ; ++i)
+        VScores[CptLigne][i+18]=SScore[i];
+    for(unsigned i(SScore.size()+4) ; i < 11 ; ++i)
+        VScores[CptLigne][i]=' ';
 
 
 
