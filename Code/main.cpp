@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -13,18 +14,28 @@ typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
 /* AFFICHAGE */
 const string CReset   ("0");
 
-void MakeAMove (CMat & Grid, const CPosition & Pos, char Direction);
+void Couleur (const string & coul);                                                     //Permet d'afficher des couleurs sur la console
+void ClearScreen ();                                                                    //Vide la console
+void ClearBuf ();                                                                       //Vide le tampon de cin
+void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies);                        //Initialise la grille sans combinaison
+bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies);                                   //Remplace les 0 par des nombres aléatoires
+void DisplayGrid (const CMat & Grid);                                                   //Affiche la grille
+void DownGrid (CMat & Grid);                                                            //Fait tomber les cases quand il y a un trou en dessous d'eux
+void MakeAMove (CMat & Grid, const CPosition & Pos, char Direction);                    //Permet d'effectuer un mouvement de case
+bool AtLeastThreeInAColumn  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);   //Permet de trouver une combinaison de Howmany en colonnes
+bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);      //Permet de trouver une combinaison de Howmany en lignes
+void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany);           //Remplace les combinaisons en colonne par des 0
+void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany);              //Remplace les combinaisons en ligne par des 0
 
 void Couleur (const string & coul)
 {
     cout << "\033[7;" << coul <<"m";
-}
+} // Couleur()
 
 void ClearScreen ()
 {
     cout << "\033[H\033[2J";
-}
-/* AFFICHAGE */
+} // ClearScreen ()
 
 void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies)
 {
@@ -37,9 +48,41 @@ void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies)
             Grid [i][j] = rand()%KNbCandies+1;
         }
     }
-}
+    CPosition Pos;
+    unsigned Howmany;
+    do
+    {
+        while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
+        {
+            RemovalInColumn (Grid, Pos, Howmany);
+        }
+        while (AtLeastThreeInARow  (Grid, Pos, Howmany))
+        {
+            RemovalInRow (Grid, Pos, Howmany);
+        }
+    } while (ReplaceEmpty(Grid, KNbCandies));
+} // InitGrid ()
 
-void  DisplayGrid (const CMat & Grid)
+bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies)
+{
+    srand(time(NULL));
+    bool check = false;
+    for (unsigned i (0); i < Grid.size(); ++i)
+    {
+        for (unsigned j(0); j < Grid[i].size(); ++j)
+        {
+            if (Grid [i][j] == 0)
+            {
+                Grid [i][j] = rand()%KNbCandies+1;
+                check = true;
+            }
+
+        }
+    }
+    return check;
+} // ReplaceEmpty ()
+
+void DisplayGrid (const CMat & Grid)
 {
     ClearScreen ();
     Couleur(CReset);
@@ -72,7 +115,7 @@ void  DisplayGrid (const CMat & Grid)
     }
     Couleur(CReset);
     cout << endl;
-}
+} // DisplayGrid ()
 
 void DownGrid (CMat & Grid)
 {
@@ -92,7 +135,14 @@ void DownGrid (CMat & Grid)
             }
         }
     }
-}
+} //DownGrid ()
+
+void ClearBuf ()
+{
+    cin.clear();
+    string Buf;
+    getline(cin, Buf);
+} //ClearBuf ()
 
 void MakeAMove (CMat & Grid)
 {
@@ -105,65 +155,105 @@ void MakeAMove (CMat & Grid)
     while (true)
     {
         Size = Grid.size();
-        while (true)
-        {
-            cout << "Saisir X entre 1 et " << Size << endl;
-            cin >> x;
-            if (x < Size && x != 0) break;
-        }
-        while (true)
-        {
-            cout << "Saisir Y entre 1 et " << Size << endl;
-            cin >> y;
-            if (y < Size && x != 0) break;
-        }
-
+        //RECUPERATION DE X
+        do {
+            for(;;)
+            {
+                cout << "Entrez un numero de colonne entre 1 et " << Size << endl;
+                cin >> x;
+                if (cin) break;
+                if(cin.fail())
+                {
+                    cout << "Veuillez entrer un nombre !" << endl;
+                    ClearBuf ();
+                }
+            }
+            if(x <= Size && x != 0) break;
+            cout << "Entrez  un chiffre entre 1 et " << Size << endl << endl;
+        }while(true);
+        ClearBuf ();
+        //RECUPERATION DE Y
+        do{
+            for(;;)
+            {
+                cout << "Entrez un numero de ligne entre 1 et " << Size << endl;
+                cin >> y;
+                if (cin) break;
+                if(cin.fail())
+                {
+                    cout << "Veuillez entrer un nombre !" << endl;
+                    ClearBuf ();
+                }
+            }
+            if(y <= Size && y != 0) break;
+            cout << "Entrez  un chiffre entre 1 et " << Size << endl << endl;
+        }while(true);
         Pos.first = y-1;
         Pos.second = x-1;
-        cout << "direction ?  z=haut / q=gauche / s=bas / d=droite" << endl;
-        cin >> Direction;
-        Direction = tolower(Direction);
+        //RECUPERATION DE DIRECTION
+        ClearBuf ();
+        while(true)
+        {
+            cout << "Entrez la direction (Z = HAUT ; S = BAS ; Q = GAUCHE ; D = DROITE)" << endl;
+            string DirectionTemp;
+            getline(cin, DirectionTemp);
+            if(DirectionTemp.size() == 1)
+            {
+                Direction = DirectionTemp[0];
+                Direction = tolower(Direction);
+            }
+            else
+            {
+                Direction = 'p';
+            }
+             if(Direction == 'z' || Direction == 'q' || Direction == 's' || Direction == 'd') break;
+                cout << "Commande invalide !" << endl;
+
+        }
         switch (Direction)
         {
-            case 'z' :
-                if ((Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) && (Pos.first != 0))
+            case 'z' : if(Pos.first != 0 && //Sortie de grille
+                          (Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
+                        /*(Grid[Pos.first-1][Pos.second] != 6) && (Grid[Pos.first][Pos.second] != 6))*/   //On ne bouge pas un mur
                 {
                     swap (Grid[Pos.first-1][Pos.second], Grid[Pos.first][Pos.second]);
-                    DisplayGrid (Grid);
                     check = true;
                 }
             break;
-            case 's' :
-                if ((Grid[Pos.first+1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) && (Pos.first != (Grid[Pos.first].size()) -1))
+            case 's' : if((Pos.first != Grid.size()-1) && //Sortie de grille
+                          (Grid[Pos.first+1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
+                        /*(Grid[Pos.first+1][Pos.second] != 6) && (Grid[Pos.first][Pos.second] != 6))*/  //On ne bouge pas un mur
                 {
                     swap (Grid[Pos.first+1][Pos.second], Grid[Pos.first][Pos.second]);
-                    DisplayGrid (Grid);
                     check = true;
                 }
             break;
-            case 'd' :
-                if ((Grid[Pos.first][Pos.second+1] != 0) && (Grid[Pos.first][Pos.second] != 0) && (Pos.second != (Grid[Pos.first].size()) - 1))
+            case 'd' : if((Pos.second != Grid.size()-1) && //Sortie de grille
+                          (Grid[Pos.first][Pos.second+1] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
+                        /*(Grid[Pos.first][Pos.second+1] != 6) && (Grid[Pos.first][Pos.second] != 6))*/   //On ne bouge pas un mur
                 {
                     swap (Grid[Pos.first][Pos.second+1], Grid[Pos.first][Pos.second]);
-                    DisplayGrid (Grid);
                     check = true;
                 }
             break;
-            case 'q' :
-                if ((Grid[Pos.first][Pos.second-1] != 0) && (Grid[Pos.first][Pos.second] != 0) && (Pos.second != 0))
+            case 'q' : if(Pos.first != 0 && //Sortie de grille
+                          (Grid[Pos.first][Pos.second-1] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
+                        /*(Grid[Pos.first][Pos.second-1] != 6) && (Grid[Pos.first][Pos.second] != 6))*/   //On ne bouge pas un mur
                 {
                     swap (Grid[Pos.first][Pos.second-1], Grid[Pos.first][Pos.second]);
-                    DisplayGrid (Grid);
                     check = true;
                 }
             break;
+            default:
+                cout << "Choix incorect, z=haut / q=gauche / s=bas / d=droite" << endl;
+                cin >> Direction;
         }
         if (check)
             break;
         cout << "Erreur:" << endl
              << "Vous ne pouvez pas déplacer une case dans une case une vide ou hors de la grille" << endl;
     }
-}
+} //MakeAMove()
 
 bool AtLeastThreeInAColumn (const CMat & Grid, CPosition & Pos, unsigned & Howmany)
 {
@@ -184,7 +274,7 @@ bool AtLeastThreeInAColumn (const CMat & Grid, CPosition & Pos, unsigned & Howma
         }
     }
     return false;
-}
+} //AtLeastThreeInAColumn()
 
 bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany)
 {
@@ -205,7 +295,7 @@ bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany
         }
     }
     return false;
-}
+} //AtLeastThreeInARow()
 
 void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
 {
@@ -216,9 +306,7 @@ void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
         Grid[Pos.second + Cpt - 1][Pos.first - 1] = 0;
         Cpt++;
     }
-    DownGrid (Grid);
-    DisplayGrid (Grid);
-}
+} //RemovalInColumn()
 
 void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
 {
@@ -229,9 +317,7 @@ void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
         Grid[Pos.second - 1][Pos.first - 1 + Cpt] = 0;
         Cpt++;
     }
-    DownGrid (Grid);
-    DisplayGrid (Grid);
-}
+} //RemovalInRow()
 
 int main()
 {
@@ -241,6 +327,7 @@ int main()
     unsigned Score = 0;
     CPosition Pos;
     unsigned Coup;
+    unsigned Howmany;
 
     cout << "Bienvenue sur NumberCrush !" << endl;
 
@@ -252,6 +339,7 @@ int main()
              << "2- NON" << endl;
         cin >> choix;
     }
+    ClearBuf ();
     switch (choix)
     {
         case '1':
@@ -267,25 +355,36 @@ int main()
     }
     //INITIALISATION
     InitGrid (Grid, Size, KNbCandies);
-    DisplayGrid (Grid);
     while (true)
     {
+        DisplayGrid (Grid);
         cout << "Il vous reste " << Coup << " coup(s) !" << endl
              << "Score actuel : " << Score << endl << endl;
         MakeAMove (Grid);
-        unsigned Howmany;
-        while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
+        DisplayGrid (Grid);
+        sleep(1);
+        do
         {
-            cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les colonnes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
-            RemovalInColumn (Grid, Pos, Howmany);
-            Score += 10;
-        }
-        while (AtLeastThreeInARow  (Grid, Pos, Howmany))
-        {
-            cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les lignes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
-            RemovalInRow (Grid, Pos, Howmany);
-            Score += 10;
-        }
+            while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
+            {
+                cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les colonnes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
+                RemovalInColumn (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
+                DisplayGrid (Grid);                     //AFFICHE
+                sleep(1);
+                DownGrid (Grid);                        //REMONTE LES 0
+                Score += 10;
+            }
+            while (AtLeastThreeInARow  (Grid, Pos, Howmany))
+            {
+                cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les lignes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
+                RemovalInRow (Grid, Pos, Howmany);      //REMPLACE PAR DES 0
+                DisplayGrid (Grid);                     //AFFICHE
+                sleep(1);
+                DownGrid (Grid);                        //REMONTE LES 0
+                Score += 10;
+            }
+        }  while (ReplaceEmpty (Grid, KNbCandies));
+
         --Coup;
         if (Coup == 0)
         {
@@ -296,4 +395,4 @@ int main()
     }
 
     return 0;
-}
+} //main()
