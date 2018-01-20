@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -319,6 +321,34 @@ void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
     }
 } //RemovalInRow()
 
+void DisplayFile (const string & File)
+{
+    ifstream ifs;
+    ifs.open (File);
+    if (!(ifs.is_open ()))
+    {
+        if (File == "logo.txt")
+        {
+            cout << "NumberCrush" << endl;
+            return;
+        }
+        if (File == "menu.txt")
+        {
+            cout << "Menu" << endl
+                 << "1 - Jouer" << endl
+                 << "2 - Options" << endl
+                 << "3 - Règles" << endl
+                 << "4 - Quitter" << endl;
+            return;
+        }
+    }
+    string str;
+    while (!(ifs.eof()))
+    {
+        getline (ifs, str);
+        cout << str << endl;
+    }
+}// DisplayFile ()
 int main()
 {
     CMat Grid;
@@ -328,15 +358,12 @@ int main()
     CPosition Pos;
     unsigned Coup;
     unsigned Howmany;
-
-    cout << "Bienvenue sur NumberCrush !" << endl;
+    DisplayFile  ("logo.txt");
+    DisplayFile  ("menu.txt");
 
     char choix = '0';
     while (choix != '1' && choix != '2')
     {
-        cout << "Voulez vous configurer la partie ?" << endl << endl
-             << "1- OUI" << endl
-             << "2- NON" << endl;
         cin >> choix;
     }
     ClearBuf ();
