@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -14,18 +15,18 @@ typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
 const string CReset   ("0");
 
 
-void Couleur (const string & coul); //Permet d'afficher des couleurs sur la console
-void ClearScreen (); //Vide la console
-void ClearBuf (); //Vide le tampon de cin
-void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies); //Initialise la grille sans combinaison
-bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies); //Remplace les 0 par des nombres aléatoires
-void DisplayGrid (const CMat & Grid); //Affiche la grille
-void DownGrid (CMat & Grid); //Fait tomber les cases quand il y a un trou en dessous d'eux
-void MakeAMove (CMat & Grid, const CPosition & Pos, char Direction); //Permet d'effectuer un mouvement de case
-bool AtLeastThreeInAColumn  (const CMat & Grid, CPosition & Pos, unsigned & Howmany); //Permet de trouver une combinaison de Howmany en colonnes
-bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany); //Permet de trouver une combinaison de Howmany en lignes
-void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany); //Remplace les combinaisons en colonne par des 0
-void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany); //Remplace les combinaisons en ligne par des 0
+void Couleur (const string & coul);                                                     //Permet d'afficher des couleurs sur la console
+void ClearScreen ();                                                                    //Vide la console
+void ClearBuf ();                                                                       //Vide le tampon de cin
+void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies);                        //Initialise la grille sans combinaison
+bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies);                                   //Remplace les 0 par des nombres aléatoires
+void DisplayGrid (const CMat & Grid);                                                   //Affiche la grille
+void DownGrid (CMat & Grid);                                                            //Fait tomber les cases quand il y a un trou en dessous d'eux
+void MakeAMove (CMat & Grid, const CPosition & Pos, char Direction);                    //Permet d'effectuer un mouvement de case
+bool AtLeastThreeInAColumn  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);   //Permet de trouver une combinaison de Howmany en colonnes
+bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);      //Permet de trouver une combinaison de Howmany en lignes
+void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany);           //Remplace les combinaisons en colonne par des 0
+void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany);              //Remplace les combinaisons en ligne par des 0
 
 void Couleur (const string & coul)
 {
@@ -160,7 +161,7 @@ void MakeAMove (CMat & Grid)
         do {
             for(;;)
             {
-                cout << "Entrez coordonnee x" << endl;
+                cout << "Entrez un numero de colonne entre 1 et " << Size << endl;
                 cin >> x;
                 if (cin) break;
                 if(cin.fail())
@@ -170,14 +171,14 @@ void MakeAMove (CMat & Grid)
                 }
             }
             if(x <= Size && x != 0) break;
-            cout << "Taper un chiffre entre 1 et " << Size << endl;
+            cout << "Entrez  un chiffre entre 1 et " << Size << endl << endl;
         }while(true);
         ClearBuf ();
         //RECUPERATION DE Y
         do{
             for(;;)
             {
-                cout << "Entrez coordonnee y" << endl;
+                cout << "Entrez un numero de ligne entre 1 et " << Size << endl;
                 cin >> y;
                 if (cin) break;
                 if(cin.fail())
@@ -187,7 +188,7 @@ void MakeAMove (CMat & Grid)
                 }
             }
             if(y <= Size && y != 0) break;
-            cout << "Taper un chiffre entre 1 et " << Size << endl;
+            cout << "Entrez  un chiffre entre 1 et " << Size << endl << endl;
         }while(true);
         Pos.first = y-1;
         Pos.second = x-1;
@@ -196,14 +197,12 @@ void MakeAMove (CMat & Grid)
         while(true)
         {
             cout << "Entrez la direction (Z = HAUT ; S = BAS ; Q = GAUCHE ; D = DROITE)" << endl;
-
             string DirectionTemp;
             getline(cin, DirectionTemp);
             if(DirectionTemp.size() == 1)
             {
                 Direction = DirectionTemp[0];
                 Direction = tolower(Direction);
-
             }
             else
             {
@@ -309,8 +308,6 @@ void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
         Grid[Pos.second + Cpt - 1][Pos.first - 1] = 0;
         Cpt++;
     }
-    DownGrid (Grid);
-    DisplayGrid (Grid);
 }
 
 void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
@@ -322,8 +319,6 @@ void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
         Grid[Pos.second - 1][Pos.first - 1 + Cpt] = 0;
         Cpt++;
     }
-    DownGrid (Grid);
-    DisplayGrid (Grid);
 }
 
 int main()
@@ -368,18 +363,26 @@ int main()
         cout << "Il vous reste " << Coup << " coup(s) !" << endl
              << "Score actuel : " << Score << endl << endl;
         MakeAMove (Grid);
+        DisplayGrid (Grid);
+        sleep(1);
         do
         {
             while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
             {
                 cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les colonnes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
-                RemovalInColumn (Grid, Pos, Howmany);
+                RemovalInColumn (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
+                DisplayGrid (Grid);                     //AFFICHE
+                sleep(1);
+                DownGrid (Grid);                        //REMONTE LES 0
                 Score += 10;
             }
             while (AtLeastThreeInARow  (Grid, Pos, Howmany))
             {
                 cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les lignes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
-                RemovalInRow (Grid, Pos, Howmany);
+                RemovalInRow (Grid, Pos, Howmany);      //REMPLACE PAR DES 0
+                DisplayGrid (Grid);                     //AFFICHE
+                sleep(1);
+                DownGrid (Grid);                        //REMONTE LES 0
                 Score += 10;
             }
         }  while (ReplaceEmpty (Grid, KNbCandies));
