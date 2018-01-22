@@ -451,37 +451,39 @@ void Menu ()
         cin >> choix;
         switch (choix)
         {
-            case 1:
+            case 1: {
                 ClearScreen();
                 ClearBuf();
                 Jouer();
                 break;
-
-            case 2:  //A faire
+                }
+            case 2: { //A faire
                 cout << "Options" << endl;
                 break;
-
-            case 3:
+                }
+            case 3: {
                 ClearScreen();
                 DisplayFile("regles.txt");
                 char quit;
                 cout <<"Entrez Q pour quitter" << endl;
-                while (quit == 'Q' || quit == 'q')
+                while (true)
                 {
                     cin>> quit;
                     ClearBuf ();
+                    if (quit == 'Q' || quit == 'q')
+                        Menu();
                 }
                 break;
-
-            case 4:
+                }
+            case 4: {
                 exit(0);
                 break;
-
-            default:
+                }
+            default: {
                 check = false;
                 cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
                 ClearBuf ();
-                break;
+                }
         }
         if (check) break;
     }
@@ -498,35 +500,35 @@ void Jouer ()
         cin >> choix;
         switch (choix)
         {
-            case 1:
+            case 1: {
                 ClearScreen();
                 ClearBuf();
                 Classique();
                 break;
-
-            case 2:
+                }
+            case 2: {
                 ClearScreen();
                 ClearBuf();
                 Perso();
                 break;
-
-            case 3:
+                }
+            case 3: {
                 ClearScreen();
                 ClearBuf();
                 //Rush(); à faire
                 break;
-
-            case 4:
+                }
+            case 4: {
                 ClearScreen();
                 ClearBuf ();
                 Menu();
                 break;
-
-            default:
+                }
+            default: {
                 check = false;
                 cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
                 ClearBuf ();
-                break;
+            }
         }
         if (check) break;
     }
@@ -543,33 +545,33 @@ void Classique ()
         cin >> choix;
         switch (choix)
         {
-            case 1: //facile
+            case 1: { //facile
                 Size = 10;
                 KNbCandies = 5;
                 Coup = 20;
                 break;
-
-            case 2:  //normal
+                }
+            case 2: { //normal
                 Size = 8;
                 KNbCandies = 6;
                 Coup = 15;
                 break;
-
-            case 3:  //difficile
+                }
+            case 3: { //difficile
                 Size = 6;
                 KNbCandies = 8;
                 Coup = 10;
                 break;
-
-            case 4: //retour
+                }
+            case 4: {//retour
                 Jouer();
                 break;
-
-            default:
+                }
+            default: {
                 check = false;
                 cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
                 ClearBuf ();
-                break;
+            }
         }
         if (check) break;
     }
@@ -658,10 +660,15 @@ int main()
              << "Vous avez realise un score de " << Score << " !" << endl << endl
              <<"Entrez Q pour retourner au menu." << endl;
         char quit;
-        while (quit == 'Q' || quit == 'q')
+        while (true)
         {
             cin >> quit;
             ClearBuf ();
+            if (quit == 'Q' || quit == 'q')
+            {
+                Score = 0;
+                break;
+            }
         }
     }
 } //main()
