@@ -16,10 +16,6 @@ typedef vector <CVLine> CMat; // un type représentant la grille
 typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
 
 const string CReset   ("0");
-unsigned Size = 0;        //taille de la grille
-unsigned KNbCandies = 0;  //numéro max dans la grille
-unsigned Coup = 0;        //nombre de coups max
-unsigned chlvl = 0;       //niveau
 
 //ATTENTION !!!!!!!!
 const unsigned Key(5); // Clé de chiffrement/déchiffrement par César
@@ -29,21 +25,29 @@ void Couleur (const string & coul);                                             
 void ClearScreen ();                                                                    //Vide la console
 void ClearBuf ();                                                                       //Vide le tampon de cin
 void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies);                        //Initialise la grille sans combinaison
-bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies);                                   //Remplace les 0 par des nombres aléatoires
+
 void DisplayGrid (const CMat & Grid);                                                   //Affiche la grille
-void DownGrid (CMat & Grid);                                                            //Fait tomber les cases quand il y a un trou en dessous d'eux
-void MakeAMove (CMat & Grid, const CPosition & Pos, char Direction);                    //Permet d'effectuer un mouvement de case
+void MakeAMove (CMat & Grid, unsigned & Score);                                         //Donne la possibilité au joueur de faire un move
+void Move (CMat & Grid, unsigned & Score, const CPosition & Pos, const CPosition & PosToMove);                          //
+
 bool AtLeastThreeInAColumn  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);   //Permet de trouver une combinaison de Howmany en colonnes
 bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);      //Permet de trouver une combinaison de Howmany en lignes
 void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany);           //Remplace les combinaisons en colonne par des 0
 void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany);              //Remplace les combinaisons en ligne par des 0
-void DeleteAllNumber(CMat & Grid, unsigned nbtodelete);                                 //Supprime tout les nbtodelete de la grille
+void DeleteAllNumber(CMat & Grid, unsigned nbtodelete, unsigned & Score);               //Supprime tout les nbtodelete de la grille
+void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned KNbCandies);  //Mets à jour la grille en cherchant les combinaisons, remontant les 0 et replacer des cases
 
-void Menu ();      //Menu principal
-void Jouer ();     //Menu pour choisir son mode de jeu
-void Classique (); //Mode de jeu classique, 3 Levelx de difficultés.
-void Perso();      //Mode de jeu personnalisé, le joueur peut choisir les options de la partie.
-void Histoire();   //Mode histoire avec Level
+bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies);                                   //Remplace les 0 par des nombres aléatoires
+void DownGrid (CMat & Grid);                                                            //Fait tomber les cases quand il y a un trou en dessous d'eux
+
+unsigned GetUnsigned (unsigned min, unsigned max);                                      //Recupération d'un unsigned
+CPosition GetPos (CPosition & Pos, unsigned Size);
+char GetDirection (char Direction);
+void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);       //Menu principal
+void Jouer (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Menu pour choisir son mode de jeu
+void Classique (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);  //Mode de jeu classique, 3 Levelx de difficultés.
+void Perso( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Mode de jeu personnalisé, le joueur peut choisir les options de la partie.
+void Histoire( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);   //Mode histoire avec Level
 
 void Couleur (const string & coul)
 {
@@ -92,6 +96,7 @@ bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies)
             if (Grid [i][j] == 0)
             {
                 Grid [i][j] = rand()%KNbCandies+1;
+                //cout << "remplacement de la case" << i+1 << j+1 << endl;
                 check = true;
             }
 
@@ -148,7 +153,6 @@ void DisplayGrid (const CMat & Grid)
 
 void DownGrid (CMat & Grid)
 {
-    CPosition Posbis;
     for (unsigned i (0); i < Grid.size(); ++i)
     {
         for (unsigned j(0); j < Grid[i].size(); ++j)
@@ -159,6 +163,7 @@ void DownGrid (CMat & Grid)
                 while (ibis > 0)
                 {
                     swap (Grid[ibis-1][j], Grid[ibis][j]);
+                    //cout << "echange de la case" << j+1 << ibis+1 << " avec " <<  j+1 << ibis << endl;
                     ibis--;
                 }
             }
@@ -166,128 +171,56 @@ void DownGrid (CMat & Grid)
     }
 } //DownGrid ()
 
-void MakeAMove (CMat & Grid)
+void MakeAMove (CMat & Grid, unsigned & Score)
 {
     bool check = false;
     CPosition Pos;
-    unsigned x;
-    unsigned y;
+    CPosition PosToMove;
     unsigned Size;
     char Direction;
     Size = Grid.size();
     while (true)
     {
-        //recup coordonnées
-        while (true)
-        {
-            cout << "Numéro colonne (1 - " << Size << ") : ";
-            cin >> x;
-            if (x <= Size && x != 0) break;
-            ClearBuf ();
-        }
-        ClearBuf ();
-        while (true)
-        {
-            cout << "Numéro ligne (1 - " << Size << ") : ";
-            cin >> y;
-            if (y <= Size && y != 0) break;
-            ClearBuf ();
-        }
+        Pos = GetPos (Pos, Size); //Récupération position
         cout << endl;
-        ClearBuf ();
-        Pos.first = y-1;
-        Pos.second = x-1;
-        //recup direction
-        while (true)
-        {
-            cout << "Direction (Z,Q,S,D) : ";
-            cin >> Direction;
-            cout << endl;
-            Direction = toupper(Direction);
-            if (Direction == 'Z' || Direction == 'Q' || Direction == 'S' || Direction == 'D') break;
-            ClearBuf ();
-        }
+        Direction = GetDirection (Direction); //Récupération direction
         switch (Direction)
         {
-            case 'Z' : if((Pos.first != 0) && //Sortie de grille
-                         (Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                      && (Grid[Pos.first-1][Pos.second] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
+            case 'Z' :
+                if(Pos.first != 0)
                 {
-                    check = true;
-
-                    //Boules spéciales 11
-                    if (Grid[Pos.first-1][Pos.second] == 11)
-                    {
-                        Grid[Pos.first-1][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                    }
-                    if (Grid[Pos.first][Pos.second] == 11)
-                    {
-                        Grid[Pos.first][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first-1][Pos.second]);
-                    }
-
-                    swap (Grid[Pos.first-1][Pos.second], Grid[Pos.first][Pos.second]);
+                   check = true;
+                   PosToMove.first = Pos.first-1;
+                   PosToMove.second = Pos.second;
+                   Move (Grid, Score, Pos, PosToMove);
                 }
             break;
-            case 'S' : if((Pos.first != Grid.size()-1) && //Sortie de grille
-                          (Grid[Pos.first+1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                       && (Grid[Pos.first+1][Pos.second] != 12) && (Grid[Pos.first][Pos.second] != 12))  //On ne bouge pas un mur
+            case 'S' :
+                if(Pos.first != Grid.size()-1)
                 {
-                    check = true;
+                   check = true;
+                   PosToMove.first = Pos.first+1;
+                   PosToMove.second = Pos.second;
+                   Move (Grid, Score, Pos, PosToMove);
+                }
 
-                    if (Grid[Pos.first+1][Pos.second] == 11)
-                    {
-                        Grid[Pos.first+1][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                    }
-                    if (Grid[Pos.first][Pos.second] == 11)
-                    {
-                        Grid[Pos.first][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first+1][Pos.second]);
-                    }
-
-                    swap (Grid[Pos.first+1][Pos.second], Grid[Pos.first][Pos.second]);
+            break;
+            case 'D' :
+                if(Pos.second != Grid.size()-1)
+                {
+                   check = true;
+                   PosToMove.first = Pos.first;
+                   PosToMove.second = Pos.second+1;
+                   Move (Grid, Score, Pos, PosToMove);
                 }
             break;
-            case 'D' : if((Pos.second != Grid.size()-1) && //Sortie de grille
-                          (Grid[Pos.first][Pos.second+1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                       && (Grid[Pos.first][Pos.second+1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
+            case 'Q' :
+                if(Pos.second != 0)
                 {
-                    check = true;
-
-                    if (Grid[Pos.first][Pos.second+1] == 11)
-                    {
-                        Grid[Pos.first][Pos.second+1] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                    }
-                    if (Grid[Pos.first][Pos.second] == 11)
-                    {
-                        Grid[Pos.first][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second+1]);
-                    }
-
-                    swap (Grid[Pos.first][Pos.second+1], Grid[Pos.first][Pos.second]);
-                }
-            break;
-            case 'Q' : if(Pos.second != 0 && //Sortie de grille
-                          (Grid[Pos.first][Pos.second-1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                       && (Grid[Pos.first][Pos.second-1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
-                {
-                    check = true;
-
-                    if (Grid[Pos.first][Pos.second-1] == 11)
-                    {
-                        Grid[Pos.first][Pos.second-1] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                    }
-                    if (Grid[Pos.first][Pos.second] == 11)
-                    {
-                        Grid[Pos.first][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second-1]);
-                    }
-
-                    swap (Grid[Pos.first][Pos.second-1], Grid[Pos.first][Pos.second]);
+                   check = true;
+                   PosToMove.first = Pos.first+1;
+                   PosToMove.second = Pos.second-1;
+                   Move (Grid, Score, Pos, PosToMove);
                 }
             break;
         }
@@ -298,15 +231,33 @@ void MakeAMove (CMat & Grid)
     }
 } //MakeAMove()
 
+void Move (CMat & Grid, unsigned & Score, const CPosition & Pos, const CPosition & PosToMove)
+{
+    if((Grid[PosToMove.first][PosToMove.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+    && (Grid[PosToMove.first][PosToMove.second] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
+    {
+        if (Grid[PosToMove.first][PosToMove.second] == 11)
+        {
+            Grid[PosToMove.first][PosToMove.second] = 0;
+            DeleteAllNumber (Grid, Grid[Pos.first][Pos.second], Score);
+        }
+        if (Grid[Pos.first][Pos.second] == 11)
+        {
+            Grid[Pos.first][Pos.second] = 0;
+            DeleteAllNumber (Grid, Grid[PosToMove.first][PosToMove.second], Score);
+        }
+    swap (Grid[PosToMove.first][PosToMove.second], Grid[Pos.first][Pos.second]);
+    }
+} //Move ()
+
 bool AtLeastThreeInAColumn (const CMat & Grid, CPosition & Pos, unsigned & Howmany)
 {
     for (unsigned i (0); i < Grid.size() - 2; ++i)
     {
         for (unsigned j(0); j < Grid[i].size(); ++j)
         {
-            if (Grid[i][j] != 12 && Grid[i][j] == Grid [i+1][j] && Grid[i][j] == Grid [i+2][j]) //3 affilés
+            if (Grid[i][j] != 0 && Grid[i][j] != 12 && Grid[i][j] == Grid [i+1][j] && Grid[i][j] == Grid [i+2][j]) //3 affilés
             {
-                if (Grid[i][j] == 0) break;
                 Pos.first = j;
                 Pos.second = i;
                 Howmany = 3;
@@ -325,13 +276,12 @@ bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany
     {
         for (unsigned j(0); j < Grid[i].size() - 2; ++j)
         {
-            if (Grid[i][j] !=+ 12 && Grid[i][j] == Grid [i][j+1] && Grid[i][j] == Grid [i][j+2])
+            if (Grid[i][j] != 0 && Grid[i][j] != 12 && Grid[i][j] == Grid [i][j+1] && Grid[i][j] == Grid [i][j+2])
             {
-                if (Grid[i][j] == 0) break;
                 Pos.first = j;
                 Pos.second = i;
                 Howmany = 3;
-                while (Grid[i][j] == Grid[i][j + Howmany])
+                while (i + Howmany < Grid.size() && Grid[i][j] == Grid[i][j  + Howmany])
                     ++Howmany;
                 return true;
             }
@@ -340,13 +290,14 @@ bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany
     return false;
 } //AtLeastThreeInARow()
 
-
 void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
 {
     unsigned Cpt = 0;
     while (Cpt != Howmany)
     {
+
         Grid[Pos.second + Cpt][Pos.first] = 0;
+        //cout << "delete de la case" << Pos.first + 1 << Pos.second + Cpt + 1 << endl;
         Cpt++;
     }
 } //RemovalInColumn()
@@ -357,6 +308,7 @@ void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
     while (Cpt != Howmany)
     {
         Grid[Pos.second][Pos.first + Cpt] = 0;
+        //cout << "delete de la case" << Pos.first + Cpt + 1 << Pos.second + 1 << endl;
         Cpt++;
     }
 } //RemovalInRow()
@@ -389,8 +341,9 @@ void FiveInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
     }
 } //FiveInRow()
 
-void DeleteAllNumber (CMat & Grid, unsigned nbtodelete)
+void DeleteAllNumber (CMat & Grid, unsigned nbtodelete, unsigned & Score)
 {
+    unsigned cpt;
     for (unsigned i (0); i < Grid.size(); ++i)
     {
         for (unsigned j(0); j < Grid[i].size(); ++j)
@@ -398,9 +351,11 @@ void DeleteAllNumber (CMat & Grid, unsigned nbtodelete)
             if (Grid[i][j] == nbtodelete)
             {
                 Grid[i][j] = 0;
+                cpt++;
             }
         }
     }
+    Score += cpt*50;
 } //DeleteAllNumber ()
 
 /*void DeleteCross (CMat & Grid, const CPosition & Pos)
@@ -421,6 +376,42 @@ void DeleteAllNumber (CMat & Grid, unsigned nbtodelete)
     }
     DisplayGrid (Grid);
 } //DeleteCross () */
+
+void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned KNbCandies)
+{
+    unsigned Howmany;
+    do
+    {
+        while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
+        {
+            cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les colonnes en coordonnées " << Pos.first+1 << " ; " << Pos.second+1  << endl;
+            Score += Howmany*50;  //50 points par case détruite
+
+            if (Howmany == 5)
+                FiveInColumn (Grid, Pos, Howmany);      //Fait spawn boule spéciale
+            if (Howmany != 5)
+                RemovalInColumn (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
+
+            DisplayGrid (Grid);
+            sleep(1);
+            DownGrid (Grid);                            //REMONTE LES 0
+        }
+        while (AtLeastThreeInARow  (Grid, Pos, Howmany))
+        {
+            cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les lignes en coordonnées " << Pos.first+1 << " ; " << Pos.second+1  << endl;
+            Score += Howmany*50; //50 points par case détruite
+
+            if (Howmany == 5)
+                FiveInRow (Grid, Pos, Howmany);         //Fait spawn boule spéciale
+            if (Howmany != 5)
+                RemovalInRow (Grid, Pos, Howmany);      //REMPLACE PAR DES 0
+
+            DisplayGrid (Grid);
+            sleep(1);
+            DownGrid (Grid);                            //REMONTE LES 0
+        }
+    }  while (ReplaceEmpty (Grid, KNbCandies));
+}
 
 void DisplayFile (const string & File)
 {
@@ -464,16 +455,17 @@ void DisplayFile (const string & File)
     }
 }// DisplayFile ()
 
-void ClearBuf ()    //clear the buffer
+void ClearBuf ()
 {
     cin.clear ();
     cin.ignore (numeric_limits<streamsize>::max(), '\n');
 
 }// ClearBuf ()
 
-void Level1(CMat & Grid)
+void Level1(CMat & Grid, unsigned & KNbCandies)
 {
-    InitGrid(Grid, 10, 5);
+    KNbCandies = 7;
+    InitGrid(Grid, 10, KNbCandies);
     for(unsigned i=0; i<5 ;++i)
     {
         Grid[i][0]=12;
@@ -493,11 +485,12 @@ void Level1(CMat & Grid)
             Grid[5+i][(Grid.size()-1)-j]=12;
         }
     }
-}
+} //Level1()
 
-void Level2(CMat & Grid)
+void Level2(CMat & Grid, unsigned & KNbCandies)
 {
-    InitGrid(Grid, 10, 5);
+    KNbCandies = 7;
+    InitGrid(Grid, 10, KNbCandies);
 
     for(unsigned i=0; i <= 5; ++i)
     {
@@ -511,11 +504,12 @@ void Level2(CMat & Grid)
         Grid[2+i][4] = 12;
          Grid[2+i][5] = 12;
     }
-}
+} //Level2()
 
-void Level3(CMat & Grid)
+void Level3(CMat & Grid, unsigned & KNbCandies)
 {
-    InitGrid(Grid, 15, 5);
+    KNbCandies = 7;
+    InitGrid(Grid, 15, KNbCandies);
 
     for(unsigned i =0; i < 12; ++i)
     {
@@ -523,11 +517,12 @@ void Level3(CMat & Grid)
         Grid[Grid.size()-1-i][7] = 12;
         Grid[Grid.size()-1-i][3] = 12;
     }
-}
+} //Level3()
 
-void Level4(CMat & Grid)
+void Level4(CMat & Grid, unsigned & KNbCandies)
 {
-    InitGrid(Grid, 20, 5);
+    KNbCandies = 7;
+    InitGrid(Grid, 20, KNbCandies);
 
     for(unsigned i=0; i < 3 ; ++i)
     {
@@ -540,11 +535,12 @@ void Level4(CMat & Grid)
 
         }
     }
-}
+} //Level4()
 
-void Level5(CMat & Grid)
+void Level5(CMat & Grid, unsigned & KNbCandies)
 {
-    InitGrid(Grid, 20, 5);
+    KNbCandies = 7;
+    InitGrid(Grid, 20, KNbCandies);
 
     for(unsigned i=0; i < 3 ; ++i)
     {
@@ -562,29 +558,59 @@ void Level5(CMat & Grid)
        Grid[Grid.size()-1-i][5]=12;
        Grid[Grid.size()-1-i][14]=12;
     }
-}
+} //Level5()
 
-void Menu ()
+unsigned GetUnsigned (unsigned min, unsigned max)
 {
-    ClearScreen();
-    DisplayFile  ("menu.txt");
-    bool check = true;
     unsigned choix = 0;
     while (true)
     {
         cin >> choix;
-        if (cin.fail() || choix > 5 || choix < 1)
+        if (cin.fail() || choix > max || choix < min)
         {
-            cout << "Valeur incorrecte 1-2-3-4-5" << endl << endl;
+            cout << "Valeur incorrecte ("<< min << '-' << max << ')' << endl << endl;
             ClearBuf();
             continue;
         }
-        switch (choix)
-        {
+        break;
+    }
+    return choix;
+}
+
+CPosition GetPos(CPosition & Pos, unsigned Size)
+{
+    cout << "Numéro colonne (1 - " << Size << ") : ";
+    Pos.second = (GetUnsigned(1,Size) - 1);
+    cout << "Numéro ligne (1 - " << Size << ") : ";
+    Pos.first = (GetUnsigned(1,Size) - 1);
+    return Pos;
+}
+
+char GetDirection (char Direction)
+{
+    while (true)
+    {
+        cout << "Direction (Z,Q,S,D) : ";
+        cin >> Direction;
+        cout << endl;
+        Direction = toupper(Direction);
+        if (Direction == 'Z' || Direction == 'Q' || Direction == 'S' || Direction == 'D') break;
+        ClearBuf ();
+    }
+    return Direction;
+}
+
+void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
+{
+    ClearScreen();
+    DisplayFile  ("menu.txt");
+    unsigned choix = GetUnsigned (1,5);
+    switch (choix)
+    {
         case 1:
             ClearScreen();
             ClearBuf();
-            Jouer();
+            Jouer(Grid, Size, KNbCandies, Coup);
             break;
         case 2: //A faire
             cout << "Options" << endl;
@@ -600,7 +626,7 @@ void Menu ()
                 cin>> quit;
                 ClearBuf ();
                 if (quit == 'Q' || quit == 'q')
-                    Menu();
+                    Menu(Grid, Size, KNbCandies, Coup);
             }
             break;
         case 4:
@@ -610,269 +636,165 @@ void Menu ()
         case 5:
             exit(0);
             break;
-        default:
-            check = false;
-            cout << "Valeur incorrecte 1-2-3-4-5" << endl << endl;
-            ClearBuf ();
-            break;
-        }
-        if (check) break;
     }
 } //Menu ()
 
-void Jouer ()
+void Jouer (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("jouer.txt");
-    bool check = true;
-    unsigned choix = 0;
-    while (true)
+    unsigned choix = GetUnsigned (1,4);
+    switch (choix)
     {
-        cin >> choix;
-        if (cin.fail() || choix > 4 || choix < 1)
-        {
-            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+        case 1:
+            ClearScreen();
             ClearBuf();
-            continue;
-        }
-        switch (choix)
-        {
-            case 1: {
-                ClearScreen();
-                ClearBuf();
-                Classique();
-                break;
-                }
-            case 2: {
-                ClearScreen();
-                ClearBuf();
-                Perso();
-                break;
-                }
-            case 3: {
-                ClearScreen();
-                ClearBuf();
-                Histoire();
-                break;
-                }
-            case 4: {
-                ClearScreen();
-                ClearBuf ();
-                Menu();
-                break;
-                }
-        }
-        if (check) break;
+            Classique(Grid, Size, KNbCandies, Coup);
+            break;
+        case 2:
+            ClearScreen();
+            ClearBuf();
+            Perso(Grid, Size, KNbCandies, Coup);
+            break;
+        case 3:
+            ClearScreen();
+            ClearBuf();
+            Histoire(Grid, Size, KNbCandies, Coup);
+            break;
+        case 4:
+            ClearScreen();
+            ClearBuf ();
+            Menu(Grid, Size, KNbCandies, Coup);
+            break;
     }
 }// Jouer ()
 
-void Classique ()
+void Classique (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("classique.txt");
-    bool check = true;
-    unsigned choix = 0;
-    while (true)
+    unsigned choix = GetUnsigned (1,4);
+    switch (choix)
     {
-        cin >> choix;
-        if (cin.fail() || choix > 4 || choix < 1)
-        {
-            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
-            ClearBuf();
-            continue;
-        }
-        switch (choix)
-        {
-            case 1: { //facile
-                Size = 10;
-                KNbCandies = 5;
-                Coup = 20;
-                break;
-                }
-            case 2: { //normal
-                Size = 8;
-                KNbCandies = 6;
-                Coup = 15;
-                break;
-                }
-            case 3: { //difficile
-                Size = 6;
-                KNbCandies = 8;
-                Coup = 10;
-                break;
-                }
-            case 4: {//retour
-                Jouer();
-                break;
-                }
-        }
-        if (check) break;
+        case 1: //facile
+            Size = 10;
+            KNbCandies = 5;
+            Coup = 20;
+            InitGrid (Grid, Size, KNbCandies);
+            break;
+        case 2: //normal
+            Size = 8;
+            KNbCandies = 6;
+            Coup = 15;
+            InitGrid (Grid, Size, KNbCandies);
+            break;
+        case 3: //difficile
+            Size = 6;
+            KNbCandies = 8;
+            Coup = 2;
+            InitGrid (Grid, Size, KNbCandies);
+            break;
+        case 4: //retour
+            Jouer(Grid, Size, KNbCandies, Coup);
+            break;
     }
 }// Classique ()
 
-void Perso ()
+void Perso (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("perso.txt");
-    while (true)
-    {
-        cout << "Taille de la grille (5 - 30) : ";
-        cin >> Size;
-        if (Size <= 30 && Size >= 5) break;
-        ClearBuf ();
-    }
-    ClearBuf ();
-    while (true)
-    {
-        cout << "Numero de bonbon max (4 - 9) : ";
-        cin >> KNbCandies;
-        if (KNbCandies <= 9 && KNbCandies >= 4) break;
-        ClearBuf ();
-    }
-    ClearBuf ();
-    while (true)
-    {
-        cout << "Nombre de coup max (1 - 100) : ";
-        cin >> Coup;
-        if (Coup <= 100 && Coup != 0) break;
-        ClearBuf ();
-    }
-    ClearBuf ();
+
+    cout << "Taille de la grille (5 - 30) : ";
+    Size = GetUnsigned (5,30);
+
+    cout << "Numero de bonbon max (4 - 9) : ";
+    KNbCandies = GetUnsigned (4,9);
+
+    cout << "Nombre de coup max (1 - 100) : ";
+    Coup = GetUnsigned (1,100);
+
+    InitGrid (Grid, Size, KNbCandies);
 } //Perso ()
 
-void Histoire()
+void Histoire(CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("histoire.txt");
-    bool check = true;
-    unsigned choix = 0;
+    unsigned choix = GetUnsigned (1,6);
 
-    while (true)
-        {
-            cin >> choix;
-            if (cin.fail() || choix > 6 || choix < 1)
-            {
-                cout << "Valeur incorrecte 1-2-3-4-5-6" << endl << endl;
-                ClearBuf();
-                continue;
-            }
-            switch (choix)
-            {
-                case 1:
-                    ClearScreen();
-                    ClearBuf();
-                    chlvl = 1;
-                    break;
+    switch (choix)
+    {
+        case 1:
+            ClearScreen();
+            ClearBuf();
+            Level1(Grid, KNbCandies);
+            break;
 
-                case 2:
-                    ClearScreen();
-                    ClearBuf();
-                    chlvl = 2;
-                    break;
+        case 2:
+            ClearScreen();
+            ClearBuf();
+            Level2(Grid, KNbCandies);
+            break;
 
-                case 3:
-                    ClearScreen();
-                    ClearBuf();
-                    chlvl = 3;
-                    break;
+        case 3:
+            ClearScreen();
+            ClearBuf();
+            Level3(Grid, KNbCandies);
+            break;
 
-                case 4:
-                    ClearScreen();
-                    ClearBuf ();
-                    chlvl = 4;
-                    break;
+        case 4:
+            ClearScreen();
+            ClearBuf ();
+            Level4(Grid, KNbCandies);
+            break;
 
-                case 5:
-                    ClearScreen();
-                    ClearBuf();
-                    chlvl = 5;
-                    break;
-                case 6:
-                    Jouer();
-                    break;
-            }
-            if (check) break;
-        }
+        case 5:
+            ClearScreen();
+            ClearBuf();
+            Level5(Grid, KNbCandies);
+            break;
+        case 6:
+            ClearScreen();
+            ClearBuf ();
+            Jouer(Grid, Size, KNbCandies, Coup);
+            break;
+    }
 } //Histoire()
 
 int main()
 {
-    CMat Grid;
     CPosition Pos;
-    unsigned Howmany;
-    unsigned Score = 0;
+    unsigned Score = 0;     //Score
+
+    unsigned Size;          //Taille de la grille
+    unsigned KNbCandies;    //Numéro max dans la grille
+    unsigned Coup;          //Nombre de coups max
+
     while (true)
     {
-        Menu();
-        if (chlvl == 0)
-            InitGrid (Grid, Size, KNbCandies); //Initialisation de la grille avec paramètres choisis
-        else
-        {
-            switch (chlvl)
-            {
-            case 1:
-                Coup = 10;
-                Level1(Grid);
-                break;
-            case 2:
-                Coup = 10;
-                Level2(Grid);
-                break;
-            case 3:
-                Coup = 10;
-                Level3(Grid);
-                break;
-            case 4:
-                Coup = 10;
-                Level4(Grid);
-                break;
-            case 5:
-                Coup = 10;
-                Level5(Grid);
-                break;
-            }
-        }
-        while (Coup != 0)
+        CMat Grid;
+        Menu(Grid, Size, KNbCandies, Coup);
+        for ( ; Coup != 0 ; Coup--)
         {
             ClearScreen();
             DisplayGrid (Grid);
             cout << "Il vous reste " << Coup << " coup(s) !" << endl
                  << "Score actuel : " << Score << endl << endl;
-            MakeAMove (Grid);
+
+            MakeAMove (Grid, Score);
+
             DisplayGrid (Grid);
             sleep(1);
-            do
-            {
-                while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
-                {
-                    cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les colonnes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
-                    if (Howmany == 5)
-                        FiveInColumn (Grid, Pos, Howmany);
-                    if (Howmany != 5)
-                        RemovalInColumn (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
-                    DisplayGrid (Grid);                         //AFFICHE
-                    sleep(1);
-                    DownGrid (Grid);                            //REMONTE LES 0
-                    Score += 10;
-                }
-                while (AtLeastThreeInARow  (Grid, Pos, Howmany))
-                {
-                    cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les lignes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
-                    if (Howmany == 5)
-                        FiveInRow  (Grid, Pos, Howmany);
-                    if (Howmany != 5)
-                        RemovalInRow (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
-                    DisplayGrid (Grid);                     //AFFICHE
-                    sleep(1);
-                    DownGrid (Grid);                        //REMONTE LES 0
-                    Score += 10;
-                }
-            }  while (ReplaceEmpty (Grid, KNbCandies));
 
-            --Coup;
+            UpdateGrid (Grid, Pos, Score, KNbCandies);
         }
+        DisplayGrid (Grid);
         cout << "Partie termine !" << endl
              << "Vous avez realise un score de " << Score << " !" << endl << endl ;
+
+        //NICO IL FAUDRAIT METTRE ÇA DANS UNE FONCTION STP
+        /*
         cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
         string Name;
         cin >> Name;
@@ -905,6 +827,7 @@ int main()
         }
 
         MScores(Name,Score, Key);
+        */
 
         cout <<"Entrez Q pour retourner au menu." << endl;
         while (true)
@@ -913,7 +836,6 @@ int main()
             cin >> quit;
             if (quit == 'Q' || quit == 'q')
             {
-                Score = 0;
                 ClearScreen();
                 ClearBuf();
                 break;
