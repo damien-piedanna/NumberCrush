@@ -7,6 +7,7 @@
 #include <sstream>
 #include <fstream>
 #include <limits>
+#include <scores.h>
 
 using namespace std;
 
@@ -18,6 +19,12 @@ unsigned Size = 0;        //taille de la grille
 unsigned KNbCandies = 0;  //numéro max dans la grille
 unsigned Coup = 0;        //nombre de coups max
 unsigned chlvl = 0;       //niveau
+
+
+//ATTENTION !!!!!!!!
+const unsigned Key(5); // Clé de chiffrement/déchiffrement par César
+//AAAAAHHHH !!!!!!!!
+
 
 const string CReset   ("0");
 
@@ -205,86 +212,86 @@ void MakeAMove (CMat & Grid)
         }
         switch (Direction)
         {
-            case 'Z' : if((Pos.first != 0) && //Sortie de grille
-                         (Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+        case 'Z' : if((Pos.first != 0) && //Sortie de grille
+                      (Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
                       && (Grid[Pos.first-1][Pos.second] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
+            {
+                check = true;
+
+                //Boules spéciales 11
+                if (Grid[Pos.first-1][Pos.second] == 11)
                 {
-                    check = true;
-
-                    //Boules spéciales 11
-                    if (Grid[Pos.first-1][Pos.second] == 11)
-                    {
-                        Grid[Pos.first-1][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                    }
-                    if (Grid[Pos.first][Pos.second] == 11)
-                    {
-                        Grid[Pos.first][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first-1][Pos.second]);
-                    }
-
-                    swap (Grid[Pos.first-1][Pos.second], Grid[Pos.first][Pos.second]);
+                    Grid[Pos.first-1][Pos.second] = 0;
+                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
                 }
+                if (Grid[Pos.first][Pos.second] == 11)
+                {
+                    Grid[Pos.first][Pos.second] = 0;
+                    DeleteAllNumber (Grid, Grid[Pos.first-1][Pos.second]);
+                }
+
+                swap (Grid[Pos.first-1][Pos.second], Grid[Pos.first][Pos.second]);
+            }
             break;
-            case 'S' : if((Pos.first != Grid.size()-1) && //Sortie de grille
-                          (Grid[Pos.first+1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                       && (Grid[Pos.first+1][Pos.second] != 12) && (Grid[Pos.first][Pos.second] != 12))  //On ne bouge pas un mur
+        case 'S' : if((Pos.first != Grid.size()-1) && //Sortie de grille
+                      (Grid[Pos.first+1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+                      && (Grid[Pos.first+1][Pos.second] != 12) && (Grid[Pos.first][Pos.second] != 12))  //On ne bouge pas un mur
+            {
+                check = true;
+
+                if (Grid[Pos.first+1][Pos.second] == 11)
                 {
-                    check = true;
-
-                    if (Grid[Pos.first+1][Pos.second] == 11)
-                    {
-                        Grid[Pos.first+1][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                    }
-                    if (Grid[Pos.first][Pos.second] == 11)
-                    {
-                        Grid[Pos.first][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first+1][Pos.second]);
-                    }
-
-                    swap (Grid[Pos.first+1][Pos.second], Grid[Pos.first][Pos.second]);
+                    Grid[Pos.first+1][Pos.second] = 0;
+                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
                 }
+                if (Grid[Pos.first][Pos.second] == 11)
+                {
+                    Grid[Pos.first][Pos.second] = 0;
+                    DeleteAllNumber (Grid, Grid[Pos.first+1][Pos.second]);
+                }
+
+                swap (Grid[Pos.first+1][Pos.second], Grid[Pos.first][Pos.second]);
+            }
             break;
-            case 'D' : if((Pos.second != Grid.size()-1) && //Sortie de grille
-                          (Grid[Pos.first][Pos.second+1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                       && (Grid[Pos.first][Pos.second+1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
+        case 'D' : if((Pos.second != Grid.size()-1) && //Sortie de grille
+                      (Grid[Pos.first][Pos.second+1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+                      && (Grid[Pos.first][Pos.second+1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
+            {
+                check = true;
+
+                if (Grid[Pos.first][Pos.second+1] == 11)
                 {
-                    check = true;
-
-                    if (Grid[Pos.first][Pos.second+1] == 11)
-                    {
-                        Grid[Pos.first][Pos.second+1] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                    }
-                    if (Grid[Pos.first][Pos.second] == 11)
-                    {
-                        Grid[Pos.first][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second+1]);
-                    }
-
-                    swap (Grid[Pos.first][Pos.second+1], Grid[Pos.first][Pos.second]);
+                    Grid[Pos.first][Pos.second+1] = 0;
+                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
                 }
+                if (Grid[Pos.first][Pos.second] == 11)
+                {
+                    Grid[Pos.first][Pos.second] = 0;
+                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second+1]);
+                }
+
+                swap (Grid[Pos.first][Pos.second+1], Grid[Pos.first][Pos.second]);
+            }
             break;
-            case 'Q' : if(Pos.second != 0 && //Sortie de grille
-                          (Grid[Pos.first][Pos.second-1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                       && (Grid[Pos.first][Pos.second-1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
+        case 'Q' : if(Pos.second != 0 && //Sortie de grille
+                      (Grid[Pos.first][Pos.second-1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+                      && (Grid[Pos.first][Pos.second-1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
+            {
+                check = true;
+
+                if (Grid[Pos.first][Pos.second-1] == 11)
                 {
-                    check = true;
-
-                    if (Grid[Pos.first][Pos.second-1] == 11)
-                    {
-                        Grid[Pos.first][Pos.second-1] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                    }
-                    if (Grid[Pos.first][Pos.second] == 11)
-                    {
-                        Grid[Pos.first][Pos.second] = 0;
-                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second-1]);
-                    }
-
-                    swap (Grid[Pos.first][Pos.second-1], Grid[Pos.first][Pos.second]);
+                    Grid[Pos.first][Pos.second-1] = 0;
+                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
                 }
+                if (Grid[Pos.first][Pos.second] == 11)
+                {
+                    Grid[Pos.first][Pos.second] = 0;
+                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second-1]);
+                }
+
+                swap (Grid[Pos.first][Pos.second-1], Grid[Pos.first][Pos.second]);
+            }
             break;
         }
         ClearBuf();
@@ -608,7 +615,7 @@ void Level2(CMat & Grid)
     for(unsigned i=0; i < 3; ++i)
     {
         Grid[2+i][4] = 12;
-         Grid[2+i][5] = 12;
+        Grid[2+i][5] = 12;
     }
 }
 
@@ -658,8 +665,8 @@ void Level5(CMat & Grid)
     }
     for(unsigned i=0; i < 15 ; ++i )
     {
-       Grid[Grid.size()-1-i][5]=12;
-       Grid[Grid.size()-1-i][14]=12;
+        Grid[Grid.size()-1-i][5]=12;
+        Grid[Grid.size()-1-i][14]=12;
     }
 }
 
@@ -680,40 +687,46 @@ void Menu ()
         }
         switch (choix)
         {
-            case 1: {
-                ClearScreen();
-                ClearBuf();
-                Jouer();
-                break;
-                }
-            case 2: { //A faire
-                cout << "Options" << endl;
-                break;
-                }
-            case 3: {
-                ClearScreen();
-                DisplayFile("regles.txt");
-                char quit;
-                cout <<"Entrez Q pour quitter" << endl;
-                while (true)
-                {
-                    cin>> quit;
-                    ClearBuf ();
-                    if (quit == 'Q' || quit == 'q')
-                        Menu();
-                }
-                break;
-                }
-            case 4: {
-                exit(0);
-                break;
-                }
-            default: {
-                check = false;
-                cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+        case 1: {
+            ClearScreen();
+            ClearBuf();
+            Jouer();
+            break;
+        }
+        case 2: { //A faire
+            cout << "Options" << endl;
+            break;
+        }
+        case 3: {
+            ClearScreen();
+            DisplayFile("regles.txt");
+            char quit;
+
+            cout <<"Entrez Q pour quitter" << endl;
+            while (true)
+            {
+                cin>> quit;
                 ClearBuf ();
-                break;
-                }
+                if (quit == 'Q' || quit == 'q')
+                    Menu();
+            }
+            break;
+        }
+        case 4:{
+            ClearScreen();
+            AfficheScores(Key);
+            break;
+        }
+        case 5: {
+            exit(0);
+            break;
+        }
+        default: {
+            check = false;
+            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+            ClearBuf ();
+            break;
+        }
         }
         if (check) break;
     }
@@ -736,30 +749,30 @@ void Jouer ()
         }
         switch (choix)
         {
-            case 1: {
-                ClearScreen();
-                ClearBuf();
-                Classique();
-                break;
-                }
-            case 2: {
-                ClearScreen();
-                ClearBuf();
-                Perso();
-                break;
-                }
-            case 3: {
-                ClearScreen();
-                ClearBuf();
-                Histoire();
-                break;
-                }
-            case 4: {
-                ClearScreen();
-                ClearBuf ();
-                Menu();
-                break;
-                }
+        case 1: {
+            ClearScreen();
+            ClearBuf();
+            Classique();
+            break;
+        }
+        case 2: {
+            ClearScreen();
+            ClearBuf();
+            Perso();
+            break;
+        }
+        case 3: {
+            ClearScreen();
+            ClearBuf();
+            Histoire();
+            break;
+        }
+        case 4: {
+            ClearScreen();
+            ClearBuf ();
+            Menu();
+            break;
+        }
         }
         if (check) break;
     }
@@ -782,28 +795,28 @@ void Classique ()
         }
         switch (choix)
         {
-            case 1: { //facile
-                Size = 10;
-                KNbCandies = 5;
-                Coup = 20;
-                break;
-                }
-            case 2: { //normal
-                Size = 8;
-                KNbCandies = 6;
-                Coup = 15;
-                break;
-                }
-            case 3: { //difficile
-                Size = 6;
-                KNbCandies = 8;
-                Coup = 10;
-                break;
-                }
-            case 4: {//retour
-                Jouer();
-                break;
-                }
+        case 1: { //facile
+            Size = 10;
+            KNbCandies = 5;
+            Coup = 20;
+            break;
+        }
+        case 2: { //normal
+            Size = 8;
+            KNbCandies = 6;
+            Coup = 15;
+            break;
+        }
+        case 3: { //difficile
+            Size = 6;
+            KNbCandies = 8;
+            Coup = 10;
+            break;
+        }
+        case 4: {//retour
+            Jouer();
+            break;
+        }
         }
         if (check) break;
     }
@@ -847,49 +860,49 @@ void Histoire()
     unsigned choix = 0;
 
     while (true)
+    {
+        cin >> choix;
+        if (cin.fail() || choix > 5 || choix < 1)
         {
-            cin >> choix;
-            if (cin.fail() || choix > 5 || choix < 1)
-            {
-                cout << "Valeur incorrecte 1-2-3-4-5" << endl << endl;
-                ClearBuf();
-                continue;
-            }
-            switch (choix)
-            {
-                case 1:
-                    ClearScreen();
-                    ClearBuf();
-                    chlvl = 1;
-                    break;
-
-                case 2:
-                    ClearScreen();
-                    ClearBuf();
-                    chlvl = 2;
-                    break;
-
-                case 3:
-                    ClearScreen();
-                    ClearBuf();
-                    chlvl = 3;
-                    break;
-
-                case 4:
-                    ClearScreen();
-                    ClearBuf ();
-                    chlvl = 4;
-                    break;
-
-                case 5:
-                    ClearScreen();
-                    ClearBuf();
-                    chlvl = 5;
-                    break;
-
-            }
-            if (check) break;
+            cout << "Valeur incorrecte 1-2-3-4-5" << endl << endl;
+            ClearBuf();
+            continue;
         }
+        switch (choix)
+        {
+        case 1:
+            ClearScreen();
+            ClearBuf();
+            chlvl = 1;
+            break;
+
+        case 2:
+            ClearScreen();
+            ClearBuf();
+            chlvl = 2;
+            break;
+
+        case 3:
+            ClearScreen();
+            ClearBuf();
+            chlvl = 3;
+            break;
+
+        case 4:
+            ClearScreen();
+            ClearBuf ();
+            chlvl = 4;
+            break;
+
+        case 5:
+            ClearScreen();
+            ClearBuf();
+            chlvl = 5;
+            break;
+
+        }
+        if (check) break;
+    }
 } //Histoire()
 
 int main()
@@ -979,7 +992,7 @@ int main()
             cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
             cin >> Name;
         }
-        //MScores(Name,Score);
+        MScores(Name,Score, Key);
 
         cout <<"Entrez Q pour retourner au menu." << endl;
         char quit;
