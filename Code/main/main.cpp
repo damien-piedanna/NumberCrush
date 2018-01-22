@@ -679,25 +679,23 @@ void Menu ()
     while (true)
     {
         cin >> choix;
-        if (cin.fail() || choix > 4 || choix < 1)
+        if (cin.fail() || choix > 5 || choix < 1)
         {
-            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+            cout << "Valeur incorrecte 1-2-3-4-5" << endl << endl;
             ClearBuf();
             continue;
         }
         switch (choix)
         {
-        case 1: {
+        case 1:
             ClearScreen();
             ClearBuf();
             Jouer();
             break;
-        }
-        case 2: { //A faire
+        case 2: //A faire
             cout << "Options" << endl;
             break;
-        }
-        case 3: {
+        case 3:
             ClearScreen();
             DisplayFile("regles.txt");
             char quit;
@@ -711,22 +709,18 @@ void Menu ()
                     Menu();
             }
             break;
-        }
-        case 4:{
+        case 4:
             ClearScreen();
             AfficheScores(Key);
             break;
-        }
-        case 5: {
+        case 5:
             exit(0);
             break;
-        }
-        default: {
+        default:
             check = false;
-            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+            cout << "Valeur incorrecte 1-2-3-4-5" << endl << endl;
             ClearBuf ();
             break;
-        }
         }
         if (check) break;
     }
@@ -986,23 +980,46 @@ int main()
         cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
         string Name;
         cin >> Name;
+        bool NoAccent = true;
         while(Name.size()>11)
         {
             cout << "Votre nom est trop long (11 caractères maximum) !" << endl;
             cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
             cin >> Name;
+            for(unsigned i(0); i < Name.size() ; ++i)
+            {
+                if(!isalpha(Name[i]))
+                    NoAccent = false;
+            }
+            while(!NoAccent)
+            {
+                NoAccent=true;
+                for(unsigned i(0); i < Name.size() ; ++i)
+                {
+                    if(!isalpha(Name[i]))
+                        NoAccent = false;
+                }
+                if(!NoAccent)
+                {
+                    cout << "Votre nom comporte des accents ou des chiffres !" << endl;
+                    cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
+                    cin >> Name;
+                }
+            }
         }
+
         MScores(Name,Score, Key);
 
         cout <<"Entrez Q pour retourner au menu." << endl;
-        char quit;
         while (true)
         {
+            char quit='h';
             cin >> quit;
-            ClearBuf ();
             if (quit == 'Q' || quit == 'q')
             {
                 Score = 0;
+                ClearScreen();
+                ClearBuf();
                 break;
             }
         }
