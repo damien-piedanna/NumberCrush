@@ -32,6 +32,8 @@ void ChiffreCesar(string & Ligne,const unsigned Key);
 
 void DeChiffreCesar(string & Ligne,const unsigned Key);
 
-void MScores(string & Name, unsigned & Score);
+void AfficheScores(const unsigned Key);
+
+void MScores(string & Name, unsigned & Score, const unsigned Key);
 
 #endif // SCORES_H
