@@ -43,7 +43,6 @@ void RetrieveData(CVString & VString)
     }
 }//RetrieveData
 
-typedef vector <string> CVString;
 void WriteData(CVString & VString)
 {
     bool check=true;
@@ -92,8 +91,6 @@ string GetName(CVString & VScores, const unsigned & Ligne)
     return Name;
 }//GetName
 
-
-
 void DescendreLignes(CVString & VScores,const unsigned & Ligne)
 {
     for(unsigned i(10) ; i > Ligne ; --i )
@@ -102,7 +99,7 @@ void DescendreLignes(CVString & VScores,const unsigned & Ligne)
 
 void AjustementLignes(CVString & VScores)
 {
-    for(unsigned i(2); i < 10; ++i)
+    for(unsigned i(2); i < 11; ++i)
         VScores[i][1]=char((i-1)+48);
 }//AjustementLignes
 
@@ -124,12 +121,9 @@ void ModifScores (CVString & VScores,const unsigned & Score,const string & Name)
 
     //Change le score
     string SScore=to_string(int(Score));
+    unsigned TailleVec=VScores[CptLigne].size();
     for(unsigned i(0) ; i < SScore.size() ; ++i)
-        VScores[CptLigne][i+18]=SScore[i];
-    for(unsigned i(SScore.size()+4) ; i < 11 ; ++i)
-        VScores[CptLigne][i]=' ';
-
-
+        VScores[CptLigne][TailleVec-(i+3)]=SScore[SScore.size()-(i+1)];
 
     AjustementLignes(VScores);
 }//FindRow
@@ -152,7 +146,7 @@ int main()
 
     cout << endl;
 
-    ModifScores(Vec,500,"Leo");
+    ModifScores(Vec,3,"Leo");
 
     for(unsigned i(0);i<Vec.size();++i)
         cout << Vec[i] << endl;
