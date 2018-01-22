@@ -1,0 +1,166 @@
+void Menu ()
+{
+    ClearScreen();
+    DisplayFile  ("menu.txt");
+    bool check = true;
+    unsigned choix = 0;
+    while (true)
+    {
+        cin >> choix;
+        switch (choix)
+        {
+            case 1: {
+                ClearScreen();
+                ClearBuf();
+                Jouer();
+                break;
+                }
+            case 2: { //A faire
+                cout << "Options" << endl;
+                break;
+                }
+            case 3: {
+                ClearScreen();
+                DisplayFile("regles.txt");
+                char quit;
+                cout <<"Entrez Q pour quitter" << endl;
+                while (true)
+                {
+                    cin>> quit;
+                    ClearBuf ();
+                    if (quit == 'Q' || quit == 'q')
+                        Menu();
+                }
+                break;
+                }
+            case 4: {
+                exit(0);
+                break;
+                }
+            default: {
+                check = false;
+                cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+                ClearBuf ();
+                }
+        }
+        if (check) break;
+    }
+} //Menu ()
+
+void Jouer ()
+{
+    ClearScreen();
+    DisplayFile  ("jouer.txt");
+    bool check = true;
+    unsigned choix = 0;
+    while (true)
+    {
+        cin >> choix;
+        switch (choix)
+        {
+            case 1: {
+                ClearScreen();
+                ClearBuf();
+                Classique();
+                break;
+                }
+            case 2: {
+                ClearScreen();
+                ClearBuf();
+                Perso();
+                break;
+                }
+            case 3: {
+                ClearScreen();
+                ClearBuf();
+                //Rush(); à faire
+                break;
+                }
+            case 4: {
+                ClearScreen();
+                ClearBuf ();
+                Menu();
+                break;
+                }
+            default: {
+                check = false;
+                cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+                ClearBuf ();
+            }
+        }
+        if (check) break;
+    }
+}// Jouer ()
+
+void Classique ()
+{
+    ClearScreen();
+    DisplayFile  ("classique.txt");
+    bool check = true;
+    unsigned choix = 0;
+    while (true)
+    {
+        cin >> choix;
+        switch (choix)
+        {
+            case 1: { //facile
+                Size = 10;
+                KNbCandies = 5;
+                Coup = 20;
+                break;
+                }
+            case 2: { //normal
+                Size = 8;
+                KNbCandies = 6;
+                Coup = 15;
+                break;
+                }
+            case 3: { //difficile
+                Size = 6;
+                KNbCandies = 8;
+                Coup = 10;
+                break;
+                }
+            case 4: {//retour
+                Jouer();
+                break;
+                }
+            default: {
+                check = false;
+                cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+                ClearBuf ();
+            }
+        }
+        if (check) break;
+    }
+}// Classique ()
+
+void Perso ()
+{
+    ClearScreen();
+    DisplayFile  ("perso.txt");
+    while (true)
+    {
+        cout << "Taille de la grille (5 - 30) : ";
+        cin >> Size;
+        if (Size <= 30 && Size >= 5) break;
+        ClearBuf ();
+    }
+    ClearBuf ();
+    while (true)
+    {
+        cout << "Numero de bonbon max (4 - 9) : ";
+        cin >> KNbCandies;
+        if (KNbCandies <= 9 && KNbCandies >= 4) break;
+        ClearBuf ();
+    }
+    ClearBuf ();
+    while (true)
+    {
+        cout << "Nombre de coup max (1 - 100) : ";
+        cin >> Coup;
+        if (Coup <= 100 && Coup != 0) break;
+        ClearBuf ();
+    }
+    ClearBuf ();
+} //Perso ()
