@@ -128,6 +128,18 @@ void ModifScores (CVString & VScores,const unsigned & Score,const string & Name)
     AjustementLignes(VScores);
 }//FindRow
 
+void ChiffreCesar(string & Ligne,const unsigned Key)
+{
+    for(unsigned i(0); i < Ligne.size() ; ++i)
+        Ligne[i]=char(int(Ligne[i])-Key);
+}//ChiffreCesar
+
+void DeChiffreCesar(string & Ligne,const unsigned Key)
+{
+    for(unsigned i(0); i < Ligne.size() ; ++i)
+        Ligne[i]=char(int(Ligne[i])+Key);
+}//DeChiffreCesar
+
 int main()
 {
     /*
@@ -141,12 +153,16 @@ int main()
     CVString Vec;
     RetrieveData(Vec);
 
+    const unsigned Key = 58;
+
+    ChiffreCesar(Vec[2], Key);
+
     for(unsigned i(0);i<Vec.size();++i)
         cout << Vec[i] << endl;
 
     cout << endl;
 
-    ModifScores(Vec,3,"Leo");
+    DeChiffreCesar(Vec[2], Key);
 
     for(unsigned i(0);i<Vec.size();++i)
         cout << Vec[i] << endl;
