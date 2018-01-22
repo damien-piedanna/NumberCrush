@@ -142,9 +142,10 @@ void DeChiffreCesar(string & Ligne,const unsigned Key)
 void MScores(string & Name, unsigned & Score)
 {
     CVString Vec;
+    const unsigned Key = 5;
     RetrieveData(Vec);
-
-    const unsigned Key = 58;
+    for(unsigned i(0);i<Vec.size();++i)
+        DeChiffreCesar(Vec[i],Key);
 
     cout << endl;
 
@@ -155,5 +156,7 @@ void MScores(string & Name, unsigned & Score)
 
     cout << endl;
 
+    for(unsigned i(0);i<Vec.size();++i)
+        ChiffreCesar(Vec[i],Key);
+
     WriteData(Vec);
-}
