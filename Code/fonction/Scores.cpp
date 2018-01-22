@@ -105,28 +105,31 @@ void AjustementLignes(CVString & VScores)
 
 void ModifScores (CVString & VScores,const unsigned & Score,const string & Name)
 {
-    unsigned CptLigne(2);
-    for(;CptLigne<12;++CptLigne)
-        if(Score>GetScore(VScores,CptLigne))
-        {
-            DescendreLignes(VScores,CptLigne);
-            break;
-        }
+    if(Score > GetScore(VScores,10))
+    {
+        unsigned CptLigne(2);
+        for(;CptLigne<12;++CptLigne)
+            if(Score>GetScore(VScores,CptLigne))
+            {
+                DescendreLignes(VScores,CptLigne);
+                break;
+            }
 
-    //Change le nom
-    for(unsigned i(0) ; i < Name.size() ; ++i)
-        VScores[CptLigne][i+4]=Name[i];
-    for(unsigned i(Name.size()+4) ; i < 11 ; ++i)
-       VScores[CptLigne][i]=' ';
+        //Change le nom
+        for(unsigned i(0) ; i < Name.size() ; ++i)
+            VScores[CptLigne][i+4]=Name[i];
+        for(unsigned i(Name.size()+4) ; i < 11 ; ++i)
+            VScores[CptLigne][i]=' ';
 
-    //Change le score
-    string SScore=to_string(int(Score));
-    unsigned TailleVec=VScores[CptLigne].size();
-    for(unsigned i(0) ; i < SScore.size() ; ++i)
-        VScores[CptLigne][TailleVec-(i+3)]=SScore[SScore.size()-(i+1)];
+        //Change le score
+        string SScore=to_string(int(Score));
+        unsigned TailleVec=VScores[CptLigne].size();
+        for(unsigned i(0) ; i < SScore.size() ; ++i)
+            VScores[CptLigne][TailleVec-(i+3)]=SScore[SScore.size()-(i+1)];
 
-    AjustementLignes(VScores);
-}//FindRow
+        AjustementLignes(VScores);
+    }
+}//ModifScores
 
 void ChiffreCesar(string & Ligne,const unsigned Key)
 {
