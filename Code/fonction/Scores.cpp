@@ -65,7 +65,7 @@ void WriteData(CVString & VString)
 
         check=false;
     }
-}//FonctionGet
+}//WriteData
 
 unsigned GetScore (CVString & VScores,const unsigned & Ligne)
 {
@@ -139,10 +139,42 @@ void DeChiffreCesar(string & Ligne,const unsigned Key)
         Ligne[i]=char(int(Ligne[i])+Key);
 }//DeChiffreCesar
 
-void MScores(string & Name, unsigned & Score)
+
+void DisplayFile2 (const string & File)
+{
+    ifstream ifsScore;
+    ifsScore.open (File);
+    while(true)
+    {
+        string Str;
+        getline(ifsScore,Str);
+        if(ifsScore.eof())break;
+        cout << Str << endl;
+    }
+}// DisplayFile ()
+
+
+
+
+
+void AfficheScores(const unsigned Key)
 {
     CVString Vec;
-    const unsigned Key = 5;
+    RetrieveData(Vec);
+    DisplayFile2("classement.txt");
+    cout << " 	    **	                                        **" << endl;
+    for(unsigned i(0); i < Vec.size() ; ++i)
+    {
+        cout << "            **         ";
+        DeChiffreCesar(Vec[i],Key);
+        cout << Vec[i] << "         **" << endl;
+    }
+    cout << " 	    **********************************************" << endl << endl;
+}//AfficheScores
+
+void MScores(string & Name, unsigned & Score, const unsigned Key)
+{
+    CVString Vec;
     RetrieveData(Vec);
     for(unsigned i(0);i<Vec.size();++i)
         DeChiffreCesar(Vec[i],Key);
@@ -160,3 +192,4 @@ void MScores(string & Name, unsigned & Score)
         ChiffreCesar(Vec[i],Key);
 
     WriteData(Vec);
+}
