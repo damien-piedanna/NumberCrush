@@ -449,6 +449,12 @@ void Menu ()
     while (true)
     {
         cin >> choix;
+        if (cin.fail() || choix > 4 || choix < 1)
+        {
+            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+            ClearBuf();
+            continue;
+        }
         switch (choix)
         {
             case 1: {
@@ -483,6 +489,7 @@ void Menu ()
                 check = false;
                 cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
                 ClearBuf ();
+                break;
                 }
         }
         if (check) break;
@@ -498,6 +505,12 @@ void Jouer ()
     while (true)
     {
         cin >> choix;
+        if (cin.fail() || choix > 4 || choix < 1)
+        {
+            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+            ClearBuf();
+            continue;
+        }
         switch (choix)
         {
             case 1: {
@@ -524,11 +537,6 @@ void Jouer ()
                 Menu();
                 break;
                 }
-            default: {
-                check = false;
-                cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
-                ClearBuf ();
-            }
         }
         if (check) break;
     }
@@ -543,6 +551,12 @@ void Classique ()
     while (true)
     {
         cin >> choix;
+        if (cin.fail() || choix > 4 || choix < 1)
+        {
+            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+            ClearBuf();
+            continue;
+        }
         switch (choix)
         {
             case 1: { //facile
@@ -567,11 +581,6 @@ void Classique ()
                 Jouer();
                 break;
                 }
-            default: {
-                check = false;
-                cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
-                ClearBuf ();
-            }
         }
         if (check) break;
     }
