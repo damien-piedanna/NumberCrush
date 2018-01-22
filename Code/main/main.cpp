@@ -15,18 +15,15 @@ typedef vector <unsigned> CVLine; // un type représentant une ligne de la grill
 typedef vector <CVLine> CMat; // un type représentant la grille
 typedef pair <unsigned, unsigned> CPosition; // une position dans la girlle
 
+const string CReset   ("0");
 unsigned Size = 0;        //taille de la grille
 unsigned KNbCandies = 0;  //numéro max dans la grille
 unsigned Coup = 0;        //nombre de coups max
 unsigned chlvl = 0;       //niveau
 
-
 //ATTENTION !!!!!!!!
 const unsigned Key(5); // Clé de chiffrement/déchiffrement par César
 //AAAAAHHHH !!!!!!!!
-
-
-const string CReset   ("0");
 
 void Couleur (const string & coul);                                                     //Permet d'afficher des couleurs sur la console
 void ClearScreen ();                                                                    //Vide la console
@@ -212,86 +209,86 @@ void MakeAMove (CMat & Grid)
         }
         switch (Direction)
         {
-        case 'Z' : if((Pos.first != 0) && //Sortie de grille
-                      (Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+            case 'Z' : if((Pos.first != 0) && //Sortie de grille
+                         (Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
                       && (Grid[Pos.first-1][Pos.second] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
-            {
-                check = true;
-
-                //Boules spéciales 11
-                if (Grid[Pos.first-1][Pos.second] == 11)
                 {
-                    Grid[Pos.first-1][Pos.second] = 0;
-                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                }
-                if (Grid[Pos.first][Pos.second] == 11)
-                {
-                    Grid[Pos.first][Pos.second] = 0;
-                    DeleteAllNumber (Grid, Grid[Pos.first-1][Pos.second]);
-                }
+                    check = true;
 
-                swap (Grid[Pos.first-1][Pos.second], Grid[Pos.first][Pos.second]);
-            }
+                    //Boules spéciales 11
+                    if (Grid[Pos.first-1][Pos.second] == 11)
+                    {
+                        Grid[Pos.first-1][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
+                    }
+                    if (Grid[Pos.first][Pos.second] == 11)
+                    {
+                        Grid[Pos.first][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first-1][Pos.second]);
+                    }
+
+                    swap (Grid[Pos.first-1][Pos.second], Grid[Pos.first][Pos.second]);
+                }
             break;
-        case 'S' : if((Pos.first != Grid.size()-1) && //Sortie de grille
-                      (Grid[Pos.first+1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                      && (Grid[Pos.first+1][Pos.second] != 12) && (Grid[Pos.first][Pos.second] != 12))  //On ne bouge pas un mur
-            {
-                check = true;
-
-                if (Grid[Pos.first+1][Pos.second] == 11)
+            case 'S' : if((Pos.first != Grid.size()-1) && //Sortie de grille
+                          (Grid[Pos.first+1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+                       && (Grid[Pos.first+1][Pos.second] != 12) && (Grid[Pos.first][Pos.second] != 12))  //On ne bouge pas un mur
                 {
-                    Grid[Pos.first+1][Pos.second] = 0;
-                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                }
-                if (Grid[Pos.first][Pos.second] == 11)
-                {
-                    Grid[Pos.first][Pos.second] = 0;
-                    DeleteAllNumber (Grid, Grid[Pos.first+1][Pos.second]);
-                }
+                    check = true;
 
-                swap (Grid[Pos.first+1][Pos.second], Grid[Pos.first][Pos.second]);
-            }
+                    if (Grid[Pos.first+1][Pos.second] == 11)
+                    {
+                        Grid[Pos.first+1][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
+                    }
+                    if (Grid[Pos.first][Pos.second] == 11)
+                    {
+                        Grid[Pos.first][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first+1][Pos.second]);
+                    }
+
+                    swap (Grid[Pos.first+1][Pos.second], Grid[Pos.first][Pos.second]);
+                }
             break;
-        case 'D' : if((Pos.second != Grid.size()-1) && //Sortie de grille
-                      (Grid[Pos.first][Pos.second+1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                      && (Grid[Pos.first][Pos.second+1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
-            {
-                check = true;
-
-                if (Grid[Pos.first][Pos.second+1] == 11)
+            case 'D' : if((Pos.second != Grid.size()-1) && //Sortie de grille
+                          (Grid[Pos.first][Pos.second+1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+                       && (Grid[Pos.first][Pos.second+1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
                 {
-                    Grid[Pos.first][Pos.second+1] = 0;
-                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                }
-                if (Grid[Pos.first][Pos.second] == 11)
-                {
-                    Grid[Pos.first][Pos.second] = 0;
-                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second+1]);
-                }
+                    check = true;
 
-                swap (Grid[Pos.first][Pos.second+1], Grid[Pos.first][Pos.second]);
-            }
+                    if (Grid[Pos.first][Pos.second+1] == 11)
+                    {
+                        Grid[Pos.first][Pos.second+1] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
+                    }
+                    if (Grid[Pos.first][Pos.second] == 11)
+                    {
+                        Grid[Pos.first][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second+1]);
+                    }
+
+                    swap (Grid[Pos.first][Pos.second+1], Grid[Pos.first][Pos.second]);
+                }
             break;
-        case 'Q' : if(Pos.second != 0 && //Sortie de grille
-                      (Grid[Pos.first][Pos.second-1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
-                      && (Grid[Pos.first][Pos.second-1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
-            {
-                check = true;
-
-                if (Grid[Pos.first][Pos.second-1] == 11)
+            case 'Q' : if(Pos.second != 0 && //Sortie de grille
+                          (Grid[Pos.first][Pos.second-1] != 0) && (Grid[Pos.first][Pos.second] != 0) //On ne bouge pas un 0
+                       && (Grid[Pos.first][Pos.second-1] != 12) && (Grid[Pos.first][Pos.second] != 12))   //On ne bouge pas un mur
                 {
-                    Grid[Pos.first][Pos.second-1] = 0;
-                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
-                }
-                if (Grid[Pos.first][Pos.second] == 11)
-                {
-                    Grid[Pos.first][Pos.second] = 0;
-                    DeleteAllNumber (Grid, Grid[Pos.first][Pos.second-1]);
-                }
+                    check = true;
 
-                swap (Grid[Pos.first][Pos.second-1], Grid[Pos.first][Pos.second]);
-            }
+                    if (Grid[Pos.first][Pos.second-1] == 11)
+                    {
+                        Grid[Pos.first][Pos.second-1] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
+                    }
+                    if (Grid[Pos.first][Pos.second] == 11)
+                    {
+                        Grid[Pos.first][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second-1]);
+                    }
+
+                    swap (Grid[Pos.first][Pos.second-1], Grid[Pos.first][Pos.second]);
+                }
             break;
         }
         ClearBuf();
@@ -301,122 +298,20 @@ void MakeAMove (CMat & Grid)
     }
 } //MakeAMove()
 
-
-/*
-bool AtLeastThreeInAColumn (const CMat & Grid, CPosition & Pos, unsigned & HowMany)
-{
-   unsigned cpt = 1;
-   unsigned Start = 0;
-
-   for(unsigned i=0 ; i < Grid[0].size() ; ++i)
-   {
-       for(unsigned j=0 ; j <= Grid.size() - HowMany +1 ; ++j)
-       {
-           if(Grid[j][i] > 9)
-           {
-               cpt = 1;
-               continue;
-           }
-
-           if(Start == 0 && Grid[j][i] == Grid[j+1][i])
-           {
-               Start = 1;
-               Pos.first = j;
-               Pos.second = i;
-           }
-
-           if(Grid[j][i] == Grid[j+1][i])
-           {
-               cpt = cpt + 1;
-           }
-           if(Grid[j][i] != Grid[j+1][i] && cpt >= 3)
-           {
-               return true;
-           }
-           if (Grid[j][i] != Grid[j+1][i])
-           {
-               cpt = 1;
-               Start = 0;
-           }
-
-           if( j == ( (Grid.size() - HowMany) +1) && cpt >= 3 )
-           {
-                cpt = HowMany;
-               return true;
-
-           }
-       }
-   }
-
-    return false;
-}
-
-bool AtLeastThreeInARow (const CMat & Grid, CPosition & Pos, unsigned & HowMany)
-{
-    unsigned cpt = 1;
-    unsigned Start = 0;
-
-    for(unsigned j=0 ; j < Grid.size() ; ++j)
-    {
-        for(unsigned i=0 ; i <= Grid[0].size() - HowMany +1 ; ++i)
-        {
-            if(Grid[j][i] > 9)
-            {
-                cpt = 1;
-                continue;
-            }
-
-            if(Start == 0 && Grid[j][i] == Grid[j][i+1])
-            {
-                Start = 1;
-                Pos.first = j;
-                Pos.second = i;
-            }
-
-            if(Grid[j][i] == Grid[j][i+1])
-            {
-                cpt = cpt + 1;
-
-            }
-            if(Grid[j][i] != Grid[j][i+1] && cpt >= 3)
-            {
-
-                return true;
-            }
-            if (Grid[j][i] != Grid[j][i+1])
-            {
-                cpt = 1;
-                Start = 0;
-            }
-
-            if( i == ( (Grid[0].size() - HowMany) +1) && cpt >= 3)
-            {
-                cpt = HowMany;
-                return true;
-            }
-        }
-    }
-
-     return false;
-}
-
-*/
-
-
 bool AtLeastThreeInAColumn (const CMat & Grid, CPosition & Pos, unsigned & Howmany)
 {
-    for (unsigned i (0); i < Grid.size() - 3; ++i)
+    for (unsigned i (0); i < Grid.size() - 2; ++i)
     {
         for (unsigned j(0); j < Grid[i].size(); ++j)
         {
-            if (Grid[i][j] == Grid [i+1][j] && Grid[i][j] == Grid [i+2][j]) //3 affilés
+            if (Grid[i][j] != 12 && Grid[i][j] == Grid [i+1][j] && Grid[i][j] == Grid [i+2][j]) //3 affilés
             {
                 if (Grid[i][j] == 0) break;
-                Pos.first = j + 1;
-                Pos.second = i + 1;
+                Pos.first = j;
+                Pos.second = i;
                 Howmany = 3;
-                while (Grid[i][j] == Grid[i + Howmany][j])
-                    Howmany++;
+                while (i + Howmany < Grid.size() && Grid[i][j] == Grid[i + Howmany][j])
+                    ++Howmany;
                 return true;
             }
         }
@@ -428,13 +323,13 @@ bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany
 {
     for (unsigned i (0); i < Grid.size(); ++i)
     {
-        for (unsigned j(0); j < Grid[i].size() - 3; ++j)
+        for (unsigned j(0); j < Grid[i].size() - 2; ++j)
         {
-            if (Grid[i][j] == Grid [i][j+1] && Grid[i][j] == Grid [i][j+2])
+            if (Grid[i][j] !=+ 12 && Grid[i][j] == Grid [i][j+1] && Grid[i][j] == Grid [i][j+2])
             {
                 if (Grid[i][j] == 0) break;
-                Pos.first = j + 1;
-                Pos.second = i + 1;
+                Pos.first = j;
+                Pos.second = i;
                 Howmany = 3;
                 while (Grid[i][j] == Grid[i][j + Howmany])
                     ++Howmany;
@@ -451,7 +346,7 @@ void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
     unsigned Cpt = 0;
     while (Cpt != Howmany)
     {
-        Grid[Pos.second + Cpt - 1][Pos.first - 1] = 0;
+        Grid[Pos.second + Cpt][Pos.first] = 0;
         Cpt++;
     }
 } //RemovalInColumn()
@@ -461,7 +356,7 @@ void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
     unsigned Cpt = 0;
     while (Cpt != Howmany)
     {
-        Grid[Pos.second - 1][Pos.first - 1 + Cpt] = 0;
+        Grid[Pos.second][Pos.first + Cpt] = 0;
         Cpt++;
     }
 } //RemovalInRow()
@@ -471,11 +366,11 @@ void FiveInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
     unsigned Cpt = 0;
     while (Cpt != Howmany)
     {
-        Grid[Pos.second - 1][Pos.first - 1] = 0;
-        Grid[Pos.second][Pos.first - 1] = 0;
-        Grid[Pos.second + 1][Pos.first - 1] = 11;
-        Grid[Pos.second + 2][Pos.first - 1] = 0;
-        Grid[Pos.second + 3][Pos.first - 1] = 0;
+        Grid[Pos.second][Pos.first] = 0;
+        Grid[Pos.second + 1][Pos.first] = 0;
+        Grid[Pos.second + 2][Pos.first] = 11;
+        Grid[Pos.second + 3][Pos.first] = 0;
+        Grid[Pos.second + 4][Pos.first] = 0;
         Cpt++;
     }
 } //FiveInColumn()
@@ -485,11 +380,11 @@ void FiveInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
     unsigned Cpt = 0;
     while (Cpt != Howmany)
     {
-        Grid[Pos.second - 1][Pos.first - 1] = 0;
-        Grid[Pos.second - 1][Pos.first ] = 0;
-        Grid[Pos.second - 1][Pos.first + 1] = 11;
-        Grid[Pos.second - 1][Pos.first + 2] = 0;
-        Grid[Pos.second - 1][Pos.first + 3] = 0;
+        Grid[Pos.second][Pos.first] = 0;
+        Grid[Pos.second][Pos.first + 1] = 0;
+        Grid[Pos.second][Pos.first + 2] = 11;
+        Grid[Pos.second][Pos.first + 3] = 0;
+        Grid[Pos.second][Pos.first + 4] = 0;
         Cpt++;
     }
 } //FiveInRow()
@@ -524,7 +419,6 @@ void DeleteAllNumber (CMat & Grid, unsigned nbtodelete)
             Grid[Pos.first][Pos.second-2+i]=0;
         }
     }
-
     DisplayGrid (Grid);
 } //DeleteCross () */
 
@@ -615,7 +509,7 @@ void Level2(CMat & Grid)
     for(unsigned i=0; i < 3; ++i)
     {
         Grid[2+i][4] = 12;
-        Grid[2+i][5] = 12;
+         Grid[2+i][5] = 12;
     }
 }
 
@@ -665,8 +559,8 @@ void Level5(CMat & Grid)
     }
     for(unsigned i=0; i < 15 ; ++i )
     {
-        Grid[Grid.size()-1-i][5]=12;
-        Grid[Grid.size()-1-i][14]=12;
+       Grid[Grid.size()-1-i][5]=12;
+       Grid[Grid.size()-1-i][14]=12;
     }
 }
 
@@ -743,30 +637,30 @@ void Jouer ()
         }
         switch (choix)
         {
-        case 1: {
-            ClearScreen();
-            ClearBuf();
-            Classique();
-            break;
-        }
-        case 2: {
-            ClearScreen();
-            ClearBuf();
-            Perso();
-            break;
-        }
-        case 3: {
-            ClearScreen();
-            ClearBuf();
-            Histoire();
-            break;
-        }
-        case 4: {
-            ClearScreen();
-            ClearBuf ();
-            Menu();
-            break;
-        }
+            case 1: {
+                ClearScreen();
+                ClearBuf();
+                Classique();
+                break;
+                }
+            case 2: {
+                ClearScreen();
+                ClearBuf();
+                Perso();
+                break;
+                }
+            case 3: {
+                ClearScreen();
+                ClearBuf();
+                Histoire();
+                break;
+                }
+            case 4: {
+                ClearScreen();
+                ClearBuf ();
+                Menu();
+                break;
+                }
         }
         if (check) break;
     }
@@ -789,28 +683,28 @@ void Classique ()
         }
         switch (choix)
         {
-        case 1: { //facile
-            Size = 10;
-            KNbCandies = 5;
-            Coup = 20;
-            break;
-        }
-        case 2: { //normal
-            Size = 8;
-            KNbCandies = 6;
-            Coup = 15;
-            break;
-        }
-        case 3: { //difficile
-            Size = 6;
-            KNbCandies = 8;
-            Coup = 10;
-            break;
-        }
-        case 4: {//retour
-            Jouer();
-            break;
-        }
+            case 1: { //facile
+                Size = 10;
+                KNbCandies = 5;
+                Coup = 20;
+                break;
+                }
+            case 2: { //normal
+                Size = 8;
+                KNbCandies = 6;
+                Coup = 15;
+                break;
+                }
+            case 3: { //difficile
+                Size = 6;
+                KNbCandies = 8;
+                Coup = 10;
+                break;
+                }
+            case 4: {//retour
+                Jouer();
+                break;
+                }
         }
         if (check) break;
     }
@@ -854,49 +748,51 @@ void Histoire()
     unsigned choix = 0;
 
     while (true)
-    {
-        cin >> choix;
-        if (cin.fail() || choix > 5 || choix < 1)
         {
-            cout << "Valeur incorrecte 1-2-3-4-5" << endl << endl;
-            ClearBuf();
-            continue;
+            cin >> choix;
+            if (cin.fail() || choix > 6 || choix < 1)
+            {
+                cout << "Valeur incorrecte 1-2-3-4-5-6" << endl << endl;
+                ClearBuf();
+                continue;
+            }
+            switch (choix)
+            {
+                case 1:
+                    ClearScreen();
+                    ClearBuf();
+                    chlvl = 1;
+                    break;
+
+                case 2:
+                    ClearScreen();
+                    ClearBuf();
+                    chlvl = 2;
+                    break;
+
+                case 3:
+                    ClearScreen();
+                    ClearBuf();
+                    chlvl = 3;
+                    break;
+
+                case 4:
+                    ClearScreen();
+                    ClearBuf ();
+                    chlvl = 4;
+                    break;
+
+                case 5:
+                    ClearScreen();
+                    ClearBuf();
+                    chlvl = 5;
+                    break;
+                case 6:
+                    Jouer();
+                    break;
+            }
+            if (check) break;
         }
-        switch (choix)
-        {
-        case 1:
-            ClearScreen();
-            ClearBuf();
-            chlvl = 1;
-            break;
-
-        case 2:
-            ClearScreen();
-            ClearBuf();
-            chlvl = 2;
-            break;
-
-        case 3:
-            ClearScreen();
-            ClearBuf();
-            chlvl = 3;
-            break;
-
-        case 4:
-            ClearScreen();
-            ClearBuf ();
-            chlvl = 4;
-            break;
-
-        case 5:
-            ClearScreen();
-            ClearBuf();
-            chlvl = 5;
-            break;
-
-        }
-        if (check) break;
-    }
 } //Histoire()
 
 int main()
