@@ -32,6 +32,7 @@ bool AtLeastThreeInAColumn  (const CMat & Grid, CPosition & Pos, unsigned & Howm
 bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);      //Permet de trouver une combinaison de Howmany en lignes
 void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany);           //Remplace les combinaisons en colonne par des 0
 void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany);              //Remplace les combinaisons en ligne par des 0
+void DeleteAllNumber(CMat & Grid, unsigned nbtodelete);                                 //Supprime tout les nbtodelete de la grille
 
 void Menu ();      //Menu principal
 void Jouer ();     //Menu pour choisir son mode de jeu
@@ -117,19 +118,17 @@ void DisplayGrid (const CMat & Grid)
         ++line;
         for (unsigned j(0); j < Grid[i].size(); ++j)
         {
-
+            Couleur (to_string(Grid [i][j] + 29));
             if (Grid [i][j] == 0) //cases vides
                 Couleur(CReset);
             if (Grid [i][j] == 11) //boules spéciales
             {
                 Couleur(CReset);
+                Couleur(CReset);
                 cout << "()";
             }
             if (Grid [i][j] <= 9)
-            {
-                Couleur (to_string(Grid [i][j] + 29));
                 cout << Grid [i][j] << ' ';
-            }
         }
         cout << endl;
     }
@@ -201,37 +200,86 @@ void MakeAMove (CMat & Grid)
         switch (Direction)
         {
             case 'Z' : if(Pos.first != 0 && //Sortie de grille
-                          (Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
+                         (Grid[Pos.first-1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
                         /*(Grid[Pos.first-1][Pos.second] != 6) && (Grid[Pos.first][Pos.second] != 6))*/   //On ne bouge pas un mur
                 {
                     check = true;
+
+                    //Boules spéciales 11
+                    if (Grid[Pos.first-1][Pos.second] == 11)
+                    {
+                        Grid[Pos.first-1][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
+                    }
+                    if (Grid[Pos.first][Pos.second] == 11)
+                    {
+                        Grid[Pos.first][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first-1][Pos.second]);
+                    }
+
                     swap (Grid[Pos.first-1][Pos.second], Grid[Pos.first][Pos.second]);
-                    break;
                 }
+            break;
             case 'S' : if((Pos.first != Grid.size()-1) && //Sortie de grille
                           (Grid[Pos.first+1][Pos.second] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
                         /*(Grid[Pos.first+1][Pos.second] != 6) && (Grid[Pos.first][Pos.second] != 6))*/  //On ne bouge pas un mur
                 {
                     check = true;
+
+                    if (Grid[Pos.first+1][Pos.second] == 11)
+                    {
+                        Grid[Pos.first+1][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
+                    }
+                    if (Grid[Pos.first][Pos.second] == 11)
+                    {
+                        Grid[Pos.first][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first+1][Pos.second]);
+                    }
+
                     swap (Grid[Pos.first+1][Pos.second], Grid[Pos.first][Pos.second]);
-                    break;
                 }
+            break;
             case 'D' : if((Pos.second != Grid.size()-1) && //Sortie de grille
                           (Grid[Pos.first][Pos.second+1] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
                         /*(Grid[Pos.first][Pos.second+1] != 6) && (Grid[Pos.first][Pos.second] != 6))*/   //On ne bouge pas un mur
                 {
                     check = true;
+
+                    if (Grid[Pos.first][Pos.second+1] == 11)
+                    {
+                        Grid[Pos.first][Pos.second+1] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
+                    }
+                    if (Grid[Pos.first][Pos.second] == 11)
+                    {
+                        Grid[Pos.first][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second+1]);
+                    }
+
                     swap (Grid[Pos.first][Pos.second+1], Grid[Pos.first][Pos.second]);
-                    break;
                 }
-            case 'Q' : if(Pos.first != 0 && //Sortie de grille
+            break;
+            case 'Q' : if(Pos.second != 0 && //Sortie de grille
                           (Grid[Pos.first][Pos.second-1] != 0) && (Grid[Pos.first][Pos.second] != 0)) //On ne bouge pas un 0
                         /*(Grid[Pos.first][Pos.second-1] != 6) && (Grid[Pos.first][Pos.second] != 6))*/   //On ne bouge pas un mur
                 {
                     check = true;
+
+                    if (Grid[Pos.first][Pos.second-1] == 11)
+                    {
+                        Grid[Pos.first][Pos.second-1] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second]);
+                    }
+                    if (Grid[Pos.first][Pos.second] == 11)
+                    {
+                        Grid[Pos.first][Pos.second] = 0;
+                        DeleteAllNumber (Grid, Grid[Pos.first][Pos.second-1]);
+                    }
+
                     swap (Grid[Pos.first][Pos.second-1], Grid[Pos.first][Pos.second]);
-                    break;
                 }
+            break;
         }
         ClearBuf();
         if (check) break;
@@ -329,6 +377,20 @@ void FiveInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany)
     }
 } //FiveInRow()
 
+void DeleteAllNumber (CMat & Grid, unsigned nbtodelete)
+{
+    for (unsigned i (0); i < Grid.size(); ++i)
+    {
+        for (unsigned j(0); j < Grid[i].size(); ++j)
+        {
+            if (Grid[i][j] == nbtodelete)
+            {
+                Grid[i][j] = 0;
+            }
+        }
+    }
+} //DeleteAllNumber ()
+
 void DisplayFile (const string & File)
 {
     ifstream ifs;
@@ -389,39 +451,37 @@ void Menu ()
         cin >> choix;
         switch (choix)
         {
-            case 1: {
+            case 1:
                 ClearScreen();
                 ClearBuf();
                 Jouer();
                 break;
-                }
-            case 2: { //A faire
+
+            case 2:  //A faire
                 cout << "Options" << endl;
                 break;
-                }
-            case 3: {
+
+            case 3:
                 ClearScreen();
                 DisplayFile("regles.txt");
                 char quit;
                 cout <<"Entrez Q pour quitter" << endl;
-                while (true)
+                while (quit == 'Q' || quit == 'q')
                 {
                     cin>> quit;
                     ClearBuf ();
-                    if (quit == 'Q' || quit == 'q')
-                        Menu();
                 }
                 break;
-                }
-            case 4: {
+
+            case 4:
                 exit(0);
                 break;
-                }
-            default: {
+
+            default:
                 check = false;
                 cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
                 ClearBuf ();
-                }
+                break;
         }
         if (check) break;
     }
@@ -438,35 +498,35 @@ void Jouer ()
         cin >> choix;
         switch (choix)
         {
-            case 1: {
+            case 1:
                 ClearScreen();
                 ClearBuf();
                 Classique();
                 break;
-                }
-            case 2: {
+
+            case 2:
                 ClearScreen();
                 ClearBuf();
                 Perso();
                 break;
-                }
-            case 3: {
+
+            case 3:
                 ClearScreen();
                 ClearBuf();
                 //Rush(); à faire
                 break;
-                }
-            case 4: {
+
+            case 4:
                 ClearScreen();
                 ClearBuf ();
                 Menu();
                 break;
-                }
-            default: {
+
+            default:
                 check = false;
                 cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
                 ClearBuf ();
-            }
+                break;
         }
         if (check) break;
     }
@@ -483,33 +543,33 @@ void Classique ()
         cin >> choix;
         switch (choix)
         {
-            case 1: { //facile
+            case 1: //facile
                 Size = 10;
                 KNbCandies = 5;
                 Coup = 20;
                 break;
-                }
-            case 2: { //normal
+
+            case 2:  //normal
                 Size = 8;
                 KNbCandies = 6;
                 Coup = 15;
                 break;
-                }
-            case 3: { //difficile
+
+            case 3:  //difficile
                 Size = 6;
                 KNbCandies = 8;
                 Coup = 10;
                 break;
-                }
-            case 4: {//retour
+
+            case 4: //retour
                 Jouer();
                 break;
-                }
-            default: {
+
+            default:
                 check = false;
                 cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
                 ClearBuf ();
-            }
+                break;
         }
         if (check) break;
     }
@@ -551,62 +611,57 @@ int main()
     CPosition Pos;
     unsigned Howmany;
     unsigned Score = 0;
-
-    Menu();
-
-    InitGrid (Grid, Size, KNbCandies); //Initialisation de la grille avec paramètres choisis
-
-    while (Coup != 0)
-    {
-        ClearScreen();
-        DisplayGrid (Grid);
-        cout << "Il vous reste " << Coup << " coup(s) !" << endl
-             << "Score actuel : " << Score << endl << endl;
-        MakeAMove (Grid);
-        DisplayGrid (Grid);
-        sleep(1);
-        do
-        {
-            while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
-            {
-                cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les colonnes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
-                if (Howmany == 5)
-                    FiveInColumn (Grid, Pos, Howmany);
-                if (Howmany != 5)
-                    RemovalInColumn (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
-                DisplayGrid (Grid);                         //AFFICHE
-                sleep(1);
-                DownGrid (Grid);                            //REMONTE LES 0
-                Score += 10;
-            }
-            while (AtLeastThreeInARow  (Grid, Pos, Howmany))
-            {
-                cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les lignes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
-                if (Howmany == 5)
-                    FiveInRow  (Grid, Pos, Howmany);
-                if (Howmany != 5)
-                    RemovalInRow (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
-                DisplayGrid (Grid);                     //AFFICHE
-                sleep(1);
-                DownGrid (Grid);                        //REMONTE LES 0
-                Score += 10;
-            }
-        }  while (ReplaceEmpty (Grid, KNbCandies));
-
-        --Coup;
-    }
-    cout << "Partie termine !" << endl
-         << "Vous avez realise un score de " << Score << " !" << endl << endl
-         <<"Entrez Q pour retourner au menu." << endl;
-    char quit;
     while (true)
     {
-        cin >> quit;
-        ClearBuf ();
-        if (quit == 'Q' || quit == 'q')
+        Menu();
+        InitGrid (Grid, Size, KNbCandies); //Initialisation de la grille avec paramètres choisis
+        while (Coup != 0)
         {
-            Score = 0;
-            Menu();
+            ClearScreen();
+            DisplayGrid (Grid);
+            cout << "Il vous reste " << Coup << " coup(s) !" << endl
+                 << "Score actuel : " << Score << endl << endl;
+            MakeAMove (Grid);
+            DisplayGrid (Grid);
+            sleep(1);
+            do
+            {
+                while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
+                {
+                    cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les colonnes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
+                    if (Howmany == 5)
+                        FiveInColumn (Grid, Pos, Howmany);
+                    if (Howmany != 5)
+                        RemovalInColumn (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
+                    DisplayGrid (Grid);                         //AFFICHE
+                    sleep(1);
+                    DownGrid (Grid);                            //REMONTE LES 0
+                    Score += 10;
+                }
+                while (AtLeastThreeInARow  (Grid, Pos, Howmany))
+                {
+                    cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les lignes en coordonnées " << Pos.first << " ; " << Pos.second  << endl;
+                    if (Howmany == 5)
+                        FiveInRow  (Grid, Pos, Howmany);
+                    if (Howmany != 5)
+                        RemovalInRow (Grid, Pos, Howmany);   //REMPLACE PAR DES 0
+                    DisplayGrid (Grid);                     //AFFICHE
+                    sleep(1);
+                    DownGrid (Grid);                        //REMONTE LES 0
+                    Score += 10;
+                }
+            }  while (ReplaceEmpty (Grid, KNbCandies));
+
+            --Coup;
+        }
+        cout << "Partie termine !" << endl
+             << "Vous avez realise un score de " << Score << " !" << endl << endl
+             <<"Entrez Q pour retourner au menu." << endl;
+        char quit;
+        while (quit == 'Q' || quit == 'q')
+        {
+            cin >> quit;
+            ClearBuf ();
         }
     }
 } //main()
