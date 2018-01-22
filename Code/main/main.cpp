@@ -7,6 +7,7 @@
 #include <sstream>
 #include <fstream>
 #include <limits>
+#include <scores.h>
 
 using namespace std;
 
@@ -449,12 +450,6 @@ void Menu ()
     while (true)
     {
         cin >> choix;
-        if (cin.fail() || choix > 4 || choix < 1)
-        {
-            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
-            ClearBuf();
-            continue;
-        }
         switch (choix)
         {
             case 1: {
@@ -489,7 +484,6 @@ void Menu ()
                 check = false;
                 cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
                 ClearBuf ();
-                break;
                 }
         }
         if (check) break;
@@ -505,12 +499,6 @@ void Jouer ()
     while (true)
     {
         cin >> choix;
-        if (cin.fail() || choix > 4 || choix < 1)
-        {
-            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
-            ClearBuf();
-            continue;
-        }
         switch (choix)
         {
             case 1: {
@@ -537,6 +525,11 @@ void Jouer ()
                 Menu();
                 break;
                 }
+            default: {
+                check = false;
+                cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+                ClearBuf ();
+            }
         }
         if (check) break;
     }
@@ -551,12 +544,6 @@ void Classique ()
     while (true)
     {
         cin >> choix;
-        if (cin.fail() || choix > 4 || choix < 1)
-        {
-            cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
-            ClearBuf();
-            continue;
-        }
         switch (choix)
         {
             case 1: { //facile
@@ -581,6 +568,11 @@ void Classique ()
                 Jouer();
                 break;
                 }
+            default: {
+                check = false;
+                cout << "Valeur incorrecte 1-2-3-4" << endl << endl;
+                ClearBuf ();
+            }
         }
         if (check) break;
     }
@@ -666,8 +658,19 @@ int main()
             --Coup;
         }
         cout << "Partie termine !" << endl
-             << "Vous avez realise un score de " << Score << " !" << endl << endl
-             <<"Entrez Q pour retourner au menu." << endl;
+             << "Vous avez realise un score de " << Score << " !" << endl << endl ;
+        cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
+        string Name;
+        cin >> Name;
+        while(Name.size()>11)
+        {
+            cout << "Votre nom est trop long (11 caractères maximum) !" << endl;
+            cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
+            cin >> Name;
+        }
+        MScores(Name,Score);
+
+        cout <<"Entrez Q pour retourner au menu." << endl;
         char quit;
         while (true)
         {
