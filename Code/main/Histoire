@@ -1,0 +1,52 @@
+void Histoire()
+{
+    ClearScreen();
+    DisplayFile  ("Histoire.txt");
+    bool check = true;
+    unsigned choix = 0;
+    
+    while (true)
+        {
+            cin >> choix;
+            if (cin.fail() || choix > 5 || choix < 1)
+            {
+                cout << "Valeur incorrecte 1-2-3-4-5" << endl << endl;
+                ClearBuf();
+                continue;
+            }
+            switch (choix)
+            {
+                case 1: 
+                    ClearScreen();
+                    ClearBuf();
+                    Niveau1(Grid);
+                    break;
+                    
+                case 2: 
+                    ClearScreen();
+                    ClearBuf();
+                    Niveau2(Grid);
+                    break;
+                    
+                case 3: 
+                    ClearScreen();
+                    ClearBuf();
+                    Niveau3(Grid);
+                    break;
+                    
+                case 4: 
+                    ClearScreen();
+                    ClearBuf ();
+                    Niveau4(Grid);
+                    break;
+                    
+            case 5: 
+                ClearScreen();
+                ClearBuf();
+                Niveau5(Grid);
+                break;
+                
+            }
+            if (check) break;
+        }
+}
