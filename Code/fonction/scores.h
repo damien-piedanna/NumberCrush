@@ -1,5 +1,5 @@
-#ifndef MAIN_COPY_H
-#define MAIN_COPY_H
+#ifndef SCORES_H
+#define SCORES_H
 
 #include <iostream>
 #include <fstream>
@@ -34,4 +34,4 @@ void DeChiffreCesar(string & Ligne,const unsigned Key);
 
 void MScores(string & Name, unsigned & Score);
 
-#endif // MAIN_COPY_H
+#endif // SCORES_H
