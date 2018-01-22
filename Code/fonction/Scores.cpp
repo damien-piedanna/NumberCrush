@@ -7,8 +7,8 @@
 
 using namespace std;
 
-ifstream ifs;
-ofstream ofs;
+ifstream ifsScore;
+ofstream ofsScore;
 
 
 typedef vector <string> CVString;
@@ -17,14 +17,12 @@ void RetrieveData(CVString & VString)
     bool check=true;
     while(check)
     {
-        string FichierSource;
+        string FichierSource="scores";
         unsigned Cpt(3);
         while(Cpt != 0)
         {
-            cout << "Nom du fichier source : " << endl;
-            getline(cin,FichierSource);
-            ifs.open(FichierSource);
-            if(!ifs.fail()) break;
+            ifsScore.open(FichierSource);
+            if(!ifsScore.fail()) break;
             --Cpt;
         }
         if(Cpt==0)
@@ -35,8 +33,8 @@ void RetrieveData(CVString & VString)
         while(true)
         {
             string Str;
-            getline(ifs,Str);
-            if(ifs.eof())break;
+            getline(ifsScore,Str);
+            if(ifsScore.eof())break;
             VString.push_back(Str);
         }
         check=false;
@@ -48,14 +46,12 @@ void WriteData(CVString & VString)
     bool check=true;
     while(check)
     {
-        string FichierDest;
+        string FichierDest="scores";
         unsigned Cpt(3);
         while(Cpt != 0)
         {
-            cout << "Nom du fichier de destination : " << endl;
-            getline(cin,FichierDest);
-            ofs.open(FichierDest);
-            if(!ofs.fail()) break;
+            ofsScore.open(FichierDest);
+            if(!ofsScore.fail()) break;
             --Cpt;
         }
         if(Cpt==0)
@@ -65,7 +61,7 @@ void WriteData(CVString & VString)
         }
 
         for(unsigned i(0);i<VString.size();++i)
-            ofs << VString[i] << endl;
+            ofsScore << VString[i] << endl;
 
         check=false;
     }
@@ -143,32 +139,21 @@ void DeChiffreCesar(string & Ligne,const unsigned Key)
         Ligne[i]=char(int(Ligne[i])+Key);
 }//DeChiffreCesar
 
-int main()
+void MScores(string & Name, unsigned & Score)
 {
-    /*
-    CVString VecInput;
-    RetrieveData(VecInput);
-    //for(unsigned i(0); i<FileInput.size();++i)
-    //    cout << FileInput[i];
-    WriteData(VecInput);
-    */
-
     CVString Vec;
     RetrieveData(Vec);
 
     const unsigned Key = 58;
 
-    ChiffreCesar(Vec[2], Key);
+    cout << endl;
+
+    ModifScores(Vec,Score,Name);
 
     for(unsigned i(0);i<Vec.size();++i)
         cout << Vec[i] << endl;
 
     cout << endl;
 
-    DeChiffreCesar(Vec[2], Key);
-
-    for(unsigned i(0);i<Vec.size();++i)
-        cout << Vec[i] << endl;
-
-    return 0;
+    WriteData(Vec);
 }
