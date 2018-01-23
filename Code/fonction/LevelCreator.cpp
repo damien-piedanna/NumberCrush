@@ -58,9 +58,9 @@ void LevelCreator() {
     unsigned NbKandies;
     while(true) {
         cin >> NbKandies;
-        if(cin.fail() || NbKandies > 8) {
+        if(cin.fail() || NbKandies > 7) {
             ClearBuf();
-            cout << "Entrez un nombre positif strictement inferieur à 9 car le terminal ne nous donne acces qu'a 8 couleurs !" << endl;
+            cout << "Entrez un nombre positif strictement inferieur à 8 car le terminal ne nous donne acces qu'a 8 couleurs et y'a des murs ! ;{" << endl;
             continue;
         }
         break;
