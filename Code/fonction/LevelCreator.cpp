@@ -13,8 +13,7 @@ bool TestValeurDansString(string & Str, unsigned & GridSize)
 
 void LevelCreator() {
     cout << "Choisissez un nom pour votre niveau (max 20 caracteres et ne pas utiliser deux fois le meme nom ou ne rien saisir)" << endl;
-    string NomLevel;
-
+    string NomLevel; // rajouter le test d'existence du fichier
     while(true) {
         bool NoSlash=true;
         NomLevel="reset";
