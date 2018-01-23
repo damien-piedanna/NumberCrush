@@ -793,41 +793,7 @@ int main()
         cout << "Partie termine !" << endl
              << "Vous avez realise un score de " << Score << " !" << endl << endl ;
 
-        //NICO IL FAUDRAIT METTRE ÇA DANS UNE FONCTION STP
-        /*
-        cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
-        string Name;
-        cin >> Name;
-        bool NoAccent = true;
-        while(Name.size()>11)
-        {
-            cout << "Votre nom est trop long (11 caractères maximum) !" << endl;
-            cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
-            cin >> Name;
-            for(unsigned i(0); i < Name.size() ; ++i)
-            {
-                if(!isalpha(Name[i]))
-                    NoAccent = false;
-            }
-            while(!NoAccent)
-            {
-                NoAccent=true;
-                for(unsigned i(0); i < Name.size() ; ++i)
-                {
-                    if(!isalpha(Name[i]))
-                        NoAccent = false;
-                }
-                if(!NoAccent)
-                {
-                    cout << "Votre nom comporte des accents ou des chiffres !" << endl;
-                    cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
-                    cin >> Name;
-                }
-            }
-        }
-
-        MScores(Name,Score, Key);
-        */
+        SaveScores(Score, Key);
 
         cout <<"Entrez Q pour retourner au menu." << endl;
         while (true)
