@@ -5,10 +5,11 @@
 #include <sstream>
 #include <vector>
 
-void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid)
+
+ 
+void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned & KNbCandies, unsigned & Coup)
 {
-    ifstream ifsScore;
-    ofstream ofsScore;
+    ifstream ifs;
     bool check=true;
     while(check)
     {
@@ -16,8 +17,8 @@ void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Gr
         unsigned Cpt(3);
         while(Cpt != 0)
         {
-            ifsScore.open(FichierSource);
-            if(!ifsScore.fail()) break;
+            ifs.open(FichierSource);
+            if(!ifs.fail()) break;
             --Cpt;
         }
         if(Cpt==0)
@@ -25,14 +26,14 @@ void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Gr
             cout << "3 échecs d'ouverture de fichier en lecture" << endl;
             break;
         }
-        unsigned FirstTime = 0;
+        unsigned Instance = 0;
         int cpt = -1;
         while(!ifsScore.eof())
         {
             string Str;
-            getline(ifsScore,Str);
+            getline(ifs,Str);
 
-            if(FirstTime == 0)
+            if(Instance == 0)
             {
                 int Size = stoi(Str);
                 Grid.resize(Size);
@@ -40,7 +41,17 @@ void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Gr
                 {
                     Grid[i].resize(Size);
                 }
-                FirstTime = 1;
+                Instance = 1;
+            }
+            else if(Instance == 1)
+            {
+                unsigned KNbCandies = stoi(Str);
+                Instance = 2;
+            }
+            else if(Instance == 2)
+            {
+                unsigned Coup = stoi(Str);
+                Instance = 3;
             }
             else
             {
