@@ -610,7 +610,7 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
             ClearScreen();
             DisplayFile("regles.txt");
             char quitregles;
-            cout <<"Entrez R pour retourner au menu" << endl;
+            cout <<"Entrez Q pour retourner au menu" << endl;
             while (true)
             {
                 cin>> quitregles;
@@ -623,7 +623,7 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
             ClearScreen();
             AfficheScores(Key);
             char quitscores;
-            cout << "Entrez R pour retourner au menu" << endl;
+            cout << "Entrez Q pour retourner au menu" << endl;
             while (true)
             {
                 cin>> quitscores;
