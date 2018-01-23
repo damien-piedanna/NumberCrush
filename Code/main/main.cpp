@@ -53,6 +53,8 @@ void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Gr
 void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup, unsigned & Size);
 void Histoire( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);   //Mode histoire avec Level
 
+void PlayGame (CMat & Grid, CPosition Pos, unsigned & Score, unsigned & KNbCandies, unsigned & Coup);  //Lance la partie jusqu'à qu'il n'y ai plus de coups
+
 void Couleur (const string & coul)
 {
     cout << "\033[7;" << coul <<"m";
@@ -746,6 +748,27 @@ void Histoire(CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Co
     }
 } //Histoire()
 
+void PlayGame (CMat & Grid, CPosition Pos, unsigned & Score, unsigned & KNbCandies, unsigned & Coup)
+{
+    for ( ; Coup != 0 ; Coup--)
+    {
+        ClearScreen();
+        DisplayGrid (Grid);
+        cout << "Il vous reste " << Coup << " coup(s) !" << endl
+             << "Score actuel : " << Score << endl << endl;
+
+        MakeAMove (Grid, Score);
+
+        DisplayGrid (Grid);
+        sleep(1);
+
+        UpdateGrid (Grid, Pos, Score, KNbCandies);
+    }
+    DisplayGrid (Grid);
+    cout << "Partie termine !" << endl
+         << "Vous avez realise un score de " << Score << " !" << endl << endl ;
+}
+
 int main()
 {
     CPosition Pos;
@@ -759,23 +782,8 @@ int main()
     {
         CMat Grid;
         Menu(Grid, Size, KNbCandies, Coup);
-        for ( ; Coup != 0 ; Coup--)
-        {
-            ClearScreen();
-            DisplayGrid (Grid);
-            cout << "Il vous reste " << Coup << " coup(s) !" << endl
-                 << "Score actuel : " << Score << endl << endl;
 
-            MakeAMove (Grid, Score);
-
-            DisplayGrid (Grid);
-            sleep(1);
-
-            UpdateGrid (Grid, Pos, Score, KNbCandies);
-        }
-        DisplayGrid (Grid);
-        cout << "Partie termine !" << endl
-             << "Vous avez realise un score de " << Score << " !" << endl << endl ;
+        PlayGame (Grid, Pos, Score, KNbCandies, Coup);
 
         SaveScores(Score, Key);
 
