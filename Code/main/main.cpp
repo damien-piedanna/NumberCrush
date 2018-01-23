@@ -537,7 +537,7 @@ void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Gr
         }
         check=false;
     }
-}
+} //RetrieveDataLevel()
 
 void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup, unsigned & Size)
 {
@@ -547,7 +547,7 @@ void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, un
     Size = Grid.size();
     ReplaceEmpty(Grid, KNbCandies);
     ClearAssociation (Grid, KNbCandies);
-}
+} //LoadLevel()
 
 unsigned GetUnsigned (unsigned min, unsigned max)
 {
@@ -564,7 +564,7 @@ unsigned GetUnsigned (unsigned min, unsigned max)
         break;
     }
     return choix;
-}
+} //GetUnsigned()
 
 CPosition GetPos(CPosition & Pos, unsigned Size)
 {
@@ -573,7 +573,7 @@ CPosition GetPos(CPosition & Pos, unsigned Size)
     cout << "Numéro ligne (1 - " << Size << ") : ";
     Pos.first = (GetUnsigned(1,Size) - 1);
     return Pos;
-}
+} //GetPos()
 
 char GetDirection (char Direction)
 {
@@ -587,7 +587,7 @@ char GetDirection (char Direction)
         ClearBuf ();
     }
     return Direction;
-}
+} //GetDirection()
 
 void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
 {
