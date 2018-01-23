@@ -7,7 +7,7 @@
 #include <sstream>
 #include <fstream>
 #include <limits>
-#include <scores.h>
+#include <Scores.h>
 
 using namespace std;
 
@@ -37,16 +37,20 @@ void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany);      
 void DeleteAllNumber(CMat & Grid, unsigned nbtodelete, unsigned & Score);               //Supprime tout les nbtodelete de la grille
 void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned KNbCandies);  //Mets à jour la grille en cherchant les combinaisons, remontant les 0 et replacer des cases
 
+void ClearAssociation (CMat & Grid, unsigned KNbCandies);                               //Supprime les combinaisons de la grille sans ajouter de score
 bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies);                                   //Remplace les 0 par des nombres aléatoires
 void DownGrid (CMat & Grid);                                                            //Fait tomber les cases quand il y a un trou en dessous d'eux
 
 unsigned GetUnsigned (unsigned min, unsigned max);                                      //Recupération d'un unsigned
-CPosition GetPos (CPosition & Pos, unsigned Size);
-char GetDirection (char Direction);
+CPosition GetPos (CPosition & Pos, unsigned Size);                                      //Récupération positions
+char GetDirection (char Direction);                                                     //Récupération direction
 void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);       //Menu principal
 void Jouer (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Menu pour choisir son mode de jeu
 void Classique (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);  //Mode de jeu classique, 3 Levelx de difficultés.
 void Perso( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Mode de jeu personnalisé, le joueur peut choisir les options de la partie.
+
+void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned & KNbCandies, unsigned & Coup);
+void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup);
 void Histoire( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);   //Mode histoire avec Level
 
 void Couleur (const string & coul)
@@ -70,6 +74,11 @@ void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies)
             Grid [i][j] = rand()%KNbCandies+1;
         }
     }
+    ClearAssociation (Grid, KNbCandies);
+} // InitGrid ()
+
+void ClearAssociation (CMat & Grid, unsigned KNbCandies)
+{
     CPosition Pos;
     unsigned Howmany;
     do
@@ -83,7 +92,7 @@ void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies)
             RemovalInRow (Grid, Pos, Howmany);
         }
     } while (ReplaceEmpty(Grid, KNbCandies));
-} // InitGrid ()
+}
 
 bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies)
 {
@@ -218,7 +227,7 @@ void MakeAMove (CMat & Grid, unsigned & Score)
                 if(Pos.second != 0)
                 {
                    check = true;
-                   PosToMove.first = Pos.first+1;
+                   PosToMove.first = Pos.first;
                    PosToMove.second = Pos.second-1;
                    Move (Grid, Score, Pos, PosToMove);
                 }
@@ -357,17 +366,17 @@ void DeleteAllNumber (CMat & Grid, unsigned nbtodelete, unsigned & Score)
     }
     Score += cpt*50;
 } //DeleteAllNumber ()
-
-/*void DeleteCross (CMat & Grid, const CPosition & Pos)
+/*
+void DeleteCross (CMat & Grid, const CPosition & Pos)
 {
-    for(unsigned i=0; i < 5; ++i)
+    for(unsigned i=0; i < Grid.Size(); ++i)
     {
         if((Pos.first - 2 + i) >= 0 && (Pos.first - 2 + i) < (Grid.size()))
         {
             Grid[Pos.first-2+i][Pos.second]=0;
         }
     }
-    for(unsigned i=0; i < 5; ++i)
+    for(unsigned i=0; i < Grid.Size(); ++i)
     {
         if((Pos.second - 2 + i) >= 0 && (Pos.second - 2 + i) < (Grid.size()))
         {
@@ -462,103 +471,83 @@ void ClearBuf ()
 
 }// ClearBuf ()
 
-void Level1(CMat & Grid, unsigned & KNbCandies)
+void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned  & KNbCandies, unsigned & Coup)
 {
-    KNbCandies = 7;
-    InitGrid(Grid, 10, KNbCandies);
-    for(unsigned i=0; i<5 ;++i)
+    ifstream ifs;
+    bool check=true;
+    while(check)
     {
-        Grid[i][0]=12;
-        Grid[i][Grid.size()-1]=12;
-    }
-    for(unsigned i=0; i<5 ;++i)
-    {
-        for(unsigned j=0 ; j<=i ; ++j)
+        string FichierSource=NameLevel;
+        unsigned Cpt(3);
+        while(Cpt != 0)
         {
-            Grid[5+i][j]=12;
+            ifs.open(FichierSource);
+            if(!ifs.fail()) break;
+            --Cpt;
         }
-    }
-    for(unsigned i=0; i<5 ;++i)
-    {
-        for(unsigned j=0 ; j<=i ; ++j)
+        if(Cpt==0)
         {
-            Grid[5+i][(Grid.size()-1)-j]=12;
+            cout << "3 échecs d'ouverture de fichier en lecture" << endl;
+            break;
         }
-    }
-} //Level1()
-
-void Level2(CMat & Grid, unsigned & KNbCandies)
-{
-    KNbCandies = 7;
-    InitGrid(Grid, 10, KNbCandies);
-
-    for(unsigned i=0; i <= 5; ++i)
-    {
-        for(unsigned j = i; j <= Grid.size()-1-i; ++j)
+        unsigned Instance = 0;
+        int cpt = -1;
+        while(!ifs.eof())
         {
-            Grid[Grid.size()-1-i][j] = 12;
-        }
-    }
-    for(unsigned i=0; i < 3; ++i)
-    {
-        Grid[2+i][4] = 12;
-         Grid[2+i][5] = 12;
-    }
-} //Level2()
+            string Str;
+            getline(ifs,Str);
 
-void Level3(CMat & Grid, unsigned & KNbCandies)
-{
-    KNbCandies = 7;
-    InitGrid(Grid, 15, KNbCandies);
+            if(Instance == 0)
+            {
+                int Size = stoi(Str);
+                Grid.resize(Size);
+                for(unsigned i = 0; i < Grid.size() ; ++i)
+                {
+                    Grid[i].resize(Size);
+                }
+                Instance = 1;
+            }
+            else if(Instance == 1)
+            {
+                KNbCandies = stoi(Str);
+                Instance = 2;
+            }
+            else if(Instance == 2)
+            {
+                Coup = stoi(Str);
+                Instance = 3;
+            }
+            else
+            {
+                ++cpt;
+                for(unsigned i = 0; i < Str.size() ; ++i)
+                {
 
-    for(unsigned i =0; i < 12; ++i)
-    {
-        Grid[Grid.size()-1-i][11] = 12;
-        Grid[Grid.size()-1-i][7] = 12;
-        Grid[Grid.size()-1-i][3] = 12;
-    }
-} //Level3()
-
-void Level4(CMat & Grid, unsigned & KNbCandies)
-{
-    KNbCandies = 7;
-    InitGrid(Grid, 20, KNbCandies);
-
-    for(unsigned i=0; i < 3 ; ++i)
-    {
-        for(unsigned j=i ; j < 5-i ; ++j)
-        {
-            Grid[Grid.size()-1-i][j]=12;
-            Grid[Grid.size()-1-i][5+j]=12;
-            Grid[Grid.size()-1-i][10+j]=12;
-            Grid[Grid.size()-1-i][15+j]=12;
+                    if(Str[i] == '1')
+                    {
+                        Grid[cpt][i] = 12;
+                    }
+                    else
+                    {
+                        Grid[cpt][i]=0;
+                    }
+                }
+            }
 
         }
+        check=false;
     }
-} //Level4()
+}
 
-void Level5(CMat & Grid, unsigned & KNbCandies)
+void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup)
 {
-    KNbCandies = 7;
-    InitGrid(Grid, 20, KNbCandies);
-
-    for(unsigned i=0; i < 3 ; ++i)
-    {
-        for(unsigned j=i ; j < 5-i ; ++j)
-        {
-            Grid[Grid.size()-1-i][j]=12;
-
-
-            Grid[Grid.size()-1-i][15+j]=12;
-
-        }
-    }
-    for(unsigned i=0; i < 15 ; ++i )
-    {
-       Grid[Grid.size()-1-i][5]=12;
-       Grid[Grid.size()-1-i][14]=12;
-    }
-} //Level5()
+    ClearScreen();
+    ClearBuf();
+    RetrieveDataLevel(NameLevel, Grid, KNbCandies, Coup);
+    Size = Grid.size();
+    ReplaceEmpty(Grid, KNbCandies);
+    ClearAssociation (Grid, KNbCandies);
+}
 
 unsigned GetUnsigned (unsigned min, unsigned max)
 {
@@ -618,20 +607,29 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
         case 3:
             ClearScreen();
             DisplayFile("regles.txt");
-            char quit;
-
+            char quitregles;
             cout <<"Entrez Q pour quitter" << endl;
             while (true)
             {
-                cin>> quit;
+                cin>> quitregles;
                 ClearBuf ();
-                if (quit == 'Q' || quit == 'q')
+                if (quitregles == 'Q' || quitregles == 'q')
                     Menu(Grid, Size, KNbCandies, Coup);
             }
             break;
         case 4:
             ClearScreen();
             AfficheScores(Key);
+            char quitscores;
+            cout <<"Entrez Q pour quitter" << endl;
+            while (true)
+            {
+                cin>> quitscores;
+                ClearBuf ();
+                if (quitscores == 'Q' || quitscores == 'q')
+                    Menu(Grid, Size, KNbCandies, Coup);
+            }
+            break;
             break;
         case 5:
             exit(0);
@@ -726,33 +724,19 @@ void Histoire(CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Co
     switch (choix)
     {
         case 1:
-            ClearScreen();
-            ClearBuf();
-            Level1(Grid, KNbCandies);
+            LoadLevel ("Level1.txt", Grid, KNbCandies, Coup);
             break;
-
         case 2:
-            ClearScreen();
-            ClearBuf();
-            Level2(Grid, KNbCandies);
+            LoadLevel ("Level2.txt", Grid, KNbCandies, Coup);
             break;
-
         case 3:
-            ClearScreen();
-            ClearBuf();
-            Level3(Grid, KNbCandies);
+            LoadLevel ("Leve3.txt", Grid, KNbCandies, Coup);
             break;
-
         case 4:
-            ClearScreen();
-            ClearBuf ();
-            Level4(Grid, KNbCandies);
+            LoadLevel ("Level4.txt", Grid, KNbCandies, Coup);
             break;
-
         case 5:
-            ClearScreen();
-            ClearBuf();
-            Level5(Grid, KNbCandies);
+            LoadLevel ("Level5.txt", Grid, KNbCandies, Coup);
             break;
         case 6:
             ClearScreen();
