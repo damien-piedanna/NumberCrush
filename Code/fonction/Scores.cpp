@@ -12,12 +12,11 @@ ofstream ofsScore;
 
 
 typedef vector <string> CVString;
-void RetrieveData(CVString & VString)
+void RetrieveData(CVString & VString, string & FichierSource)
 {
     bool check=true;
     while(check)
     {
-        string FichierSource="scores";
         unsigned Cpt(3);
         while(Cpt != 0)
         {
@@ -41,12 +40,11 @@ void RetrieveData(CVString & VString)
     }
 }//RetrieveData
 
-void WriteData(CVString & VString)
+void WriteData(CVString & VString, string & FichierDest)
 {
     bool check=true;
     while(check)
     {
-        string FichierDest="scores";
         unsigned Cpt(3);
         while(Cpt != 0)
         {
@@ -160,7 +158,7 @@ void DisplayFile2 (const string & File)
 void AfficheScores(const unsigned Key)
 {
     CVString Vec;
-    RetrieveData(Vec);
+    RetrieveData(Vec, "scores");
     DisplayFile2("classement.txt");
     cout << " 	    **	                                        **" << endl;
     for(unsigned i(0); i < Vec.size() ; ++i)
@@ -175,7 +173,7 @@ void AfficheScores(const unsigned Key)
 void MScores(string & Name, unsigned & Score, const unsigned Key)
 {
     CVString Vec;
-    RetrieveData(Vec);
+    RetrieveData(Vec, "scores");
     for(unsigned i(0);i<Vec.size();++i)
         DeChiffreCesar(Vec[i],Key);
 
@@ -191,5 +189,5 @@ void MScores(string & Name, unsigned & Score, const unsigned Key)
     for(unsigned i(0);i<Vec.size();++i)
         ChiffreCesar(Vec[i],Key);
 
-    WriteData(Vec);
+    WriteData(Vec, "scores");
 }
