@@ -44,10 +44,13 @@ void DownGrid (CMat & Grid);                                                    
 unsigned GetUnsigned (unsigned min, unsigned max);                                      //Recupération d'un unsigned
 CPosition GetPos (CPosition & Pos, unsigned Size);                                      //Récupération positions
 char GetDirection (char Direction);                                                     //Récupération direction
+
 void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);       //Menu principal
+void RetourMenu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup); //Menu principal
 void Jouer (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);      //Menu pour choisir son mode de jeu
 void Classique (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);  //Mode de jeu classique, 3 Levelx de difficultés.
 void Perso( CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);      //Mode de jeu personnalisé, le joueur peut choisir les options de la partie.
+void MenuScore(CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);
 
 void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned & NbCandies, unsigned & Coup);
 void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & NbCandies, unsigned & Coup, unsigned & Size);
@@ -593,87 +596,27 @@ char GetDirection (char Direction)
     return Direction;
 } //GetDirection()
 
-void MenuScore(CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
-{
-    ClearScreen();
-    DisplayFile  ("menuscore.txt");
-    unsigned choix = GetUnsigned (1,6);
-    char quitscores;
-    switch (choix)
-    {
-       case 1:
-        ClearScreen();
-        //AfficheScores(Key);       //Tableau des scores Classique
-        break;
-       case 2:
-        ClearScreen();
-        //AfficheScores(Key);            //Tableau des scores Niveau 1
-         break;
-       case 3:
-        ClearScreen();
-        //AfficheScores(Key);            //Tableau des scores Niveau 2
-
-         break;
-       case 4:
-        ClearScreen();
-        //AfficheScores(Key);            //Tableau des scores Niveau 3
-
-         break;
-       case 5:
-        ClearScreen();
-        //AfficheScores(Key);            //Tableau des scores Niveau 4
-         break;
-       case 6:
-
-        ClearScreen();
-        //AfficheScores(Key);            //Tableau des scores Niveau 5
-         break;
-    }
-    cout << "Entrez Q pour retourner au menu" << endl;
-    while (true)
-    {
-        cin>> quitscores;
-        ClearBuf ();
-        if (toupper(quitscores) == 'Q')
-            Menu(Grid, Size, NbCandies, Coup);
-    }
-
-}//MScore()
-
 void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("menu.txt");
     unsigned choix = GetUnsigned (1,5);
+    ClearScreen();
+    ClearBuf();
     switch (choix)
     {
         case 1:
-            ClearScreen();
-            ClearBuf();
             Jouer(Grid, Size, NbCandies, Coup);
             break;
         case 2: //A faire
             cout << "Options" << endl;
             break;
         case 3:
-            ClearScreen();
             DisplayFile("regles.txt");
-            char quitregles;
-            cout <<"Entrez R pour retourner au menu" << endl;
-            while (true)
-            {
-                cin>> quitregles;
-                ClearBuf ();
-                if (toupper(quitregles) == 'Q')
-                    Menu(Grid, Size, NbCandies, Coup);
-            }
+            RetourMenu(Grid, Size, NbCandies, Coup);
             break;
         case 4:
-
-            ClearScreen();
-            ClearBuf();
             MenuScore(Grid, Size, NbCandies, Coup);
-
             break;
         case 5:
             exit(0);
@@ -681,38 +624,81 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
     }
 } //Menu ()
 
-
-
+void RetourMenu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
+{
+    char retour;
+    cout <<"Entrez Q pour retourner au menu" << endl;
+    while (true)
+    {
+        cin >> retour;
+        ClearBuf ();
+        if (toupper(retour) == 'Q')
+        {
+            Menu(Grid, Size, NbCandies, Coup);
+            break;
+        }
+    }
+}
 
 void Jouer (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("jouer.txt");
     unsigned choix = GetUnsigned (1,4);
+    ClearScreen();
+    ClearBuf();
     switch (choix)
     {
         case 1:
-            ClearScreen();
-            ClearBuf();
             Classique(Grid, Size, NbCandies, Coup);
             break;
         case 2:
-            ClearScreen();
-            ClearBuf();
             Perso(Grid, Size, NbCandies, Coup);
             break;
         case 3:
-            ClearScreen();
-            ClearBuf();
             Histoire(Grid, Size, NbCandies, Coup);
             break;
-        case 4:
-            ClearScreen();
-            ClearBuf ();
+        case 4:;
             Menu(Grid, Size, NbCandies, Coup);
             break;
     }
 }// Jouer ()
+
+void MenuScore(CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
+{
+    ClearScreen();
+    DisplayFile  ("menuscore.txt");
+    unsigned choix = GetUnsigned (1,6);
+    ClearScreen();
+    switch (choix)
+    {
+       case 1:
+        //AfficheScores(Key);       //Tableau des scores Classique
+        RetourMenu(Grid, Size, NbCandies, Coup);
+        break;
+       case 2:
+        //AfficheScores(Key);            //Tableau des scores Niveau 1
+        RetourMenu(Grid, Size, NbCandies, Coup);
+         break;
+       case 3:
+        //AfficheScores(Key);            //Tableau des scores Niveau 2
+        RetourMenu(Grid, Size, NbCandies, Coup);
+         break;
+       case 4:
+        //AfficheScores(Key);            //Tableau des scores Niveau 3
+        RetourMenu(Grid, Size, NbCandies, Coup);
+         break;
+       case 5:
+        //AfficheScores(Key);            //Tableau des scores Niveau 4
+        RetourMenu(Grid, Size, NbCandies, Coup);
+         break;
+       case 6:
+        //AfficheScores(Key);            //Tableau des scores Niveau 5
+        RetourMenu(Grid, Size, NbCandies, Coup);
+         break;
+    }
+
+}//MScore()
 
 void Classique (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
@@ -740,6 +726,8 @@ void Classique (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & C
             InitGrid (Grid, Size, NbCandies);
             break;
         case 4: //retour
+            ClearBuf();
+            ClearScreen();
             Jouer(Grid, Size, NbCandies, Coup);
             break;
     }
