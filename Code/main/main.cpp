@@ -608,16 +608,16 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
         case 1:
             Jouer(Grid, Size, NbCandies, Coup);
             break;
-        case 2: //A faire
-            cout << "Options" << endl;
-            break;
-        case 3:
+        case 2:
             DisplayFile("regles.txt");
             RetourMenu(Grid, Size, NbCandies, Coup);
             break;
-        case 4:
+        case 3:
             MenuScore(Grid, Size, NbCandies, Coup);
             break;
+        case 4:
+            DisplayFile("credits.txt");
+            RetourMenu(Grid, Size, NbCandies, Coup);
         case 5:
             exit(0);
             break;
