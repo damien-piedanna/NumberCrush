@@ -36,4 +36,6 @@ void AfficheScores(const unsigned Key);
 
 void MScores(string & Name, unsigned & Score, const unsigned Key);
 
+void SaveScores(unsigned & Score, const unsigned & Key);
+
 #endif // SCORES_H
