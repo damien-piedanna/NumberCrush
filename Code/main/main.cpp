@@ -292,7 +292,7 @@ bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany
                 Pos.first = j;
                 Pos.second = i;
                 Howmany = 3;
-                while (i + Howmany < Grid.size() && Grid[i][j] == Grid[i][j  + Howmany])
+                while (j + Howmany < Grid.size() && Grid[i][j] == Grid[i][j  + Howmany])
                     ++Howmany;
                 return true;
             }
@@ -366,7 +366,7 @@ void DeleteAllNumber (CMat & Grid, unsigned nbtodelete, unsigned & Score)
             }
         }
     }
-    Score += cpt*50;
+    Score += cpt*5;
 } //DeleteAllNumber ()
 /*
 void DeleteCross (CMat & Grid, const CPosition & Pos)
@@ -396,7 +396,7 @@ void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned NbCand
         while (AtLeastThreeInAColumn (Grid, Pos, Howmany))
         {
             cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les colonnes en coordonnées " << Pos.first+1 << " ; " << Pos.second+1  << endl;
-            Score += Howmany*50;  //50 points par case détruite
+            Score += Howmany*5;  //50 points par case détruite
 
             if (Howmany == 5)
                 FiveInColumn (Grid, Pos, Howmany);      //Fait spawn boule spéciale
@@ -410,7 +410,7 @@ void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned NbCand
         while (AtLeastThreeInARow  (Grid, Pos, Howmany))
         {
             cout << "Une combinaison de " << Howmany << " bonbons a ete trouve dans les lignes en coordonnées " << Pos.first+1 << " ; " << Pos.second+1  << endl;
-            Score += Howmany*50; //50 points par case détruite
+            Score += Howmany*5; //50 points par case détruite
 
             if (Howmany == 5)
                 FiveInRow (Grid, Pos, Howmany);         //Fait spawn boule spéciale
@@ -610,12 +610,12 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
             ClearScreen();
             DisplayFile("regles.txt");
             char quitregles;
-            cout <<"Entrez Q pour quitter" << endl;
+            cout <<"Entrez R pour retourner au menu" << endl;
             while (true)
             {
                 cin>> quitregles;
                 ClearBuf ();
-                if (quitregles == 'Q' || quitregles == 'q')
+                if (toupper(quitregles) == 'Q')
                     Menu(Grid, Size, NbCandies, Coup);
             }
             break;
@@ -623,12 +623,12 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
             ClearScreen();
             AfficheScores(Key);
             char quitscores;
-            cout <<"Entrez Q pour quitter" << endl;
+            cout << "Entrez R pour retourner au menu" << endl;
             while (true)
             {
                 cin>> quitscores;
                 ClearBuf ();
-                if (quitscores == 'Q' || quitscores == 'q')
+                if (toupper(quitscores) == 'Q')
                     Menu(Grid, Size, NbCandies, Coup);
             }
             break;
@@ -787,17 +787,14 @@ int main()
 
         SaveScores(Score, Key);
 
-        cout <<"Entrez Q pour retourner au menu." << endl;
+        cout << "Entrez Q pour retourner au menu." << endl;
+        char quit;
         while (true)
         {
-            char quit='h';
             cin >> quit;
-            if (quit == 'Q' || quit == 'q')
-            {
-                ClearScreen();
-                ClearBuf();
-                break;
-            }
+            ClearBuf ();
+            if (toupper(quit) == 'Q')
+               break;
         }
     }
 } //main()
