@@ -7,7 +7,7 @@
 #include <sstream>
 #include <fstream>
 #include <limits>
-#include <Scores.h>
+//#include <Scores.h>
 
 using namespace std;
 
@@ -54,6 +54,8 @@ void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & NbCandies, uns
 void Histoire( CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);   //Mode histoire avec Level
 
 void PlayGame (CMat & Grid, CPosition Pos, unsigned & Score, unsigned & NbCandies, unsigned & Coup);  //Lance la partie jusqu'à qu'il n'y ai plus de coups
+
+
 
 void Couleur (const string & coul)
 {
@@ -591,6 +593,53 @@ char GetDirection (char Direction)
     return Direction;
 } //GetDirection()
 
+void MenuScore(CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
+{
+    ClearScreen();
+    DisplayFile  ("menuscore.txt");
+    unsigned choix = GetUnsigned (1,6);
+    char quitscores;
+    switch (choix)
+    {
+       case 1:
+        ClearScreen();
+        //AfficheScores(Key);       //Tableau des scores Classique
+        break;
+       case 2:
+        ClearScreen();
+        //AfficheScores(Key);            //Tableau des scores Niveau 1
+         break;
+       case 3:
+        ClearScreen();
+        //AfficheScores(Key);            //Tableau des scores Niveau 2
+
+         break;
+       case 4:
+        ClearScreen();
+        //AfficheScores(Key);            //Tableau des scores Niveau 3
+
+         break;
+       case 5:
+        ClearScreen();
+        //AfficheScores(Key);            //Tableau des scores Niveau 4
+         break;
+       case 6:
+
+        ClearScreen();
+        //AfficheScores(Key);            //Tableau des scores Niveau 5
+         break;
+    }
+    cout << "Entrez Q pour retourner au menu" << endl;
+    while (true)
+    {
+        cin>> quitscores;
+        ClearBuf ();
+        if (toupper(quitscores) == 'Q')
+            Menu(Grid, Size, NbCandies, Coup);
+    }
+
+}//MScore()
+
 void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
     ClearScreen();
@@ -610,7 +659,7 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
             ClearScreen();
             DisplayFile("regles.txt");
             char quitregles;
-            cout <<"Entrez Q pour retourner au menu" << endl;
+            cout <<"Entrez R pour retourner au menu" << endl;
             while (true)
             {
                 cin>> quitregles;
@@ -620,24 +669,20 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
             }
             break;
         case 4:
+
             ClearScreen();
-            AfficheScores(Key);
-            char quitscores;
-            cout << "Entrez Q pour retourner au menu" << endl;
-            while (true)
-            {
-                cin>> quitscores;
-                ClearBuf ();
-                if (toupper(quitscores) == 'Q')
-                    Menu(Grid, Size, NbCandies, Coup);
-            }
-            break;
+            ClearBuf();
+            MenuScore(Grid, Size, NbCandies, Coup);
+
             break;
         case 5:
             exit(0);
             break;
     }
 } //Menu ()
+
+
+
 
 void Jouer (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
@@ -785,7 +830,7 @@ int main()
 
         PlayGame (Grid, Pos, Score, NbCandies, Coup);
 
-        SaveScores(Score, Key);
+        //SaveScores(Score, Key);
 
         cout << "Entrez Q pour retourner au menu." << endl;
         char quit;
