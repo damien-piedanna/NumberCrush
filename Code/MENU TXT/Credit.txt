@@ -7,7 +7,7 @@
             **           | |____| | |  __/ (_| | | |_          **
 | - - - - - **            \_____|_|  \___|\__,_|_|\__|         **
 |           **                                                 **
-| - - - - - **               Créé & imaginé par:               **
+| - - - - - **               Cree et imagine par:              **
             **                   - Nicolas Trouin              **
             **                   - Damien Piedanna             **
             **                   - Sylvain Prat                **
