@@ -50,7 +50,7 @@ void Classique (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & 
 void Perso( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Mode de jeu personnalisé, le joueur peut choisir les options de la partie.
 
 void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned & KNbCandies, unsigned & Coup);
-void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup);
+void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup, unsigned & Size);
 void Histoire( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);   //Mode histoire avec Level
 
 void Couleur (const string & coul)
@@ -539,7 +539,7 @@ void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Gr
     }
 }
 
-void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup)
+void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup, unsigned & Size)
 {
     ClearScreen();
     ClearBuf();
@@ -724,19 +724,19 @@ void Histoire(CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Co
     switch (choix)
     {
         case 1:
-            LoadLevel ("Level1.txt", Grid, KNbCandies, Coup);
+            LoadLevel ("Level1.txt", Grid, KNbCandies, Coup, Size);
             break;
         case 2:
-            LoadLevel ("Level2.txt", Grid, KNbCandies, Coup);
+            LoadLevel ("Level2.txt", Grid, KNbCandies, Coup, Size);
             break;
         case 3:
-            LoadLevel ("Leve3.txt", Grid, KNbCandies, Coup);
+            LoadLevel ("Leve3.txt", Grid, KNbCandies, Coup, Size);
             break;
         case 4:
-            LoadLevel ("Level4.txt", Grid, KNbCandies, Coup);
+            LoadLevel ("Level4.txt", Grid, KNbCandies, Coup, Size);
             break;
         case 5:
-            LoadLevel ("Level5.txt", Grid, KNbCandies, Coup);
+            LoadLevel ("Level5.txt", Grid, KNbCandies, Coup, Size);
             break;
         case 6:
             ClearScreen();
