@@ -191,3 +191,40 @@ void MScores(string & Name, unsigned & Score, const unsigned Key)
 
     WriteData(Vec, "scores");
 }
+
+
+
+void SaveScores(unsigned & Score, const unsigned & Key)
+{
+    cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
+    string Name;
+    cin >> Name;
+    bool NoAccent = true;
+    while(Name.size()>11)
+    {
+        cout << "Votre nom est trop long (11 caractères maximum) !" << endl;
+        cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
+        cin >> Name;
+        for(unsigned i(0); i < Name.size() ; ++i)
+        {
+            if(!isalpha(Name[i]))
+                NoAccent = false;
+        }
+        while(!NoAccent)
+        {
+            NoAccent=true;
+            for(unsigned i(0); i < Name.size() ; ++i)
+            {
+                if(!isalpha(Name[i]))
+                    NoAccent = false;
+            }
+            if(!NoAccent)
+            {
+                cout << "Votre nom comporte des accents ou des chiffres !" << endl;
+                cout << "Pour sauvegarder votre score, entrez votre nom : " << endl;
+                cin >> Name;
+            }
+        }
+    }
+    MScores(Name,Score, Key);
+}
