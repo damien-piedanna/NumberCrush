@@ -1,0 +1,65 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+#include <sstream>
+#include <vector>
+
+void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid)
+{
+    ifstream ifsScore;
+    ofstream ofsScore;
+    bool check=true;
+    while(check)
+    {
+        string FichierSource=NameLevel;
+        unsigned Cpt(3);
+        while(Cpt != 0)
+        {
+            ifsScore.open(FichierSource);
+            if(!ifsScore.fail()) break;
+            --Cpt;
+        }
+        if(Cpt==0)
+        {
+            cout << "3 échecs d'ouverture de fichier en lecture" << endl;
+            break;
+        }
+        unsigned FirstTime = 0;
+        int cpt = -1;
+        while(!ifsScore.eof())
+        {
+            string Str;
+            getline(ifsScore,Str);
+
+            if(FirstTime == 0)
+            {
+                int Size = stoi(Str);
+                Grid.resize(Size);
+                for(unsigned i = 0; i < Grid.size() ; ++i)
+                {
+                    Grid[i].resize(Size);
+                }
+                FirstTime = 1;
+            }
+            else
+            {
+                ++cpt;
+                for(unsigned i = 0; i < Str.size() ; ++i)
+                {
+
+                    if(Str[i] == '1')
+                    {
+                        Grid[cpt][i] = 12;
+                    }
+                    else
+                    {
+                        Grid[cpt][i]=0;
+                    }
+                }
+            }
+
+        }
+        check=false;
+    }
+}
