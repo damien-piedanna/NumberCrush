@@ -12,7 +12,7 @@ ofstream ofsScore;
 
 
 typedef vector <string> CVString;
-void RetrieveData(CVString & VString, string & FichierSource)
+void RetrieveData(CVString & VString, const string & FichierSource)
 {
     bool check=true;
     while(check)
@@ -40,7 +40,7 @@ void RetrieveData(CVString & VString, string & FichierSource)
     }
 }//RetrieveData
 
-void WriteData(CVString & VString, string & FichierDest)
+void WriteData(CVString & VString, const string & FichierDest)
 {
     bool check=true;
     while(check)
