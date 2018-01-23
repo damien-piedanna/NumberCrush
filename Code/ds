@@ -1,0 +1,31 @@
+void Couleur (const string & coul);                                                     //Permet d'afficher des couleurs sur la console
+void ClearScreen ();                                                                    //Vide la console
+void ClearBuf ();                                                                       //Vide le tampon de cin
+void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies);                        //Initialise la grille sans combinaison
+
+void DisplayGrid (const CMat & Grid);                                                   //Affiche la grille
+void MakeAMove (CMat & Grid, unsigned & Score);                                         //Donne la possibilité au joueur de faire un move
+void Move (CMat & Grid, unsigned & Score, const CPosition & Pos, const CPosition & PosToMove);                          //
+
+bool AtLeastThreeInAColumn  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);   //Permet de trouver une combinaison de Howmany en colonnes
+bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany);      //Permet de trouver une combinaison de Howmany en lignes
+void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany);           //Remplace les combinaisons en colonne par des 0
+void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany);              //Remplace les combinaisons en ligne par des 0
+void DeleteAllNumber(CMat & Grid, unsigned nbtodelete, unsigned & Score);               //Supprime tout les nbtodelete de la grille
+void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned KNbCandies);  //Mets à jour la grille en cherchant les combinaisons, remontant les 0 et replacer des cases
+
+void ClearAssociation (CMat & Grid, unsigned KNbCandies);                               //Supprime les combinaisons de la grille sans ajouter de score
+bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies);                                   //Remplace les 0 par des nombres aléatoires
+void DownGrid (CMat & Grid);                                                            //Fait tomber les cases quand il y a un trou en dessous d'eux
+
+unsigned GetUnsigned (unsigned min, unsigned max);                                      //Recupération d'un unsigned
+CPosition GetPos (CPosition & Pos, unsigned Size);                                      //Récupération positions
+char GetDirection (char Direction);                                                     //Récupération direction
+void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);       //Menu principal
+void Jouer (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Menu pour choisir son mode de jeu
+void Classique (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);  //Mode de jeu classique, 3 Levelx de difficultés.
+void Perso( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Mode de jeu personnalisé, le joueur peut choisir les options de la partie.
+
+void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned & KNbCandies, unsigned & Coup);
+void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup);
+void Histoire( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);   //Mode histoire avec Level
