@@ -24,7 +24,7 @@ const unsigned Key(5); // Clé de chiffrement/déchiffrement par César
 void Couleur (const string & coul);                                                     //Permet d'afficher des couleurs sur la console
 void ClearScreen ();                                                                    //Vide la console
 void ClearBuf ();                                                                       //Vide le tampon de cin
-void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies);                        //Initialise la grille sans combinaison
+void InitGrid (CMat & Grid, unsigned Size, unsigned NbCandies);                        //Initialise la grille sans combinaison
 
 void DisplayGrid (const CMat & Grid);                                                   //Affiche la grille
 void MakeAMove (CMat & Grid, unsigned & Score);                                         //Donne la possibilité au joueur de faire un move
@@ -35,25 +35,25 @@ bool AtLeastThreeInARow  (const CMat & Grid, CPosition & Pos, unsigned & Howmany
 void RemovalInColumn (CMat & Grid, const CPosition & Pos, unsigned  Howmany);           //Remplace les combinaisons en colonne par des 0
 void RemovalInRow (CMat & Grid, const CPosition & Pos, unsigned  Howmany);              //Remplace les combinaisons en ligne par des 0
 void DeleteAllNumber(CMat & Grid, unsigned nbtodelete, unsigned & Score);               //Supprime tout les nbtodelete de la grille
-void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned KNbCandies);  //Mets à jour la grille en cherchant les combinaisons, remontant les 0 et replacer des cases
+void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned NbCandies);  //Mets à jour la grille en cherchant les combinaisons, remontant les 0 et replacer des cases
 
-void ClearAssociation (CMat & Grid, unsigned KNbCandies);                               //Supprime les combinaisons de la grille sans ajouter de score
-bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies);                                   //Remplace les 0 par des nombres aléatoires
+void ClearAssociation (CMat & Grid, unsigned NbCandies);                               //Supprime les combinaisons de la grille sans ajouter de score
+bool ReplaceEmpty (CMat & Grid, unsigned NbCandies);                                   //Remplace les 0 par des nombres aléatoires
 void DownGrid (CMat & Grid);                                                            //Fait tomber les cases quand il y a un trou en dessous d'eux
 
 unsigned GetUnsigned (unsigned min, unsigned max);                                      //Recupération d'un unsigned
 CPosition GetPos (CPosition & Pos, unsigned Size);                                      //Récupération positions
 char GetDirection (char Direction);                                                     //Récupération direction
-void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);       //Menu principal
-void Jouer (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Menu pour choisir son mode de jeu
-void Classique (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);  //Mode de jeu classique, 3 Levelx de difficultés.
-void Perso( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);      //Mode de jeu personnalisé, le joueur peut choisir les options de la partie.
+void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);       //Menu principal
+void Jouer (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);      //Menu pour choisir son mode de jeu
+void Classique (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);  //Mode de jeu classique, 3 Levelx de difficultés.
+void Perso( CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);      //Mode de jeu personnalisé, le joueur peut choisir les options de la partie.
 
-void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned & KNbCandies, unsigned & Coup);
-void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup, unsigned & Size);
-void Histoire( CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup);   //Mode histoire avec Level
+void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned & NbCandies, unsigned & Coup);
+void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & NbCandies, unsigned & Coup, unsigned & Size);
+void Histoire( CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup);   //Mode histoire avec Level
 
-void PlayGame (CMat & Grid, CPosition Pos, unsigned & Score, unsigned & KNbCandies, unsigned & Coup);  //Lance la partie jusqu'à qu'il n'y ai plus de coups
+void PlayGame (CMat & Grid, CPosition Pos, unsigned & Score, unsigned & NbCandies, unsigned & Coup);  //Lance la partie jusqu'à qu'il n'y ai plus de coups
 
 void Couleur (const string & coul)
 {
@@ -65,7 +65,7 @@ void ClearScreen ()
     cout << "\033[H\033[2J";
 } // ClearScreen ()
 
-void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies)
+void InitGrid (CMat & Grid, unsigned Size, unsigned NbCandies)
 {
     Grid.resize (Size, vector <unsigned> (Size));
     srand(time(NULL));
@@ -73,13 +73,13 @@ void InitGrid (CMat & Grid, unsigned Size, unsigned KNbCandies)
     {
         for (unsigned j(0); j < Grid[i].size(); ++j)
         {
-            Grid [i][j] = rand()%KNbCandies+1;
+            Grid [i][j] = rand()%NbCandies+1;
         }
     }
-    ClearAssociation (Grid, KNbCandies);
+    ClearAssociation (Grid, NbCandies);
 } // InitGrid ()
 
-void ClearAssociation (CMat & Grid, unsigned KNbCandies)
+void ClearAssociation (CMat & Grid, unsigned NbCandies)
 {
     CPosition Pos;
     unsigned Howmany;
@@ -93,10 +93,10 @@ void ClearAssociation (CMat & Grid, unsigned KNbCandies)
         {
             RemovalInRow (Grid, Pos, Howmany);
         }
-    } while (ReplaceEmpty(Grid, KNbCandies));
+    } while (ReplaceEmpty(Grid, NbCandies));
 }
 
-bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies)
+bool ReplaceEmpty (CMat & Grid, unsigned NbCandies)
 {
     srand(time(NULL));
     bool check = false;
@@ -106,7 +106,7 @@ bool ReplaceEmpty (CMat & Grid, unsigned KNbCandies)
         {
             if (Grid [i][j] == 0)
             {
-                Grid [i][j] = rand()%KNbCandies+1;
+                Grid [i][j] = rand()%NbCandies+1;
                 //cout << "remplacement de la case" << i+1 << j+1 << endl;
                 check = true;
             }
@@ -388,7 +388,7 @@ void DeleteCross (CMat & Grid, const CPosition & Pos)
     DisplayGrid (Grid);
 } //DeleteCross () */
 
-void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned KNbCandies)
+void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned NbCandies)
 {
     unsigned Howmany;
     do
@@ -421,7 +421,7 @@ void UpdateGrid (CMat & Grid, CPosition & Pos, unsigned & Score, unsigned KNbCan
             sleep(1);
             DownGrid (Grid);                            //REMONTE LES 0
         }
-    }  while (ReplaceEmpty (Grid, KNbCandies));
+    }  while (ReplaceEmpty (Grid, NbCandies));
 }
 
 void DisplayFile (const string & File)
@@ -473,7 +473,7 @@ void ClearBuf ()
 
 }// ClearBuf ()
 
-void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned  & KNbCandies, unsigned & Coup)
+void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Grid, unsigned  & NbCandies, unsigned & Coup)
 {
     ifstream ifs;
     bool check=true;
@@ -511,7 +511,7 @@ void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Gr
             }
             else if(Instance == 1)
             {
-                KNbCandies = stoi(Str);
+                NbCandies = stoi(Str);
                 Instance = 2;
             }
             else if(Instance == 2)
@@ -541,14 +541,14 @@ void RetrieveDataLevel(const string & NameLevel, vector <vector <unsigned>> & Gr
     }
 } //RetrieveDataLevel()
 
-void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & KNbCandies, unsigned & Coup, unsigned & Size)
+void LoadLevel (const string & NameLevel, CMat & Grid, unsigned & NbCandies, unsigned & Coup, unsigned & Size)
 {
     ClearScreen();
     ClearBuf();
-    RetrieveDataLevel(NameLevel, Grid, KNbCandies, Coup);
+    RetrieveDataLevel(NameLevel, Grid, NbCandies, Coup);
     Size = Grid.size();
-    ReplaceEmpty(Grid, KNbCandies);
-    ClearAssociation (Grid, KNbCandies);
+    ReplaceEmpty(Grid, NbCandies);
+    ClearAssociation (Grid, NbCandies);
 } //LoadLevel()
 
 unsigned GetUnsigned (unsigned min, unsigned max)
@@ -591,7 +591,7 @@ char GetDirection (char Direction)
     return Direction;
 } //GetDirection()
 
-void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
+void Menu (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("menu.txt");
@@ -601,7 +601,7 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
         case 1:
             ClearScreen();
             ClearBuf();
-            Jouer(Grid, Size, KNbCandies, Coup);
+            Jouer(Grid, Size, NbCandies, Coup);
             break;
         case 2: //A faire
             cout << "Options" << endl;
@@ -616,7 +616,7 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
                 cin>> quitregles;
                 ClearBuf ();
                 if (quitregles == 'Q' || quitregles == 'q')
-                    Menu(Grid, Size, KNbCandies, Coup);
+                    Menu(Grid, Size, NbCandies, Coup);
             }
             break;
         case 4:
@@ -629,7 +629,7 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
                 cin>> quitscores;
                 ClearBuf ();
                 if (quitscores == 'Q' || quitscores == 'q')
-                    Menu(Grid, Size, KNbCandies, Coup);
+                    Menu(Grid, Size, NbCandies, Coup);
             }
             break;
             break;
@@ -639,7 +639,7 @@ void Menu (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
     }
 } //Menu ()
 
-void Jouer (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
+void Jouer (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("jouer.txt");
@@ -649,27 +649,27 @@ void Jouer (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup
         case 1:
             ClearScreen();
             ClearBuf();
-            Classique(Grid, Size, KNbCandies, Coup);
+            Classique(Grid, Size, NbCandies, Coup);
             break;
         case 2:
             ClearScreen();
             ClearBuf();
-            Perso(Grid, Size, KNbCandies, Coup);
+            Perso(Grid, Size, NbCandies, Coup);
             break;
         case 3:
             ClearScreen();
             ClearBuf();
-            Histoire(Grid, Size, KNbCandies, Coup);
+            Histoire(Grid, Size, NbCandies, Coup);
             break;
         case 4:
             ClearScreen();
             ClearBuf ();
-            Menu(Grid, Size, KNbCandies, Coup);
+            Menu(Grid, Size, NbCandies, Coup);
             break;
     }
 }// Jouer ()
 
-void Classique (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
+void Classique (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("classique.txt");
@@ -678,29 +678,29 @@ void Classique (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & 
     {
         case 1: //facile
             Size = 10;
-            KNbCandies = 5;
+            NbCandies = 5;
             Coup = 20;
-            InitGrid (Grid, Size, KNbCandies);
+            InitGrid (Grid, Size, NbCandies);
             break;
         case 2: //normal
             Size = 8;
-            KNbCandies = 6;
+            NbCandies = 6;
             Coup = 15;
-            InitGrid (Grid, Size, KNbCandies);
+            InitGrid (Grid, Size, NbCandies);
             break;
         case 3: //difficile
             Size = 6;
-            KNbCandies = 8;
+            NbCandies = 8;
             Coup = 2;
-            InitGrid (Grid, Size, KNbCandies);
+            InitGrid (Grid, Size, NbCandies);
             break;
         case 4: //retour
-            Jouer(Grid, Size, KNbCandies, Coup);
+            Jouer(Grid, Size, NbCandies, Coup);
             break;
     }
 }// Classique ()
 
-void Perso (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
+void Perso (CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("perso.txt");
@@ -709,15 +709,15 @@ void Perso (CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup
     Size = GetUnsigned (5,30);
 
     cout << "Numero de bonbon max (4 - 9) : ";
-    KNbCandies = GetUnsigned (4,9);
+    NbCandies = GetUnsigned (4,9);
 
     cout << "Nombre de coup max (1 - 100) : ";
     Coup = GetUnsigned (1,100);
 
-    InitGrid (Grid, Size, KNbCandies);
+    InitGrid (Grid, Size, NbCandies);
 } //Perso ()
 
-void Histoire(CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Coup)
+void Histoire(CMat & Grid, unsigned & Size, unsigned & NbCandies, unsigned & Coup)
 {
     ClearScreen();
     DisplayFile  ("histoire.txt");
@@ -726,29 +726,29 @@ void Histoire(CMat & Grid, unsigned & Size, unsigned & KNbCandies, unsigned & Co
     switch (choix)
     {
         case 1:
-            LoadLevel ("Level1.txt", Grid, KNbCandies, Coup, Size);
+            LoadLevel ("Level1.txt", Grid, NbCandies, Coup, Size);
             break;
         case 2:
-            LoadLevel ("Level2.txt", Grid, KNbCandies, Coup, Size);
+            LoadLevel ("Level2.txt", Grid, NbCandies, Coup, Size);
             break;
         case 3:
-            LoadLevel ("Leve3.txt", Grid, KNbCandies, Coup, Size);
+            LoadLevel ("Leve3.txt", Grid, NbCandies, Coup, Size);
             break;
         case 4:
-            LoadLevel ("Level4.txt", Grid, KNbCandies, Coup, Size);
+            LoadLevel ("Level4.txt", Grid, NbCandies, Coup, Size);
             break;
         case 5:
-            LoadLevel ("Level5.txt", Grid, KNbCandies, Coup, Size);
+            LoadLevel ("Level5.txt", Grid, NbCandies, Coup, Size);
             break;
         case 6:
             ClearScreen();
             ClearBuf ();
-            Jouer(Grid, Size, KNbCandies, Coup);
+            Jouer(Grid, Size, NbCandies, Coup);
             break;
     }
 } //Histoire()
 
-void PlayGame (CMat & Grid, CPosition Pos, unsigned & Score, unsigned & KNbCandies, unsigned & Coup)
+void PlayGame (CMat & Grid, CPosition Pos, unsigned & Score, unsigned & NbCandies, unsigned & Coup)
 {
     for ( ; Coup != 0 ; Coup--)
     {
@@ -762,7 +762,7 @@ void PlayGame (CMat & Grid, CPosition Pos, unsigned & Score, unsigned & KNbCandi
         DisplayGrid (Grid);
         sleep(1);
 
-        UpdateGrid (Grid, Pos, Score, KNbCandies);
+        UpdateGrid (Grid, Pos, Score, NbCandies);
     }
     DisplayGrid (Grid);
     cout << "Partie termine !" << endl
@@ -775,15 +775,15 @@ int main()
     unsigned Score = 0;     //Score
 
     unsigned Size;          //Taille de la grille
-    unsigned KNbCandies;    //Numéro max dans la grille
+    unsigned NbCandies;    //Numéro max dans la grille
     unsigned Coup;          //Nombre de coups max
 
     while (true)
     {
         CMat Grid;
-        Menu(Grid, Size, KNbCandies, Coup);
+        Menu(Grid, Size, NbCandies, Coup);
 
-        PlayGame (Grid, Pos, Score, KNbCandies, Coup);
+        PlayGame (Grid, Pos, Score, NbCandies, Coup);
 
         SaveScores(Score, Key);
 
