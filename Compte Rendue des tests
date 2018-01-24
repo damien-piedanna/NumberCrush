@@ -1,7 +1,11 @@
--Entre les parties on ne remet pas le score à zéro. Si je lance une partie et que je fais 100 de scores, à la prochaine partie je
-commence à 100 de scores, etc ...
+XXX <=> Traité, à tester.
 
--En tapant de la merde au niveau de l'enregistrement du pseudo dans le tableau des scores pour le niveau 5, 
+
+
+XXX - Entre les parties on ne remet pas le score à zéro. Si je lance une partie et que je fais 100 de scores, à la prochaine partie je
+commence à 100 de scores, etc ...   
+
+XXX - En tapant de la merde au niveau de l'enregistrement du pseudo dans le tableau des scores pour le niveau 5, 
 le terminal ne repondais plus et à un moment j'ai eu le message "ca c'est mal passe quelque part" puis le terminal cest fermé.
 Effectivement bug au niveau du moment ou on enregistre son pseudo si on tape de la merde (User imput)
 
