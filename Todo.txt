@@ -1,7 +1,7 @@
 XXX <=> Traité et à tester
 
 
--Rajouter dans DisplayFile tout les alternatives (quand le programme n'arrive pas à charger le fichier)
+XXX - Rajouter dans DisplayFile tout les alternatives (quand le programme n'arrive pas à charger le fichier)
                                                  
 -Rajouter la fonction de clément pour créer les niveaux   NumberCrushIUT/Ancien morceau de code/fonction/LevelCreator.cpp
         La fonction marche normalement. Juste en executant LevelCreator.cpp on arrive à créer un niveau.
