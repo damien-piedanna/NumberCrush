@@ -1,2 +1,21 @@
 -Entre les parties on ne remet pas le score à zéro. Si je lance une partie et que je fais 100 de scores, à la prochaine partie je
 commence à 100 de scores, etc ...
+
+-En tapant de la merde au niveau de l'enregistrement du pseudo dans le tableau des scores pour le niveau 5, 
+le terminal ne repondais plus et à un moment j'ai eu le message "ca c'est mal passe quelque part" puis le terminal cest fermé.
+Effectivement bug au niveau du moment ou on enregistre son pseudo si on tape de la merde (User imput)
+
+Suite à ce crash, je ne peut plus compiler le programme (:-1: erreur : [Makefile] Error 3)
+
+A chaque fois que je tente d'entrer mon pseudo pour tableau des scores niveau 5, ça tourne mal
+Je tente de rentrer un score dans chaque tableau
+
+Classique : aucun pb
+Niveau 1  : pb  "ca c'est mal passe quelque part"
+Niveau 2  : pb  "ca c'est mal passe quelque part"
+Niveau 3  : pb  "echec d'ouverture du fichier"
+Niveau 4  : pb  "ca c'est mal passe quelque part"
+Niveau 5  : pb  "ca c'est mal passe quelque part"
+
+Peut etre cest juste un problème dans les fichiers des tableau des scores (.score)
+Ce n'est pas un pb de user imput car meme quand je tape les bons trucs ca marche pas.
