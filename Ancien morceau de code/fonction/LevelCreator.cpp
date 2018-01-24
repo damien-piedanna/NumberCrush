@@ -30,7 +30,7 @@ bool TestValeurDansString(string & Str, unsigned & GridSize)
 }// TestValeurDansString ()
 
 void LevelCreator() {
-    cout << "Choisissez un nom pour votre niveau (max 20 caracteres et ne pas utiliser deux fois le meme nom ou ne rien saisir)" << endl << endl;
+    cout << "Choisissez un nom pour votre niveau / mettre a jour un niveau (max 20 caracteres et champs obligatoire)" << endl << endl;
     string NomLevel; // rajouter le test d'existence du fichier
     while(true) {
         bool NoSlash=true;
@@ -38,14 +38,14 @@ void LevelCreator() {
         getline(cin,NomLevel);
         if(NomLevel.size() > 20 || NomLevel.size() == 0) {
             ClearScreen();
-            cout << "Choisissez un nom pour votre niveau (max 20 caracteres et ne pas utiliser deux fois le meme nom ou ne rien saisir)" << endl << endl;
+            cout << "Choisissez un nom pour votre niveau / mettre a jour un niveau (max 20 caracteres et champs obligatoire)" << endl << endl;
             cout << "Respectez les consignes !!!" << endl << endl;
             continue;
         }
         for(unsigned i=0; i < NomLevel.size(); ++i) {
             if(NomLevel[i]=='/') {
                 ClearScreen();
-                cout << "Choisissez un nom pour votre niveau (max 20 caracteres et ne pas utiliser deux fois le meme nom ou ne rien saisir)" << endl << endl;
+                cout << "Choisissez un nom pour votre niveau / mettre a jour un niveau (max 20 caracteres et champs obligatoire)" << endl << endl;
                 cout << "Les / sont interdits dans les noms de fichier sous linux" << endl << endl;
                 NoSlash=false;
                 break;
