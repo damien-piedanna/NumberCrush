@@ -16,8 +16,6 @@ void DisplayGridCreator(unsigned & i, vector <string> & StockDeVar, unsigned & G
     }
 }
 
-
-
 bool TestValeurDansString(string & Str, unsigned & GridSize)
 {
     if(Str.size() != GridSize) return false;
@@ -120,15 +118,13 @@ void LevelCreator() {
     string LigneTmp;
     ClearBuf();
     for(unsigned i=0; i < GridSize; ++i) {
-
         DisplayGridCreator(i,StockDeVar,GridSize);
-
         while(true) {
             getline(cin, LigneTmp);
             if(!TestValeurDansString(LigneTmp, GridSize)) {
                 ClearScreen();
                 DisplayGridCreator(i,StockDeVar,GridSize);
-                cout << "Veuillez respecter les indications données !" << endl << endl;
+                cout << "Veuillez respecter les indications donnees !" << endl << endl;
                 continue;
             }
             ClearScreen();
@@ -140,5 +136,5 @@ void LevelCreator() {
     for(unsigned i=0; i < StockDeVar.size(); ++i) {
         ofs << StockDeVar[i] << endl;
     }
-    cout << "Bravo, votre niveau a ete cree avec succes" << endl;
+    cout << "Bravo, votre niveau a ete cree avec succes !" << endl;
 } // LevelCreator ()
