@@ -1,5 +1,0 @@
-* 10 niveaux classique
-	 avec la taille de la grille qui varie, le nombres de couleurs, le nombre de coup max [à définir]
-
-*5 niveaux "contre la montre"
-	nombre de coup illimité, temps délimité, grille infini
