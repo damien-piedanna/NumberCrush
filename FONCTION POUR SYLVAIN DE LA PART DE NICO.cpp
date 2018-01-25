@@ -19,6 +19,7 @@ bool TestFichier()
     }
     if(Cpt==0)
     {
+        cout << "T'as merdé dans ton nom de fichier" << endl;
         return false;
     }
     return false;
@@ -27,6 +28,7 @@ bool TestFichier()
 int main()
 {
     cout << "Hello World!" << endl;
-    cout << TestFichier() << endl;
+    if(TestFichier())
+        cout <<"load level" << endl;
     return 0;
 }
