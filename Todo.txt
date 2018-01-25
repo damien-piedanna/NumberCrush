@@ -9,6 +9,8 @@ XXX - Rajouter dans DisplayFile tout les alternatives (quand le programme n'arri
                                                   
 XXX - Corriger Bug trouver dans le compte rendue du test
 
-- Fixer le bug du "Sweet" lorsque la grille est initialisée et vidée.
+XXX - Fixer le bug du "Sweet" lorsque la grille est initialisée et vidée.
 
 Optionnel : Rajouter le power-up
+
+Damien : J'ai ajouter le fait qu'on puisse creer des grilles rectangulaire, il faut tester ça et décider où est ce qu'on le mets en place, pour les test j'ai modifis les valeurs du mode classique
