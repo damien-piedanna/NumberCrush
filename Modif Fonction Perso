@@ -23,7 +23,7 @@ void Perso (CMat & Grid, unsigned & Size_col, unsigned & Size_lin, unsigned & Nb
     LvlScores="perso";
     ClearScreen();
     DisplayFile  ("../G4_Legrand_Piedanna_Prat_Robbe_Trouin/Nos_fichiers/menus_txt/perso.txt");
-    unsigned choix = GetUnsigned (1,6);
+    unsigned choix = GetUnsigned (1,4);
 
     switch (choix)
     {
