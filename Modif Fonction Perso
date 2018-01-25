@@ -1,0 +1,49 @@
+void PartiePerso (CMat & Grid, unsigned & Size_col, unsigned & Size_lin, unsigned & NbCandies, unsigned & Coup, string & LvlScores)
+{
+    cout << "Nombre de colonne (5 - 30) : ";
+    Size_col = GetUnsigned (5,30);
+
+    cout << "Nombre de ligne (5 - 30) : ";
+    Size_lin = GetUnsigned (5,30);
+
+    cout << "Numero de bonbon max (4 - 8) : ";
+    NbCandies = GetUnsigned (4,8);
+
+    cout << "Nombre de coup max (1 - 100) : ";
+    Coup = GetUnsigned (1,100);
+
+    InitGrid2 (Grid, Size_col, Size_lin, NbCandies);
+}
+
+
+
+
+void Perso (CMat & Grid, unsigned & Size_col, unsigned & Size_lin, unsigned & NbCandies, unsigned & Coup, string & LvlScores)
+{
+    LvlScores="perso";
+    ClearScreen();
+    DisplayFile  ("../G4_Legrand_Piedanna_Prat_Robbe_Trouin/Nos_fichiers/menus_txt/perso.txt");
+    unsigned choix = GetUnsigned (1,6);
+
+    switch (choix)
+    {
+    case 1:
+        ClearScreen();
+        PartiePerso(CMat,Size_col,Size_lin,NbCandies,Coup,LvlScores);
+        break;
+    case 2:
+        ClearScreen();
+        LevelCreator();
+        break;
+    case 3:
+        ClearScreen();
+        //FONCTION DE NICOLAS POUR CHARGER LE NIVEAU
+        break;
+    case 4:
+        ClearScreen();
+        ClearBuf ();
+        Jouer(Grid, Size_col, Size_lin, NbCandies, Coup, LvlScores, ScoreToWin);
+        break;
+    }
+    
+} // PartiePerso ()
