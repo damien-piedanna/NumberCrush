@@ -1,0 +1,28 @@
+<map id="Perso" name="Perso">
+<area shape="rect" id="node2" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="908,404,985,431"/>
+<area shape="rect" id="node3" href="$menu_8cpp.html#a5179893a33a4f75b7cfef53c52ee46b7" title="DisplayFile ouvre un fichier texte, si il existe, sinon creer un menu avec lequel l&#39;utilisateur pourr..." alt="" coords="434,1050,505,1076"/>
+<area shape="rect" id="node4" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="591,948,671,975"/>
+<area shape="rect" id="node5" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="769,556,831,583"/>
+<area shape="rect" id="node6" href="$menu_8cpp.html#a46c68463f0090ea6f6ecec0ed4aadff6" title="PartiePerso permet de jouer une partie personalisée. " alt="" coords="432,1455,507,1482"/>
+<area shape="rect" id="node9" href="$creator_8cpp.html#ac5b154448812bb081d2447074cd87074" title="LevelCreator Permet de creer son propre niveau. " alt="" coords="430,266,509,292"/>
+<area shape="rect" id="node18" href="$menu_8cpp.html#a8ada07802305465f73b0426315a84eb6" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="101,695,153,722"/>
+<area shape="rect" id="node19" href="$menu_8cpp.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="201,1100,248,1127"/>
+<area shape="rect" id="node22" href="$menu_8cpp.html#a482279a8f13d1584d44c1b7af318d0f3" title="LoadLevelCreated permet de charger un niveau precedement créer. " alt="" coords="417,492,521,519"/>
+<area shape="rect" id="node7" href="$gridmanage_8cpp.html#a1316a244ce48366dc28de92ff5f14c10" title="InitGrid2 permet d&#39;initialiser la grille. " alt="" coords="601,1480,661,1507"/>
+<area shape="rect" id="node8" href="$move_8cpp.html#a06bfb1227b403c41eadb9ec866a95ada" title="ClearAssociation permet de bien detecter quand il y a une combinaison en ligne et en colonne en même ..." alt="" coords="751,1480,849,1507"/>
+<area shape="rect" id="node10" href="$creator_8cpp.html#a859e173b6c4c68a3967e292e07156c4c" title="UserImputNomLevel Demande à l&#39;utilisateur de rentrer le nom de son niveau. " alt="" coords="743,303,857,330"/>
+<area shape="rect" id="node11" href="$creator_8cpp.html#a2c4a3a29d64eb7a4da2b35c36a505959" title="UserImputTailleGrille Demande à l&#39;utilisateur de rentrer la taille de son niveau. ..." alt="" coords="573,303,689,330"/>
+<area shape="rect" id="node12" href="$creator_8cpp.html#af55af691118f98169b1b4f27e2505534" title="UserImputScoreToWin Demande à l&#39;utilisateur de rentrer le score a atteindre pour gagner. " alt="" coords="569,354,692,380"/>
+<area shape="rect" id="node13" href="$creator_8cpp.html#a7d31db69c690f75c461db2bab0c1d565" title="UserImputNbCandies Demande à l&#39;utilisateur de rentrer le nombre de bonbon different de son niveau..." alt="" coords="572,404,689,431"/>
+<area shape="rect" id="node14" href="$creator_8cpp.html#af01f84194c7fdaa06d3f449dc175a3e4" title="UserImputCoups Demande à l&#39;utilisateur de rentrer le nombre de coup de son niveau. " alt="" coords="582,455,679,482"/>
+<area shape="rect" id="node15" href="$creator_8cpp.html#a74366a813bccf3b22b6eec55d7da3bd1" title="UserImputNiveau demande à l&#39;utilisateur de creer son niveau en entrant des 0 et des 1..." alt="" coords="581,151,680,178"/>
+<area shape="rect" id="node16" href="$creator_8cpp.html#a621c2e300252849abc9c8e19e15106e6" title="DisplayGridCreator permet d&#39;afficher la grille que l&#39;utilisateur est en train de creer. " alt="" coords="747,151,853,178"/>
+<area shape="rect" id="node17" href="$creator_8cpp.html#a1921db07085f9ae91333819423a194de" title="TestValeurDansString verifie que la chaine Str contient bien uniquement des 0 et des 1 et qu&#39;elle fai..." alt="" coords="740,100,860,127"/>
+<area shape="rect" id="node23" href="$menu_8cpp.html#ade9d6ea45ddcb1580cbe8e17e4883629" title="RetourMenu permet de retourner au menu principal. " alt="" coords="592,607,669,634"/>
+<area shape="rect" id="node25" href="$menu_8cpp.html#a7bb89df2bb71321185e2940ec171b44c" title="MenuScore" alt="" coords="296,695,369,722"/>
+<area shape="rect" id="node20" href="$menu_8cpp.html#a15534416877620c118dcf581969f6d0a" title="Classique ouvre le menu classique dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="300,1202,365,1228"/>
+<area shape="rect" id="node21" href="$menu_8cpp.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="309,898,357,924"/>
+<area shape="rect" id="node24" href="$menu_8cpp.html#ad4e01eee673977bd1ead5aa2ad964c3d" title="Histoire ouvre le menu histoire dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="305,1151,361,1178"/>
+<area shape="rect" id="node26" href="$scores_8cpp.html#a22cd16750e15f75e9b4a80154dcca0d7" title="AfficheScores affiche les scores depuis un fichier. " alt="" coords="427,644,511,671"/>
+<area shape="rect" id="node27" href="$jeu_8h.html#a36d0275c1ed8c065e6fdabfc9ad71dce" title="Key" alt="" coords="450,594,489,620"/>
+</map>

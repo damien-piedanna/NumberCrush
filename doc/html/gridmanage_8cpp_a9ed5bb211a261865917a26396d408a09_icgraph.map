@@ -1,0 +1,5 @@
+<map id="FiveInRow" name="FiveInRow">
+<area shape="rect" id="node2" href="$move_8h.html#a2f8787c7b11bad60861b16f347f6e5a4" title="UpdateGrid met a jour la grille en fonction des coups du joueur. " alt="" coords="123,5,196,32"/>
+<area shape="rect" id="node3" href="$jeu_8h.html#a65774287a4de0b6ca018fdca2cbdcc74" title="PlayGame lance la &quot;partie&quot; tant que le joueur dispose de coup pour jouer. " alt="" coords="244,5,313,32"/>
+<area shape="rect" id="node4" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="361,5,400,32"/>
+</map>

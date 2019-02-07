@@ -1,0 +1,7 @@
+<map id="LoadLevelCreated" name="LoadLevelCreated">
+<area shape="rect" id="node2" href="$menu_8h.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="157,56,205,83"/>
+<area shape="rect" id="node3" href="$menu_8h.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="253,56,300,83"/>
+<area shape="rect" id="node4" href="$menu_8h.html#ad4e01eee673977bd1ead5aa2ad964c3d" title="Histoire ouvre le menu histoire dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="353,5,409,32"/>
+<area shape="rect" id="node5" href="$menu_8h.html#a15534416877620c118dcf581969f6d0a" title="Classique ouvre le menu classique dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="348,56,413,83"/>
+<area shape="rect" id="node6" href="$menu_8h.html#a163c51d36d35d55ee3988a6c3fe66d8a" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="355,107,407,133"/>
+</map>

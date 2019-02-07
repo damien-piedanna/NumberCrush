@@ -1,0 +1,15 @@
+<map id="type.h" name="type.h">
+<area shape="rect" id="node2" href="$game_8h.html" title="game.h" alt="" coords="109,80,165,107"/>
+<area shape="rect" id="node5" href="$params_8h.html" title="params.h" alt="" coords="195,80,259,107"/>
+<area shape="rect" id="node6" href="$gridmanagement_8cpp.html" title="gridmanagement.cpp" alt="" coords="283,155,399,181"/>
+<area shape="rect" id="node8" href="$gridmanagement_8h.html" title="gridmanagement.h" alt="" coords="407,80,513,107"/>
+<area shape="rect" id="node3" href="$game_8cpp.html" title="game.cpp" alt="" coords="105,155,170,181"/>
+<area shape="rect" id="node4" href="$params_8cpp.html" title="params.cpp" alt="" coords="5,155,80,181"/>
+<area shape="rect" id="node7" href="$nsutil_8cpp.html" title="nsutil.cpp" alt="" coords="195,155,259,181"/>
+<area shape="rect" id="node9" href="$creator_8cpp.html" title="creator.cpp" alt="" coords="424,155,496,181"/>
+<area shape="rect" id="node10" href="$move_8h.html" title="move.h" alt="" coords="571,155,626,181"/>
+<area shape="rect" id="node12" href="$jeu_8cpp.html" title="jeu.cpp" alt="" coords="421,229,475,256"/>
+<area shape="rect" id="node13" href="$menu_8cpp.html" title="menu.cpp" alt="" coords="707,229,773,256"/>
+<area shape="rect" id="node11" href="$gridmanage_8cpp.html" title="gridmanage.cpp" alt="" coords="500,229,593,256"/>
+<area shape="rect" id="node14" href="$move_8cpp.html" title="move.cpp" alt="" coords="618,229,683,256"/>
+</map>

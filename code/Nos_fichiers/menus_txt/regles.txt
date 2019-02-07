@@ -1,0 +1,24 @@
+            ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **
+            **                                                 **
+            **           _____            _                    **
+            **          |  __ \          | |                   **
+| - - - - - **          | |__) |___  __ _| | ___  ___          **
+| - - - - - **          |  _  // _ \/ _` | |/ _ \/ __|         **
+            **          | | \ \  __/ (_| | |  __/\__ \         **
+            **          |_|  \_\___|\__, |_|\___||___/         **
+            **                       __/ |                     **
+            **                      |___/                      **
+            **                                                 **
+            **                                                 **
+            **    1  Le but du jeu est de faire disparaitre    ** 
+            **        le maximum de chiffre, pour cela vous    **
+            **        devez en aligner 3 au minimum à la       **
+            **        vertical où à l'horizontal               **               
+            **                                                 **
+| - - - - - **    2  Un bonus peuvent vous aider à             **
+| - - - - - **        améliorer votre score:                   **
+            **        - le génocide colorifique                **
+            **           |Détruit tous les chiffres            **
+            **           |vers lequel il est déplacé           **
+            **                                                 **
+            ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **

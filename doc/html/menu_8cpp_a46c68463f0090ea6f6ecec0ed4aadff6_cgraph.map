@@ -1,0 +1,11 @@
+<map id="PartiePerso" name="PartiePerso">
+<area shape="rect" id="node2" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="128,56,208,83"/>
+<area shape="rect" id="node4" href="$gridmanage_8cpp.html#a1316a244ce48366dc28de92ff5f14c10" title="InitGrid2 permet d&#39;initialiser la grille. " alt="" coords="138,107,198,133"/>
+<area shape="rect" id="node3" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="274,56,335,83"/>
+<area shape="rect" id="node5" href="$move_8cpp.html#a06bfb1227b403c41eadb9ec866a95ada" title="ClearAssociation permet de bien detecter quand il y a une combinaison en ligne et en colonne en même ..." alt="" coords="256,107,353,133"/>
+<area shape="rect" id="node6" href="$gridmanage_8cpp.html#a63e4a3640580b7b36533e16af6899bb7" title="AtLeastThreeInAColumn2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une m..." alt="" coords="401,5,539,32"/>
+<area shape="rect" id="node7" href="$gridmanage_8cpp.html#a319c3d4e1527e1ca5811afb49a964117" title="RemovalInColumn2 permet de supprimer les chiffres detectés par AtLeastThreeInAColumn2. " alt="" coords="415,56,525,83"/>
+<area shape="rect" id="node8" href="$gridmanage_8cpp.html#ae7cdb3c2af2d1ea8794b0cd120ff0c6d" title="AtLeastThreeInARow2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une même..." alt="" coords="409,107,531,133"/>
+<area shape="rect" id="node9" href="$gridmanage_8cpp.html#a061edfd44d45c99a1e14b9d2884db344" title="RemovalInRow2 permet de supprimer les chiffres detectés par AtLeastThreeInARow2. " alt="" coords="422,157,518,184"/>
+<area shape="rect" id="node10" href="$move_8cpp.html#a900aa39051d851e87f8a4ef754f52106" title="ReplaceEmpty permet de remplacer les cases vides après suppression. " alt="" coords="427,208,513,235"/>
+</map>

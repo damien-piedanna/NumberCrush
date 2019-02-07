@@ -1,0 +1,12 @@
+<map id="LevelCreator" name="LevelCreator">
+<area shape="rect" id="node2" href="$creator_8cpp.html#a859e173b6c4c68a3967e292e07156c4c" title="UserImputNomLevel Demande à l&#39;utilisateur de rentrer le nom de son niveau. " alt="" coords="356,461,499,488"/>
+<area shape="rect" id="node3" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="551,259,645,285"/>
+<area shape="rect" id="node4" href="$creator_8cpp.html#a2c4a3a29d64eb7a4da2b35c36a505959" title="UserImputTailleGrille Demande à l&#39;utilisateur de rentrer la taille de son niveau. ..." alt="" coords="155,309,299,336"/>
+<area shape="rect" id="node6" href="$creator_8cpp.html#af55af691118f98169b1b4f27e2505534" title="UserImputScoreToWin Demande à l&#39;utilisateur de rentrer le score a atteindre pour gagner. " alt="" coords="149,360,304,387"/>
+<area shape="rect" id="node7" href="$creator_8cpp.html#a7d31db69c690f75c461db2bab0c1d565" title="UserImputNbCandies Demande à l&#39;utilisateur de rentrer le nombre de bonbon different de son niveau..." alt="" coords="153,208,301,235"/>
+<area shape="rect" id="node8" href="$creator_8cpp.html#af01f84194c7fdaa06d3f449dc175a3e4" title="UserImputCoups Demande à l&#39;utilisateur de rentrer le nombre de coup de son niveau. " alt="" coords="166,259,287,285"/>
+<area shape="rect" id="node9" href="$creator_8cpp.html#a74366a813bccf3b22b6eec55d7da3bd1" title="UserImputNiveau demande à l&#39;utilisateur de creer son niveau en entrant des 0 et des 1..." alt="" coords="165,107,289,133"/>
+<area shape="rect" id="node5" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="391,259,464,285"/>
+<area shape="rect" id="node10" href="$creator_8cpp.html#a621c2e300252849abc9c8e19e15106e6" title="DisplayGridCreator permet d&#39;afficher la grille que l&#39;utilisateur est en train de creer. " alt="" coords="361,56,494,83"/>
+<area shape="rect" id="node11" href="$creator_8cpp.html#a1921db07085f9ae91333819423a194de" title="TestValeurDansString verifie que la chaine Str contient bien uniquement des 0 et des 1 et qu&#39;elle fai..." alt="" coords="352,5,503,32"/>
+</map>

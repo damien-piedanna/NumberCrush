@@ -1,0 +1,5 @@
+<map id="DisplayFile2" name="DisplayFile2">
+<area shape="rect" id="node2" href="$scores_8h.html#a22cd16750e15f75e9b4a80154dcca0d7" title="AfficheScores affiche les scores depuis un fichier. " alt="" coords="129,5,213,32"/>
+<area shape="rect" id="node3" href="$menu_8cpp.html#a7bb89df2bb71321185e2940ec171b44c" title="MenuScore" alt="" coords="261,5,335,32"/>
+<area shape="rect" id="node4" href="$menu_8h.html#a163c51d36d35d55ee3988a6c3fe66d8a" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="383,5,435,32"/>
+</map>

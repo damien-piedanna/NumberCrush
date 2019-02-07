@@ -1,0 +1,11 @@
+<map id="MScores" name="MScores">
+<area shape="rect" id="node2" href="$scores_8cpp.html#a9b650852602283c336398abcfd57dcf8" title="RetrieveData remplit VString par le contenu du fichier source. " alt="" coords="135,5,234,32"/>
+<area shape="rect" id="node3" href="$scores_8cpp.html#a7aa332af99139da485b3995286777f4f" title="DeChiffreCesar dechiffre les scores. " alt="" coords="128,56,241,83"/>
+<area shape="rect" id="node5" href="$scores_8cpp.html#ae2a68dc2a3a14cb5e8157a03b33dd6bd" title="ModifScores modifie le vecteur contenant les scores. " alt="" coords="137,157,232,184"/>
+<area shape="rect" id="node9" href="$scores_8cpp.html#a9745d6fb5d36429cf3a378a0039609b2" title="ChiffreCesar chiffre les scores pour eviter les modification. " alt="" coords="137,107,233,133"/>
+<area shape="rect" id="node10" href="$scores_8cpp.html#af64cd93b0a81993bf8a7cf9117e4f980" title="WriteData remplit FicSource par le contenue de VString. " alt="" coords="144,208,225,235"/>
+<area shape="rect" id="node4" href="$jeu_8h.html#a36d0275c1ed8c065e6fdabfc9ad71dce" title="Key" alt="" coords="330,56,375,83"/>
+<area shape="rect" id="node6" href="$scores_8cpp.html#a514a1426ae9ab8c439934cb90d9c6a7e" title="GetScore recupère le score d&#39;un joueur. " alt="" coords="314,107,391,133"/>
+<area shape="rect" id="node7" href="$scores_8cpp.html#a5918c1973e6cdbb0d656f9592e4912b7" title="DescendreLignes permet de classer les scors lors de l&#39;ajout d&#39;un nouveau. " alt="" coords="291,157,414,184"/>
+<area shape="rect" id="node8" href="$scores_8cpp.html#a5245ae946eccee4f03d79faa83f7ce7d" title="AjustementLignes ajuste le classement avec le score. " alt="" coords="289,208,416,235"/>
+</map>

@@ -1,0 +1,24 @@
+<map id="PlayGame" name="PlayGame">
+<area shape="rect" id="node2" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="651,245,745,272"/>
+<area shape="rect" id="node3" href="$move_8cpp.html#ad21ae960a3963de4ff8d296fd2671bae" title="DisplayGrid2 permet d&#39;afficher la grille actuelle. " alt="" coords="492,321,589,348"/>
+<area shape="rect" id="node7" href="$move_8cpp.html#a9e11b81772e0c1a43c60154d075ef901" title="MakeAMove2 demande à l&#39;utilisateur de bouger une case de la grille. " alt="" coords="307,157,409,184"/>
+<area shape="rect" id="node14" href="$consolemanagement_8cpp.html#aec72643c810ddc3303da38c65ba79744" title="Pause permet de mettre une pause d&#39;affichage. " alt="" coords="511,765,570,792"/>
+<area shape="rect" id="node15" href="$move_8cpp.html#a2f8787c7b11bad60861b16f347f6e5a4" title="UpdateGrid met a jour la grille en fonction des coups du joueur. " alt="" coords="136,563,224,589"/>
+<area shape="rect" id="node4" href="$consolemanagement_8cpp.html#aa4699d640d199fc44a0c98dc6a5d45f5" title="Couleur permet d&#39;afficher des couleurs sur la console. " alt="" coords="810,347,877,373"/>
+<area shape="rect" id="node5" href="$jeu_8h.html#afba9457d373dfb071b5b03db16545a94" title="CReset" alt="" coords="665,347,731,373"/>
+<area shape="rect" id="node6" href="$params2_8cpp.html#a5f0ce189f2c2429ab017e4ead72ad3b4" title="DisplayCouleur permet d&#39;afficher en fond une couleur. " alt="" coords="643,296,753,323"/>
+<area shape="rect" id="node8" href="$useractions_8cpp.html#a67fbd0e76e0fe329c8540ed1656bc67b" title="GetPos permet de demander à l&#39;utilisateur de rentrer une position dans la grille. ..." alt="" coords="507,5,574,32"/>
+<area shape="rect" id="node10" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="807,56,880,83"/>
+<area shape="rect" id="node11" href="$useractions_8cpp.html#a451a4ae7d7af8876f504111fdabf40e1" title="GetDirection affiche un choix de direction et permet de demander à l&#39;utilisateur de rentrer une direc..." alt="" coords="493,56,588,83"/>
+<area shape="rect" id="node12" href="$move_8cpp.html#a1c379b3c21d5c72bc32f7149e5647679" title="Move effectue un mouvement dans une grille, altérant le score du joueur. " alt="" coords="513,107,568,133"/>
+<area shape="rect" id="node9" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="649,5,747,32"/>
+<area shape="rect" id="node13" href="$move_8cpp.html#afc9cebca125ca725670e64501deccc1d" title="DeleteAllNumber efface les chiffres lors de l&#39;utilisation du bonus (bombe), update le score du joueur..." alt="" coords="637,107,759,133"/>
+<area shape="rect" id="node16" href="$gridmanage_8cpp.html#a63e4a3640580b7b36533e16af6899bb7" title="AtLeastThreeInAColumn2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une m..." alt="" coords="272,613,444,640"/>
+<area shape="rect" id="node17" href="$gridmanage_8cpp.html#a9a5e8513bae340487c959c25e03eded6" title="FiveInColumn permet de faire apparait un bonus quand il y a 5chiffres d&#39;affilé en ligne..." alt="" coords="307,664,409,691"/>
+<area shape="rect" id="node18" href="$gridmanage_8cpp.html#a319c3d4e1527e1ca5811afb49a964117" title="RemovalInColumn2 permet de supprimer les chiffres detectés par AtLeastThreeInAColumn2. " alt="" coords="289,715,427,741"/>
+<area shape="rect" id="node19" href="$move_8cpp.html#a9e675d9b26c3f9fdb2108ac5d90fb78d" title="DownGrid permet de faire &quot;tomber&quot; les chiffres lorsque d&#39;autres sont supprimés en dessous..." alt="" coords="318,816,398,843"/>
+<area shape="rect" id="node20" href="$gridmanage_8cpp.html#ae7cdb3c2af2d1ea8794b0cd120ff0c6d" title="AtLeastThreeInARow2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une même..." alt="" coords="281,360,435,387"/>
+<area shape="rect" id="node21" href="$gridmanage_8cpp.html#a9ed5bb211a261865917a26396d408a09" title="FiveInRow" alt="" coords="315,461,401,488"/>
+<area shape="rect" id="node22" href="$gridmanage_8cpp.html#a061edfd44d45c99a1e14b9d2884db344" title="RemovalInRow2 permet de supprimer les chiffres detectés par AtLeastThreeInARow2. " alt="" coords="299,512,417,539"/>
+<area shape="rect" id="node23" href="$move_8cpp.html#a900aa39051d851e87f8a4ef754f52106" title="ReplaceEmpty permet de remplacer les cases vides après suppression. " alt="" coords="304,563,412,589"/>
+</map>

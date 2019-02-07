@@ -1,0 +1,4 @@
+<map id="GetPos" name="GetPos">
+<area shape="rect" id="node2" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="120,5,219,32"/>
+<area shape="rect" id="node3" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="267,5,340,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="UserImputCoups" name="UserImputCoups">
+<area shape="rect" id="node2" href="$creator_8h.html#ac5b154448812bb081d2447074cd87074" title="LevelCreator Permet de creer son propre niveau. " alt="" coords="151,5,229,32"/>
+<area shape="rect" id="node3" href="$menu_8h.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="277,5,325,32"/>
+<area shape="rect" id="node4" href="$menu_8h.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="373,5,420,32"/>
+</map>

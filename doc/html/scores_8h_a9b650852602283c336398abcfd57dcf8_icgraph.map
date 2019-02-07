@@ -1,0 +1,8 @@
+<map id="RetrieveData" name="RetrieveData">
+<area shape="rect" id="node2" href="$scores_8h.html#a22cd16750e15f75e9b4a80154dcca0d7" title="AfficheScores affiche les scores depuis un fichier. " alt="" coords="133,5,217,32"/>
+<area shape="rect" id="node6" href="$scores_8cpp.html#a04cf257357e5c58911014b6e83504ab1" title="MScores" alt="" coords="271,56,333,83"/>
+<area shape="rect" id="node3" href="$menu_8cpp.html#a7bb89df2bb71321185e2940ec171b44c" title="MenuScore" alt="" coords="265,5,339,32"/>
+<area shape="rect" id="node4" href="$menu_8h.html#a163c51d36d35d55ee3988a6c3fe66d8a" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="399,5,451,32"/>
+<area shape="rect" id="node5" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="511,31,549,57"/>
+<area shape="rect" id="node7" href="$scores_8h.html#a69f9fc158e335a33d840266e8800bd57" title="SaveScores demande au joueur d&#39;enregistrer son nom. " alt="" coords="387,56,463,83"/>
+</map>

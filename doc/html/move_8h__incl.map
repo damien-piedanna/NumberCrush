@@ -1,0 +1,10 @@
+<map id="move.h" name="move.h">
+<area shape="rect" id="node2" href="$jeu_8h.html" title="jeu.h" alt="" coords="509,229,553,256"/>
+<area shape="rect" id="node10" href="$gridmanagement_8h.html" title="Correc_prof/gridmanagement.h" alt="" coords="123,229,285,256"/>
+<area shape="rect" id="node14" href="$gridmanage_8h.html" title="gridmanage.h" alt="" coords="595,155,677,181"/>
+<area shape="rect" id="node15" href="$consolemanagement_8h.html" title="consolemanagement.h" alt="" coords="371,155,493,181"/>
+<area shape="rect" id="node17" href="$params2_8h.html" title="Nos_fichiers/params2.h" alt="" coords="315,80,442,107"/>
+<area shape="rect" id="node7" href="$scores_8h.html" title="Nos_fichiers/scores.h" alt="" coords="472,304,589,331"/>
+<area shape="rect" id="node11" href="$type_8h.html" title="Correc_prof/type.h" alt="" coords="139,304,245,331"/>
+<area shape="rect" id="node13" href="$nsutil_8h.html" title="Correc_prof/nsutil.h" alt="" coords="5,304,115,331"/>
+</map>

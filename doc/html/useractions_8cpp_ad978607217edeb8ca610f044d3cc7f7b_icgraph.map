@@ -1,0 +1,12 @@
+<map id="GetUnsigned" name="GetUnsigned">
+<area shape="rect" id="node2" href="$menu_8h.html#a46c68463f0090ea6f6ecec0ed4aadff6" title="PartiePerso permet de jouer une partie personalisée. " alt="" coords="133,108,208,135"/>
+<area shape="rect" id="node3" href="$menu_8h.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="273,108,321,135"/>
+<area shape="rect" id="node4" href="$menu_8h.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="398,83,445,110"/>
+<area shape="rect" id="node5" href="$menu_8h.html#ad4e01eee673977bd1ead5aa2ad964c3d" title="Histoire ouvre le menu histoire dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="509,32,565,59"/>
+<area shape="rect" id="node6" href="$menu_8h.html#a15534416877620c118dcf581969f6d0a" title="Classique ouvre le menu classique dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="504,83,569,110"/>
+<area shape="rect" id="node7" href="$menu_8h.html#a163c51d36d35d55ee3988a6c3fe66d8a" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="511,134,563,160"/>
+<area shape="rect" id="node8" href="$menu_8cpp.html#a7bb89df2bb71321185e2940ec171b44c" title="MenuScore" alt="" coords="617,134,691,160"/>
+<area shape="rect" id="node9" href="$useractions_8h.html#a67fbd0e76e0fe329c8540ed1656bc67b" title="GetPos permet de demander à l&#39;utilisateur de rentrer une position dans la grille. ..." alt="" coords="143,311,199,338"/>
+<area shape="rect" id="node10" href="$move_8h.html#a9e11b81772e0c1a43c60154d075ef901" title="MakeAMove2 demande à l&#39;utilisateur de bouger une case de la grille. " alt="" coords="256,311,339,338"/>
+<area shape="rect" id="node11" href="$jeu_8h.html#a65774287a4de0b6ca018fdca2cbdcc74" title="PlayGame lance la &quot;partie&quot; tant que le joueur dispose de coup pour jouer. " alt="" coords="387,311,456,338"/>
+</map>

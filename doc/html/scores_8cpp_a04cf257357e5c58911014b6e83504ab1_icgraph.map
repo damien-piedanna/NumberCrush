@@ -1,0 +1,5 @@
+<map id="MScores" name="MScores">
+<area shape="rect" id="node2" href="$scores_8h.html#a69f9fc158e335a33d840266e8800bd57" title="SaveScores demande au joueur d&#39;enregistrer son nom. " alt="" coords="128,5,221,32"/>
+<area shape="rect" id="node3" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="269,5,308,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="356,5,407,32"/>
+</map>

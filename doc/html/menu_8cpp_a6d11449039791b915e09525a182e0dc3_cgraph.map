@@ -1,0 +1,15 @@
+<map id="LoadLevel" name="LoadLevel">
+<area shape="rect" id="node2" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="687,9,781,35"/>
+<area shape="rect" id="node3" href="$menu_8cpp.html#a506453ea84ef7c37d9a3fda6a4841e66" title="RetrieveDataLevel génère le niveau choisi à partir d&#39;un fichier texte, les paramètres changeront selo..." alt="" coords="135,59,265,86"/>
+<area shape="rect" id="node4" href="$move_8cpp.html#a900aa39051d851e87f8a4ef754f52106" title="ReplaceEmpty permet de remplacer les cases vides après suppression. " alt="" coords="345,85,453,111"/>
+<area shape="rect" id="node10" href="$move_8cpp.html#a06bfb1227b403c41eadb9ec866a95ada" title="ClearAssociation permet de bien detecter quand il y a une combinaison en ligne et en colonne en même ..." alt="" coords="139,186,261,213"/>
+<area shape="rect" id="node5" href="$consolemanagement_8cpp.html#aec72643c810ddc3303da38c65ba79744" title="Pause permet de mettre une pause d&#39;affichage. " alt="" coords="553,59,611,86"/>
+<area shape="rect" id="node6" href="$move_8cpp.html#ad21ae960a3963de4ff8d296fd2671bae" title="DisplayGrid2 permet d&#39;afficher la grille actuelle. " alt="" coords="533,110,631,137"/>
+<area shape="rect" id="node7" href="$consolemanagement_8cpp.html#aa4699d640d199fc44a0c98dc6a5d45f5" title="Couleur permet d&#39;afficher des couleurs sur la console. " alt="" coords="837,110,904,137"/>
+<area shape="rect" id="node8" href="$jeu_8h.html#afba9457d373dfb071b5b03db16545a94" title="CReset" alt="" coords="701,110,767,137"/>
+<area shape="rect" id="node9" href="$params2_8cpp.html#a5f0ce189f2c2429ab017e4ead72ad3b4" title="DisplayCouleur permet d&#39;afficher en fond une couleur. " alt="" coords="679,161,789,187"/>
+<area shape="rect" id="node11" href="$gridmanage_8cpp.html#a63e4a3640580b7b36533e16af6899bb7" title="AtLeastThreeInAColumn2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une m..." alt="" coords="313,135,485,162"/>
+<area shape="rect" id="node12" href="$gridmanage_8cpp.html#a319c3d4e1527e1ca5811afb49a964117" title="RemovalInColumn2 permet de supprimer les chiffres detectés par AtLeastThreeInAColumn2. " alt="" coords="331,186,468,213"/>
+<area shape="rect" id="node13" href="$gridmanage_8cpp.html#ae7cdb3c2af2d1ea8794b0cd120ff0c6d" title="AtLeastThreeInARow2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une même..." alt="" coords="322,237,477,263"/>
+<area shape="rect" id="node14" href="$gridmanage_8cpp.html#a061edfd44d45c99a1e14b9d2884db344" title="RemovalInRow2 permet de supprimer les chiffres detectés par AtLeastThreeInARow2. " alt="" coords="340,287,459,314"/>
+</map>

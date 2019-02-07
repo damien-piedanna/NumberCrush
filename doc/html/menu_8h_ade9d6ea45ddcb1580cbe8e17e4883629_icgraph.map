@@ -1,0 +1,8 @@
+<map id="RetourMenu" name="RetourMenu">
+<area shape="rect" id="node2" href="$menu_8cpp.html#a7bb89df2bb71321185e2940ec171b44c" title="MenuScore" alt="" coords="131,32,204,59"/>
+<area shape="rect" id="node3" href="$menu_8h.html#a163c51d36d35d55ee3988a6c3fe66d8a" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="278,76,330,103"/>
+<area shape="rect" id="node7" href="$menu_8h.html#a482279a8f13d1584d44c1b7af318d0f3" title="LoadLevelCreated permet de charger un niveau precedement créer. " alt="" coords="252,157,356,184"/>
+<area shape="rect" id="node4" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="408,5,447,32"/>
+<area shape="rect" id="node5" href="$menu_8h.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="499,107,547,133"/>
+<area shape="rect" id="node6" href="$menu_8h.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="404,107,451,133"/>
+</map>

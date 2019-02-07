@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['chiffrecesar',['ChiffreCesar',['../scores_8cpp.html#a9745d6fb5d36429cf3a378a0039609b2',1,'ChiffreCesar(string &amp;Ligne, const unsigned Key):&#160;scores.cpp'],['../scores_8h.html#a9745d6fb5d36429cf3a378a0039609b2',1,'ChiffreCesar(string &amp;Ligne, const unsigned Key):&#160;scores.cpp']]],
+  ['classique',['Classique',['../menu_8cpp.html#a15534416877620c118dcf581969f6d0a',1,'Classique(CMat &amp;Grid, unsigned &amp;Size_col, unsigned &amp;Size_lin, unsigned &amp;NbCandies, unsigned &amp;Coup, string &amp;LvlScores, unsigned &amp;ScoreToWin):&#160;menu.cpp'],['../menu_8h.html#a15534416877620c118dcf581969f6d0a',1,'Classique(CMat &amp;Grid, unsigned &amp;Size_col, unsigned &amp;Size_lin, unsigned &amp;NbCandies, unsigned &amp;Coup, string &amp;LvlScores, unsigned &amp;ScoreToWin):&#160;menu.cpp']]],
+  ['clearassociation',['ClearAssociation',['../move_8cpp.html#a06bfb1227b403c41eadb9ec866a95ada',1,'ClearAssociation(CMat &amp;Grid, unsigned NbCandies):&#160;move.cpp'],['../move_8h.html#a06bfb1227b403c41eadb9ec866a95ada',1,'ClearAssociation(CMat &amp;Grid, unsigned NbCandies):&#160;move.cpp']]],
+  ['clearbuf',['ClearBuf',['../consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35',1,'ClearBuf():&#160;consolemanagement.cpp'],['../consolemanagement_8h.html#affdb134559b42fc1888287c4c174df35',1,'ClearBuf():&#160;consolemanagement.cpp']]],
+  ['clearscreen',['ClearScreen',['../gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662',1,'ClearScreen():&#160;gridmanagement.cpp'],['../gridmanagement_8h.html#a6a3ca153f0817e8ba91a023b886bb662',1,'ClearScreen():&#160;gridmanagement.cpp']]],
+  ['color',['Color',['../gridmanagement_8cpp.html#ac9357ee33d7442ff035f7a0c2b61cce6',1,'Color(const string &amp;Col):&#160;gridmanagement.cpp'],['../gridmanagement_8h.html#a7f0df05a97c053bfa8a3e5863b0a0e80',1,'Color(const std::string &amp;Col):&#160;gridmanagement.h']]],
+  ['computescore',['ComputeScore',['../game_8cpp.html#a3539affded9a1d120e052d327560c066',1,'ComputeScore(unsigned Score):&#160;game.cpp'],['../game_8h.html#a3539affded9a1d120e052d327560c066',1,'ComputeScore(unsigned Score):&#160;game.cpp']]],
+  ['couleur',['Couleur',['../consolemanagement_8cpp.html#aa4699d640d199fc44a0c98dc6a5d45f5',1,'Couleur(const string &amp;coul):&#160;consolemanagement.cpp'],['../consolemanagement_8h.html#aa4699d640d199fc44a0c98dc6a5d45f5',1,'Couleur(const string &amp;coul):&#160;consolemanagement.cpp']]],
+  ['creset',['CReset',['../jeu_8h.html#afba9457d373dfb071b5b03db16545a94',1,'jeu.h']]]
+];

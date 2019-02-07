@@ -1,0 +1,39 @@
+<map id="jeu" name="jeu">
+<area shape="rect" id="node2" href="$menu_8cpp.html#a8ada07802305465f73b0426315a84eb6" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="220,575,272,601"/>
+<area shape="rect" id="node3" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="655,587,732,613"/>
+<area shape="rect" id="node6" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="787,397,848,424"/>
+<area shape="rect" id="node16" href="$jeu_8h.html#a36d0275c1ed8c065e6fdabfc9ad71dce" title="Key" alt="" coords="798,1487,837,1513"/>
+<area shape="rect" id="node17" href="$jeu_8cpp.html#a65774287a4de0b6ca018fdca2cbdcc74" title="PlayGame lance la &quot;partie&quot; tant que le joueur dispose de coup pour jouer. " alt="" coords="92,1081,161,1108"/>
+<area shape="rect" id="node33" href="$scores_8cpp.html#a69f9fc158e335a33d840266e8800bd57" title="SaveScores demande au joueur d&#39;enregistrer son nom. " alt="" coords="361,1613,437,1640"/>
+<area shape="rect" id="node4" href="$menu_8cpp.html#a5179893a33a4f75b7cfef53c52ee46b7" title="DisplayFile ouvre un fichier texte, si il existe, sinon creer un menu avec lequel l&#39;utilisateur pourr..." alt="" coords="658,347,729,373"/>
+<area shape="rect" id="node5" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="653,245,733,272"/>
+<area shape="rect" id="node7" href="$menu_8cpp.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="376,321,423,348"/>
+<area shape="rect" id="node11" href="$menu_8cpp.html#ade9d6ea45ddcb1580cbe8e17e4883629" title="RetourMenu permet de retourner au menu principal. " alt="" coords="519,752,597,779"/>
+<area shape="rect" id="node12" href="$menu_8cpp.html#a7bb89df2bb71321185e2940ec171b44c" title="MenuScore" alt="" coords="363,619,436,645"/>
+<area shape="rect" id="node8" href="$menu_8cpp.html#a15534416877620c118dcf581969f6d0a" title="Classique ouvre le menu classique dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="525,195,591,221"/>
+<area shape="rect" id="node9" href="$menu_8cpp.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="534,397,582,424"/>
+<area shape="rect" id="node10" href="$menu_8cpp.html#ad4e01eee673977bd1ead5aa2ad964c3d" title="Histoire ouvre le menu histoire dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="530,296,586,323"/>
+<area shape="rect" id="node13" href="$scores_8cpp.html#a22cd16750e15f75e9b4a80154dcca0d7" title="AfficheScores affiche les scores depuis un fichier. " alt="" coords="516,1107,600,1133"/>
+<area shape="rect" id="node14" href="$scores_8cpp.html#a9b650852602283c336398abcfd57dcf8" title="RetrieveData remplit VString par le contenu du fichier source. " alt="" coords="653,1284,733,1311"/>
+<area shape="rect" id="node15" href="$scores_8cpp.html#a7aa332af99139da485b3995286777f4f" title="DeChiffreCesar dechiffre les scores. " alt="" coords="648,1461,739,1488"/>
+<area shape="rect" id="node18" href="$move_8cpp.html#ad21ae960a3963de4ff8d296fd2671bae" title="DisplayGrid2 permet d&#39;afficher la grille actuelle. " alt="" coords="519,1208,597,1235"/>
+<area shape="rect" id="node19" href="$move_8cpp.html#a9e11b81772e0c1a43c60154d075ef901" title="MakeAMove2 demande à l&#39;utilisateur de bouger une case de la grille. " alt="" coords="358,904,441,931"/>
+<area shape="rect" id="node23" href="$consolemanagement_8cpp.html#aec72643c810ddc3303da38c65ba79744" title="Pause permet de mettre une pause d&#39;affichage. " alt="" coords="533,1360,583,1387"/>
+<area shape="rect" id="node24" href="$move_8cpp.html#a2f8787c7b11bad60861b16f347f6e5a4" title="UpdateGrid met a jour la grille en fonction des coups du joueur. " alt="" coords="209,1208,283,1235"/>
+<area shape="rect" id="node20" href="$useractions_8cpp.html#a67fbd0e76e0fe329c8540ed1656bc67b" title="GetPos permet de demander à l&#39;utilisateur de rentrer une position dans la grille. ..." alt="" coords="530,803,586,829"/>
+<area shape="rect" id="node21" href="$useractions_8cpp.html#a451a4ae7d7af8876f504111fdabf40e1" title="GetDirection affiche un choix de direction et permet de demander à l&#39;utilisateur de rentrer une direc..." alt="" coords="655,1031,732,1057"/>
+<area shape="rect" id="node22" href="$move_8cpp.html#a1c379b3c21d5c72bc32f7149e5647679" title="Move effectue un mouvement dans une grille, altérant le score du joueur. " alt="" coords="535,1157,581,1184"/>
+<area shape="rect" id="node25" href="$gridmanage_8cpp.html#a63e4a3640580b7b36533e16af6899bb7" title="AtLeastThreeInAColumn2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une m..." alt="" coords="331,1411,468,1437"/>
+<area shape="rect" id="node26" href="$gridmanage_8cpp.html#a9a5e8513bae340487c959c25e03eded6" title="FiveInColumn permet de faire apparait un bonus quand il y a 5chiffres d&#39;affilé en ligne..." alt="" coords="357,1461,441,1488"/>
+<area shape="rect" id="node27" href="$gridmanage_8cpp.html#a319c3d4e1527e1ca5811afb49a964117" title="RemovalInColumn2 permet de supprimer les chiffres detectés par AtLeastThreeInAColumn2. " alt="" coords="345,1107,454,1133"/>
+<area shape="rect" id="node28" href="$move_8cpp.html#a9e675d9b26c3f9fdb2108ac5d90fb78d" title="DownGrid permet de faire &quot;tomber&quot; les chiffres lorsque d&#39;autres sont supprimés en dessous..." alt="" coords="366,1157,433,1184"/>
+<area shape="rect" id="node29" href="$gridmanage_8cpp.html#ae7cdb3c2af2d1ea8794b0cd120ff0c6d" title="AtLeastThreeInARow2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une même..." alt="" coords="338,1208,461,1235"/>
+<area shape="rect" id="node30" href="$gridmanage_8cpp.html#a9ed5bb211a261865917a26396d408a09" title="FiveInRow" alt="" coords="365,1259,434,1285"/>
+<area shape="rect" id="node31" href="$gridmanage_8cpp.html#a061edfd44d45c99a1e14b9d2884db344" title="RemovalInRow2 permet de supprimer les chiffres detectés par AtLeastThreeInARow2. " alt="" coords="351,1309,447,1336"/>
+<area shape="rect" id="node32" href="$move_8cpp.html#a900aa39051d851e87f8a4ef754f52106" title="ReplaceEmpty permet de remplacer les cases vides après suppression. " alt="" coords="356,1056,443,1083"/>
+<area shape="rect" id="node34" href="$scores_8cpp.html#aa05241ade68e3b212bd7cb855b5e7495" title="GetStringName enregistre le nom du joueur. " alt="" coords="648,1081,739,1108"/>
+<area shape="rect" id="node35" href="$scores_8cpp.html#a04cf257357e5c58911014b6e83504ab1" title="MScores" alt="" coords="527,1613,589,1640"/>
+<area shape="rect" id="node36" href="$scores_8cpp.html#ae2a68dc2a3a14cb5e8157a03b33dd6bd" title="ModifScores modifie le vecteur contenant les scores. " alt="" coords="655,1613,732,1640"/>
+<area shape="rect" id="node37" href="$scores_8cpp.html#a9745d6fb5d36429cf3a378a0039609b2" title="ChiffreCesar chiffre les scores pour eviter les modification. " alt="" coords="654,1512,733,1539"/>
+<area shape="rect" id="node38" href="$scores_8cpp.html#af64cd93b0a81993bf8a7cf9117e4f980" title="WriteData remplit FicSource par le contenue de VString. " alt="" coords="660,1563,727,1589"/>
+</map>

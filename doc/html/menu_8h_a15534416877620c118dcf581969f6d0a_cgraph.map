@@ -1,0 +1,22 @@
+<map id="Classique" name="Classique">
+<area shape="rect" id="node2" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="599,195,677,221"/>
+<area shape="rect" id="node3" href="$menu_8cpp.html#a5179893a33a4f75b7cfef53c52ee46b7" title="DisplayFile ouvre un fichier texte, si il existe, sinon creer un menu avec lequel l&#39;utilisateur pourr..." alt="" coords="466,347,537,373"/>
+<area shape="rect" id="node4" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="461,600,541,627"/>
+<area shape="rect" id="node5" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="607,600,669,627"/>
+<area shape="rect" id="node6" href="$gridmanage_8cpp.html#a1316a244ce48366dc28de92ff5f14c10" title="InitGrid2 permet d&#39;initialiser la grille. " alt="" coords="471,701,531,728"/>
+<area shape="rect" id="node13" href="$menu_8cpp.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="119,535,165,561"/>
+<area shape="rect" id="node7" href="$move_8cpp.html#a06bfb1227b403c41eadb9ec866a95ada" title="ClearAssociation permet de bien detecter quand il y a une combinaison en ligne et en colonne en même ..." alt="" coords="589,347,687,373"/>
+<area shape="rect" id="node8" href="$gridmanage_8cpp.html#a63e4a3640580b7b36533e16af6899bb7" title="AtLeastThreeInAColumn2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une m..." alt="" coords="735,397,872,424"/>
+<area shape="rect" id="node9" href="$gridmanage_8cpp.html#a319c3d4e1527e1ca5811afb49a964117" title="RemovalInColumn2 permet de supprimer les chiffres detectés par AtLeastThreeInAColumn2. " alt="" coords="749,448,858,475"/>
+<area shape="rect" id="node10" href="$gridmanage_8cpp.html#ae7cdb3c2af2d1ea8794b0cd120ff0c6d" title="AtLeastThreeInARow2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une même..." alt="" coords="742,296,865,323"/>
+<area shape="rect" id="node11" href="$gridmanage_8cpp.html#a061edfd44d45c99a1e14b9d2884db344" title="RemovalInRow2 permet de supprimer les chiffres detectés par AtLeastThreeInARow2. " alt="" coords="755,347,851,373"/>
+<area shape="rect" id="node12" href="$move_8cpp.html#a900aa39051d851e87f8a4ef754f52106" title="ReplaceEmpty permet de remplacer les cases vides après suppression. " alt="" coords="760,245,847,272"/>
+<area shape="rect" id="node14" href="$menu_8cpp.html#a15534416877620c118dcf581969f6d0a" title="Classique ouvre le menu classique dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="329,752,394,779"/>
+<area shape="rect" id="node15" href="$menu_8cpp.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="213,347,261,373"/>
+<area shape="rect" id="node18" href="$menu_8cpp.html#a8ada07802305465f73b0426315a84eb6" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="335,499,387,525"/>
+<area shape="rect" id="node21" href="$menu_8cpp.html#ad4e01eee673977bd1ead5aa2ad964c3d" title="Histoire ouvre le menu histoire dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="333,448,389,475"/>
+<area shape="rect" id="node16" href="$menu_8cpp.html#a46c68463f0090ea6f6ecec0ed4aadff6" title="PartiePerso permet de jouer une partie personalisée. " alt="" coords="324,701,399,728"/>
+<area shape="rect" id="node17" href="$creator_8cpp.html#ac5b154448812bb081d2447074cd87074" title="LevelCreator Permet de creer son propre niveau. " alt="" coords="462,195,541,221"/>
+<area shape="rect" id="node19" href="$menu_8cpp.html#a482279a8f13d1584d44c1b7af318d0f3" title="LoadLevelCreated permet de charger un niveau precedement créer. " alt="" coords="309,245,413,272"/>
+<area shape="rect" id="node20" href="$menu_8cpp.html#a6d11449039791b915e09525a182e0dc3" title="LoadLevel va génerer le niveau creer par RetrieveDataLevel. " alt="" coords="467,245,535,272"/>
+</map>

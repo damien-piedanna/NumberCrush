@@ -1,0 +1,14 @@
+<map id="MenuScore" name="MenuScore">
+<area shape="rect" id="node2" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="493,5,571,32"/>
+<area shape="rect" id="node3" href="$menu_8cpp.html#a5179893a33a4f75b7cfef53c52ee46b7" title="DisplayFile ouvre un fichier texte, si il existe, sinon creer un menu avec lequel l&#39;utilisateur pourr..." alt="" coords="497,56,567,83"/>
+<area shape="rect" id="node4" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="492,208,572,235"/>
+<area shape="rect" id="node6" href="$scores_8cpp.html#a22cd16750e15f75e9b4a80154dcca0d7" title="AfficheScores affiche les scores depuis un fichier. " alt="" coords="127,385,211,412"/>
+<area shape="rect" id="node10" href="$jeu_8h.html#a36d0275c1ed8c065e6fdabfc9ad71dce" title="Key" alt="" coords="401,487,440,513"/>
+<area shape="rect" id="node11" href="$menu_8cpp.html#ade9d6ea45ddcb1580cbe8e17e4883629" title="RetourMenu permet de retourner au menu principal. " alt="" coords="130,195,207,221"/>
+<area shape="rect" id="node12" href="$menu_8cpp.html#a8ada07802305465f73b0426315a84eb6" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="278,132,330,159"/>
+<area shape="rect" id="node5" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="620,183,681,209"/>
+<area shape="rect" id="node7" href="$scores_8cpp.html#a9b650852602283c336398abcfd57dcf8" title="RetrieveData remplit VString par le contenu du fichier source. " alt="" coords="264,360,344,387"/>
+<area shape="rect" id="node8" href="$scores_8cpp.html#a712169541265cad2b701adbae94c295c" title="DisplayFile2 permet d&#39;afficher un fichier. " alt="" coords="266,411,342,437"/>
+<area shape="rect" id="node9" href="$scores_8cpp.html#a7aa332af99139da485b3995286777f4f" title="DeChiffreCesar dechiffre les scores. " alt="" coords="259,461,349,488"/>
+<area shape="rect" id="node13" href="$menu_8cpp.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="397,107,444,133"/>
+</map>

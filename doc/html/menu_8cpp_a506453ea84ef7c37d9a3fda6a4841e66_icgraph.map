@@ -1,0 +1,6 @@
+<map id="RetrieveDataLevel" name="RetrieveDataLevel">
+<area shape="rect" id="node2" href="$menu_8h.html#a6d11449039791b915e09525a182e0dc3" title="LoadLevel va génerer le niveau creer par RetrieveDataLevel. " alt="" coords="157,31,225,57"/>
+<area shape="rect" id="node3" href="$menu_8h.html#ad4e01eee673977bd1ead5aa2ad964c3d" title="Histoire ouvre le menu histoire dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="297,5,353,32"/>
+<area shape="rect" id="node5" href="$menu_8h.html#a482279a8f13d1584d44c1b7af318d0f3" title="LoadLevelCreated permet de charger un niveau precedement créer. " alt="" coords="273,56,377,83"/>
+<area shape="rect" id="node4" href="$menu_8h.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="425,5,472,32"/>
+</map>

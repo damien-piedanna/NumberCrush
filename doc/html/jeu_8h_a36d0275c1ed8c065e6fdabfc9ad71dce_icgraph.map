@@ -1,0 +1,16 @@
+<map id="Key" name="Key">
+<area shape="rect" id="node2" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="627,21,666,47"/>
+<area shape="rect" id="node4" href="$menu_8cpp.html#a7bb89df2bb71321185e2940ec171b44c" title="MenuScore" alt="" coords="363,146,436,173"/>
+<area shape="rect" id="node9" href="$params_8h.html#ad6b4e6d05c2d284e72ed8238be1d25c1" title="LoadParams" alt="" coords="98,147,177,174"/>
+<area shape="rect" id="node11" href="$scores_8h.html#a9745d6fb5d36429cf3a378a0039609b2" title="ChiffreCesar chiffre les scores pour eviter les modification. " alt="" coords="98,46,177,73"/>
+<area shape="rect" id="node14" href="$scores_8h.html#a7aa332af99139da485b3995286777f4f" title="DeChiffreCesar dechiffre les scores. " alt="" coords="92,97,183,123"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="735,21,779,47"/>
+<area shape="rect" id="node5" href="$menu_8h.html#a163c51d36d35d55ee3988a6c3fe66d8a" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="496,146,548,173"/>
+<area shape="rect" id="node6" href="$menu_8h.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="623,146,671,173"/>
+<area shape="rect" id="node7" href="$menu_8h.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="733,114,780,141"/>
+<area shape="rect" id="node8" href="$menu_8h.html#ade9d6ea45ddcb1580cbe8e17e4883629" title="RetourMenu permet de retourner au menu principal. " alt="" coords="608,197,685,223"/>
+<area shape="rect" id="node10" href="$game_8h.html#a0b1d64ee76933ef8f007f1208cb869a7" title="ppal" alt="" coords="252,147,293,174"/>
+<area shape="rect" id="node12" href="$scores_8cpp.html#a04cf257357e5c58911014b6e83504ab1" title="MScores" alt="" coords="242,46,303,73"/>
+<area shape="rect" id="node13" href="$scores_8h.html#a69f9fc158e335a33d840266e8800bd57" title="SaveScores demande au joueur d&#39;enregistrer son nom. " alt="" coords="484,46,560,73"/>
+<area shape="rect" id="node15" href="$scores_8h.html#a22cd16750e15f75e9b4a80154dcca0d7" title="AfficheScores affiche les scores depuis un fichier. " alt="" coords="231,97,315,123"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="AfficheScores" name="AfficheScores">
+<area shape="rect" id="node2" href="$menu_8cpp.html#a7bb89df2bb71321185e2940ec171b44c" title="MenuScore" alt="" coords="137,119,211,145"/>
+<area shape="rect" id="node3" href="$menu_8h.html#a163c51d36d35d55ee3988a6c3fe66d8a" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="259,119,311,145"/>
+<area shape="rect" id="node4" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="378,5,417,32"/>
+<area shape="rect" id="node5" href="$menu_8h.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="373,56,421,83"/>
+<area shape="rect" id="node6" href="$menu_8h.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="484,88,531,115"/>
+<area shape="rect" id="node7" href="$menu_8h.html#ade9d6ea45ddcb1580cbe8e17e4883629" title="RetourMenu permet de retourner au menu principal. " alt="" coords="359,181,436,208"/>
+</map>

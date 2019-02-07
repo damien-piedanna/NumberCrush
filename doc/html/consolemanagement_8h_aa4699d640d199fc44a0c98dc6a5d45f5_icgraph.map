@@ -1,0 +1,11 @@
+<map id="Couleur" name="Couleur">
+<area shape="rect" id="node2" href="$move_8h.html#ad21ae960a3963de4ff8d296fd2671bae" title="DisplayGrid2 permet d&#39;afficher la grille actuelle. " alt="" coords="248,107,327,133"/>
+<area shape="rect" id="node10" href="$params2_8h.html#a5f0ce189f2c2429ab017e4ead72ad3b4" title="DisplayCouleur permet d&#39;afficher en fond une couleur. " alt="" coords="111,132,200,159"/>
+<area shape="rect" id="node3" href="$jeu_8h.html#a65774287a4de0b6ca018fdca2cbdcc74" title="PlayGame lance la &quot;partie&quot; tant que le joueur dispose de coup pour jouer. " alt="" coords="655,132,724,159"/>
+<area shape="rect" id="node5" href="$move_8h.html#a900aa39051d851e87f8a4ef754f52106" title="ReplaceEmpty permet de remplacer les cases vides après suppression. " alt="" coords="375,31,461,57"/>
+<area shape="rect" id="node8" href="$move_8h.html#a2f8787c7b11bad60861b16f347f6e5a4" title="UpdateGrid met a jour la grille en fonction des coups du joueur. " alt="" coords="521,81,595,108"/>
+<area shape="rect" id="node9" href="$move_8h.html#a9e11b81772e0c1a43c60154d075ef901" title="MakeAMove2 demande à l&#39;utilisateur de bouger une case de la grille. " alt="" coords="377,183,459,209"/>
+<area shape="rect" id="node4" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="772,132,811,159"/>
+<area shape="rect" id="node6" href="$menu_8h.html#a6d11449039791b915e09525a182e0dc3" title="LoadLevel va génerer le niveau creer par RetrieveDataLevel. " alt="" coords="655,5,723,32"/>
+<area shape="rect" id="node7" href="$move_8h.html#a06bfb1227b403c41eadb9ec866a95ada" title="ClearAssociation permet de bien detecter quand il y a une combinaison en ligne et en colonne en même ..." alt="" coords="509,31,607,57"/>
+</map>

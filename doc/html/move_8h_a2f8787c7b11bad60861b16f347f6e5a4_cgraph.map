@@ -1,0 +1,16 @@
+<map id="UpdateGrid" name="UpdateGrid">
+<area shape="rect" id="node2" href="$gridmanage_8cpp.html#a63e4a3640580b7b36533e16af6899bb7" title="AtLeastThreeInAColumn2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une m..." alt="" coords="141,5,313,32"/>
+<area shape="rect" id="node3" href="$gridmanage_8cpp.html#a9a5e8513bae340487c959c25e03eded6" title="FiveInColumn permet de faire apparait un bonus quand il y a 5chiffres d&#39;affilé en ligne..." alt="" coords="176,56,279,83"/>
+<area shape="rect" id="node4" href="$gridmanage_8cpp.html#a319c3d4e1527e1ca5811afb49a964117" title="RemovalInColumn2 permet de supprimer les chiffres detectés par AtLeastThreeInAColumn2. " alt="" coords="159,107,296,133"/>
+<area shape="rect" id="node5" href="$move_8cpp.html#ad21ae960a3963de4ff8d296fd2671bae" title="DisplayGrid2 permet d&#39;afficher la grille actuelle. " alt="" coords="361,183,459,209"/>
+<area shape="rect" id="node10" href="$consolemanagement_8cpp.html#aec72643c810ddc3303da38c65ba79744" title="Pause permet de mettre une pause d&#39;affichage. " alt="" coords="381,335,439,361"/>
+<area shape="rect" id="node11" href="$move_8cpp.html#a9e675d9b26c3f9fdb2108ac5d90fb78d" title="DownGrid permet de faire &quot;tomber&quot; les chiffres lorsque d&#39;autres sont supprimés en dessous..." alt="" coords="187,259,267,285"/>
+<area shape="rect" id="node12" href="$gridmanage_8cpp.html#ae7cdb3c2af2d1ea8794b0cd120ff0c6d" title="AtLeastThreeInARow2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une même..." alt="" coords="150,309,305,336"/>
+<area shape="rect" id="node13" href="$gridmanage_8cpp.html#a9ed5bb211a261865917a26396d408a09" title="FiveInRow" alt="" coords="185,360,270,387"/>
+<area shape="rect" id="node14" href="$gridmanage_8cpp.html#a061edfd44d45c99a1e14b9d2884db344" title="RemovalInRow2 permet de supprimer les chiffres detectés par AtLeastThreeInARow2. " alt="" coords="168,411,287,437"/>
+<area shape="rect" id="node15" href="$move_8cpp.html#a900aa39051d851e87f8a4ef754f52106" title="ReplaceEmpty permet de remplacer les cases vides après suppression. " alt="" coords="173,208,281,235"/>
+<area shape="rect" id="node6" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="515,107,609,133"/>
+<area shape="rect" id="node7" href="$consolemanagement_8cpp.html#aa4699d640d199fc44a0c98dc6a5d45f5" title="Couleur permet d&#39;afficher des couleurs sur la console. " alt="" coords="665,208,732,235"/>
+<area shape="rect" id="node8" href="$jeu_8h.html#afba9457d373dfb071b5b03db16545a94" title="CReset" alt="" coords="529,208,595,235"/>
+<area shape="rect" id="node9" href="$params2_8cpp.html#a5f0ce189f2c2429ab017e4ead72ad3b4" title="DisplayCouleur permet d&#39;afficher en fond une couleur. " alt="" coords="507,259,617,285"/>
+</map>

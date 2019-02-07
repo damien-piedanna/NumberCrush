@@ -1,0 +1,5 @@
+<map id="DeleteAllNumber" name="DeleteAllNumber">
+<area shape="rect" id="node2" href="$move_8h.html#a1c379b3c21d5c72bc32f7149e5647679" title="Move effectue un mouvement dans une grille, altérant le score du joueur. " alt="" coords="151,5,197,32"/>
+<area shape="rect" id="node3" href="$move_8h.html#a9e11b81772e0c1a43c60154d075ef901" title="MakeAMove2 demande à l&#39;utilisateur de bouger une case de la grille. " alt="" coords="245,5,328,32"/>
+<area shape="rect" id="node4" href="$jeu_8h.html#a65774287a4de0b6ca018fdca2cbdcc74" title="PlayGame lance la &quot;partie&quot; tant que le joueur dispose de coup pour jouer. " alt="" coords="376,5,445,32"/>
+</map>

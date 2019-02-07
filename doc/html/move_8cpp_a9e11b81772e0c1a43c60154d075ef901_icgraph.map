@@ -1,0 +1,5 @@
+<map id="MakeAMove2" name="MakeAMove2">
+<area shape="rect" id="node2" href="$jeu_8h.html#a65774287a4de0b6ca018fdca2cbdcc74" title="PlayGame lance la &quot;partie&quot; tant que le joueur dispose de coup pour jouer. " alt="" coords="156,5,239,32"/>
+<area shape="rect" id="node3" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="287,5,325,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="373,5,424,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="DisplayGrid2" name="DisplayGrid2">
+<area shape="rect" id="node2" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="159,5,253,32"/>
+<area shape="rect" id="node3" href="$consolemanagement_8cpp.html#aa4699d640d199fc44a0c98dc6a5d45f5" title="Couleur permet d&#39;afficher des couleurs sur la console. " alt="" coords="309,107,376,133"/>
+<area shape="rect" id="node4" href="$jeu_8h.html#afba9457d373dfb071b5b03db16545a94" title="CReset" alt="" coords="173,107,239,133"/>
+<area shape="rect" id="node5" href="$params2_8cpp.html#a5f0ce189f2c2429ab017e4ead72ad3b4" title="DisplayCouleur permet d&#39;afficher en fond une couleur. " alt="" coords="151,157,261,184"/>
+</map>

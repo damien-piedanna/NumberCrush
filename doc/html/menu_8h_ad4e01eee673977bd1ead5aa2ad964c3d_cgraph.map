@@ -1,0 +1,25 @@
+<map id="Histoire" name="Histoire">
+<area shape="rect" id="node2" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="1044,245,1121,272"/>
+<area shape="rect" id="node3" href="$menu_8cpp.html#a5179893a33a4f75b7cfef53c52ee46b7" title="DisplayFile ouvre un fichier texte, si il existe, sinon creer un menu avec lequel l&#39;utilisateur pourr..." alt="" coords="457,448,527,475"/>
+<area shape="rect" id="node4" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="452,499,532,525"/>
+<area shape="rect" id="node5" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="601,499,663,525"/>
+<area shape="rect" id="node6" href="$menu_8cpp.html#a6d11449039791b915e09525a182e0dc3" title="LoadLevel va génerer le niveau creer par RetrieveDataLevel. " alt="" coords="458,144,526,171"/>
+<area shape="rect" id="node16" href="$menu_8cpp.html#a900d6cc2e02bd2823dcc739be3ea2713" title="Jouer ouvre le menu Jouer, les paramètres dépendront du mode de jeu choisi ensuite. " alt="" coords="109,347,156,373"/>
+<area shape="rect" id="node7" href="$menu_8cpp.html#a506453ea84ef7c37d9a3fda6a4841e66" title="RetrieveDataLevel génère le niveau choisi à partir d&#39;un fichier texte, les paramètres changeront selo..." alt="" coords="580,195,684,221"/>
+<area shape="rect" id="node8" href="$move_8cpp.html#a900aa39051d851e87f8a4ef754f52106" title="ReplaceEmpty permet de remplacer les cases vides après suppression. " alt="" coords="757,195,844,221"/>
+<area shape="rect" id="node11" href="$move_8cpp.html#a06bfb1227b403c41eadb9ec866a95ada" title="ClearAssociation permet de bien detecter quand il y a une combinaison en ligne et en colonne en même ..." alt="" coords="583,296,681,323"/>
+<area shape="rect" id="node9" href="$consolemanagement_8cpp.html#aec72643c810ddc3303da38c65ba79744" title="Pause permet de mettre une pause d&#39;affichage. " alt="" coords="931,195,982,221"/>
+<area shape="rect" id="node10" href="$move_8cpp.html#ad21ae960a3963de4ff8d296fd2671bae" title="DisplayGrid2 permet d&#39;afficher la grille actuelle. " alt="" coords="917,245,996,272"/>
+<area shape="rect" id="node12" href="$gridmanage_8cpp.html#a63e4a3640580b7b36533e16af6899bb7" title="AtLeastThreeInAColumn2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une m..." alt="" coords="732,296,869,323"/>
+<area shape="rect" id="node13" href="$gridmanage_8cpp.html#a319c3d4e1527e1ca5811afb49a964117" title="RemovalInColumn2 permet de supprimer les chiffres detectés par AtLeastThreeInAColumn2. " alt="" coords="746,347,855,373"/>
+<area shape="rect" id="node14" href="$gridmanage_8cpp.html#ae7cdb3c2af2d1ea8794b0cd120ff0c6d" title="AtLeastThreeInARow2 permet de detecter si il y a au moin 3fois le même chiffre d&#39;affilé dans une même..." alt="" coords="739,397,862,424"/>
+<area shape="rect" id="node15" href="$gridmanage_8cpp.html#a061edfd44d45c99a1e14b9d2884db344" title="RemovalInRow2 permet de supprimer les chiffres detectés par AtLeastThreeInARow2. " alt="" coords="753,245,849,272"/>
+<area shape="rect" id="node17" href="$menu_8cpp.html#a15534416877620c118dcf581969f6d0a" title="Classique ouvre le menu classique dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="319,296,385,323"/>
+<area shape="rect" id="node19" href="$menu_8cpp.html#ae6d5455e3446f04945a3a88489ffa95a" title="Perso ouvre le menu perso dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="204,572,252,599"/>
+<area shape="rect" id="node22" href="$menu_8cpp.html#a8ada07802305465f73b0426315a84eb6" title="Menu2 ouvre le menu de départ, le paramtres changeront selon le mode de jeu choisi. " alt="" coords="326,701,378,728"/>
+<area shape="rect" id="node24" href="$menu_8cpp.html#ad4e01eee673977bd1ead5aa2ad964c3d" title="Histoire ouvre le menu histoire dans jouer, les paramètres dépendront du mode de jeu choisi ensuite..." alt="" coords="324,144,380,171"/>
+<area shape="rect" id="node18" href="$gridmanage_8cpp.html#a1316a244ce48366dc28de92ff5f14c10" title="InitGrid2 permet d&#39;initialiser la grille. " alt="" coords="462,397,522,424"/>
+<area shape="rect" id="node20" href="$menu_8cpp.html#a46c68463f0090ea6f6ecec0ed4aadff6" title="PartiePerso permet de jouer une partie personalisée. " alt="" coords="315,499,389,525"/>
+<area shape="rect" id="node21" href="$creator_8cpp.html#ac5b154448812bb081d2447074cd87074" title="LevelCreator Permet de creer son propre niveau. " alt="" coords="917,727,996,753"/>
+<area shape="rect" id="node23" href="$menu_8cpp.html#a482279a8f13d1584d44c1b7af318d0f3" title="LoadLevelCreated permet de charger un niveau precedement créer. " alt="" coords="300,195,404,221"/>
+</map>

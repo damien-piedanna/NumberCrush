@@ -1,0 +1,5 @@
+<map id="Move" name="Move">
+<area shape="rect" id="node2" href="$move_8h.html#a9e11b81772e0c1a43c60154d075ef901" title="MakeAMove2 demande à l&#39;utilisateur de bouger une case de la grille. " alt="" coords="100,5,183,32"/>
+<area shape="rect" id="node3" href="$jeu_8h.html#a65774287a4de0b6ca018fdca2cbdcc74" title="PlayGame lance la &quot;partie&quot; tant que le joueur dispose de coup pour jouer. " alt="" coords="231,5,300,32"/>
+<area shape="rect" id="node4" href="$jeu_8h.html#afdf33ef6507a8d51e0ab5210ce727466" title="jeu lance le code, c&#39;est un peu le main " alt="" coords="348,5,387,32"/>
+</map>

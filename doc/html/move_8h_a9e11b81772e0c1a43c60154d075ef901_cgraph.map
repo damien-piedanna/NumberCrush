@@ -1,0 +1,13 @@
+<map id="MakeAMove2" name="MakeAMove2">
+<area shape="rect" id="node2" href="$useractions_8cpp.html#a67fbd0e76e0fe329c8540ed1656bc67b" title="GetPos permet de demander à l&#39;utilisateur de rentrer une position dans la grille. ..." alt="" coords="171,5,238,32"/>
+<area shape="rect" id="node4" href="$consolemanagement_8cpp.html#affdb134559b42fc1888287c4c174df35" title="ClearBuf vide le tampon de cin. " alt="" coords="471,56,544,83"/>
+<area shape="rect" id="node5" href="$useractions_8cpp.html#a451a4ae7d7af8876f504111fdabf40e1" title="GetDirection affiche un choix de direction et permet de demander à l&#39;utilisateur de rentrer une direc..." alt="" coords="157,107,252,133"/>
+<area shape="rect" id="node6" href="$move_8cpp.html#a1c379b3c21d5c72bc32f7149e5647679" title="Move effectue un mouvement dans une grille, altérant le score du joueur. " alt="" coords="177,157,232,184"/>
+<area shape="rect" id="node8" href="$gridmanagement_8cpp.html#a6a3ca153f0817e8ba91a023b886bb662" title="ClearScreen" alt="" coords="315,208,409,235"/>
+<area shape="rect" id="node9" href="$move_8cpp.html#ad21ae960a3963de4ff8d296fd2671bae" title="DisplayGrid2 permet d&#39;afficher la grille actuelle. " alt="" coords="156,259,253,285"/>
+<area shape="rect" id="node3" href="$useractions_8cpp.html#ad978607217edeb8ca610f044d3cc7f7b" title="GetUnsigned permet de demander à l&#39;utilisateur un entier naturel entre min et max. " alt="" coords="313,5,411,32"/>
+<area shape="rect" id="node7" href="$move_8cpp.html#afc9cebca125ca725670e64501deccc1d" title="DeleteAllNumber efface les chiffres lors de l&#39;utilisation du bonus (bombe), update le score du joueur..." alt="" coords="301,157,423,184"/>
+<area shape="rect" id="node10" href="$consolemanagement_8cpp.html#aa4699d640d199fc44a0c98dc6a5d45f5" title="Couleur permet d&#39;afficher des couleurs sur la console. " alt="" coords="474,309,541,336"/>
+<area shape="rect" id="node11" href="$jeu_8h.html#afba9457d373dfb071b5b03db16545a94" title="CReset" alt="" coords="329,309,395,336"/>
+<area shape="rect" id="node12" href="$params2_8cpp.html#a5f0ce189f2c2429ab017e4ead72ad3b4" title="DisplayCouleur permet d&#39;afficher en fond une couleur. " alt="" coords="307,360,417,387"/>
+</map>

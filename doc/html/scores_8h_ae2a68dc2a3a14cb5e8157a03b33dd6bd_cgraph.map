@@ -1,0 +1,5 @@
+<map id="ModifScores" name="ModifScores">
+<area shape="rect" id="node2" href="$scores_8cpp.html#a514a1426ae9ab8c439934cb90d9c6a7e" title="GetScore recupère le score d&#39;un joueur. " alt="" coords="173,5,250,32"/>
+<area shape="rect" id="node3" href="$scores_8cpp.html#a5918c1973e6cdbb0d656f9592e4912b7" title="DescendreLignes permet de classer les scors lors de l&#39;ajout d&#39;un nouveau. " alt="" coords="150,56,273,83"/>
+<area shape="rect" id="node4" href="$scores_8cpp.html#a5245ae946eccee4f03d79faa83f7ce7d" title="AjustementLignes ajuste le classement avec le score. " alt="" coords="148,107,275,133"/>
+</map>
